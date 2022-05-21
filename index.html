@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>Banana Clicker</title>
+  </head>
+
+  <body>
+    <div class="mainPageContainer">
+      <div class="mainGrid">
+        <div class="mainLeftContainer">
+          <div class="welcomeText">
+            <h2>Bienvenue sur Banana Clicker, le cliqueur de la jungle !</h2>
+            <p>
+              Hommage à Cookie Clicker et tentative de création d'un "jeu", le
+              développement de cette expérience simpliste m'a beaucoup amusé.
+              J'espère que son utilisation saura susciter chez vous des émotions
+              au moins similaires sinon plus intenses encore.
+            </p>
+          </div>
+          <div class="tuto">
+            <h2>But du jeu :</h2>
+            <p>
+              Le but est de collecter le plus grand nombre de bananes possible.
+              Bien entendu, il n'y a pas de fin.
+            </p>
+          </div>
+          <div class="lexique">
+            <h2>Lexique :</h2>
+            <p>bps = bananes par seconde</p>
+            <p>bpc = bananes par clic</p>
+          </div>
+        </div>
+        <div class="mainRightContainer">
+          <h1>Améliorations</h1>
+
+          <button
+            id="buffCursorButton"
+            class="buffButton greyedBuff"
+            onclick="buyBuffBPC(buff1Name, buff1Price, buff1PriceMultiplier, buff1Owned, buff1Multiplier);"
+          >
+            <div class="buttonContainer">
+              <div class="buttonPic">
+                <img src="images/cursor.png" width="50px" />
+              </div>
+              <div class="buttonText">
+                <p>Améliorer votre curseur</p>
+                <p>+<span id="buffCursorMultiplier"></span> bpc</p>
+                <p>
+                  <img src="images/banane.png" width="20px" />
+                  <span id="buffCursorPrice"></span>
+                </p>
+              </div>
+            </div>
+          </button>
+
+          <button
+            id="buffCPUButton"
+            class="buffButton greyedBuff"
+            onclick="buyBuffBPS(buff2Name, buff2Price, buff2PriceMultiplier, buff2Owned, buff2Multiplier, step2Multiplier);"
+          >
+            <div class="buttonContainer">
+              <div class="buttonPic">
+                <img src="images/cpu.png" width="50px" />
+              </div>
+              <div class="buttonText">
+                <p>Robotiser vos singes</p>
+                <p>+<span id="buffCPUMultiplier"></span> bps / gorille</p>
+                <p>
+                  <img src="images/banane.png" width="20px" />
+                  <span id="buffCPUPrice"></span>
+                </p>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <div class="mainClickerContainer">
+          <div class="clickerContainer">
+            <img
+              src="images/banane.png"
+              id="clicker"
+              onclick="clickUp();
+        animateCSS('.banana', 'jello');"
+              class="banana animate__faster"
+            />
+            <h1>Bananes : <span id="bananasNumber">0</span></h1>
+            <h3>Par seconde : <span id="bps">0</span></h3>
+            <h3>Par clic : <span id="bpc">1</span></h3>
+          </div>
+        </div>
+
+        <div class="mainButtonsContainer">
+          <div class="buttonsContainer">
+            <button
+              id="tierClickerButton"
+              class="buyButton greyed"
+              onclick="buyTier(step1Name, step1Price, step1PriceMultiplier, step1Owned, step1Multiplier);"
+            >
+              <div class="buttonContainer">
+                <div class="buttonPic">
+                  <img src="images/hand.png" width="50px" />
+                </div>
+                <div class="buttonText">
+                  <p>Acheter un clicker</p>
+                  <p>+<span id="tierClickerMultiplier"></span> bps</p>
+                  <p>
+                    <img src="images/banane.png" width="20px" />
+                    <span id="tierClickerPrice"></span>
+                  </p>
+                </div>
+              </div>
+            </button>
+            <div class="stats">
+              <p>Acquis : <span id="tierClickerOwned">0</span></p>
+              <p>Production : <span id="tierClickerProd">0</span> bps</p>
+            </div>
+            <button
+              id="tierGorillaButton"
+              class="buyButton greyed"
+              onclick="buyTier(step2Name, step2Price, step2PriceMultiplier, step2Owned, step2Multiplier);"
+            >
+              <div class="buttonContainer">
+                <div class="buttonPic">
+                  <img src="images/gorilla.png" width="50px" />
+                </div>
+                <div class="buttonText">
+                  <p>Acheter un gorille</p>
+                  <p>+<span id="tierGorillaMultiplier"></span> bps</p>
+                  <p>
+                    <img src="images/banane.png" width="20px" />
+                    <span id="tierGorillaPrice"></span>
+                  </p>
+                </div>
+              </div>
+            </button>
+            <div class="stats">
+              <p>Acquis : <span id="tierGorillaOwned">0</span></p>
+              <p>Production : <span id="tierGorillaProd">0</span> bps</p>
+            </div>
+            <button
+              id="tierTreeButton"
+              class="buyButton greyed"
+              onclick="buyTier(step3Name, step3Price, step3PriceMultiplier, step3Owned, step3Multiplier);"
+            >
+              <div class="buttonContainer">
+                <div class="buttonPic">
+                  <img src="images/leaf.png" width="50px" />
+                </div>
+                <div class="buttonText">
+                  <p>Acheter un bananier</p>
+                  <p>+<span id="tierTreeMultiplier"></span> bps</p>
+                  <p>
+                    <img src="images/banane.png" width="20px" />
+                    <span id="tierTreePrice"></span>
+                  </p>
+                </div>
+              </div>
+            </button>
+            <div class="stats">
+              <p>Acquis : <span id="tierTreeOwned">0</span></p>
+              <p>Production : <span id="tierTreeProd">0</span> bps</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div><button class="cheatButton" onclick="cheat();">C</button></div>
+    <script src="js/script.js"></script>
+    <script src="js/animations.js"></script>
+  </body>
+</html>
