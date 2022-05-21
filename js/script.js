@@ -21,7 +21,7 @@ document.getElementById(step2Name + "Price").innerHTML = step2Price;
 document.getElementById(step2Name + "Multiplier").innerHTML = step2Multiplier;
 // Bananier
 step3Name = "tierTree";
-step3Owned = 0;
+step3Owned = document.getElementById(step3Name + "Owned").innerHTML;
 step3Price = 1400;
 step3Multiplier = 80;
 step3PriceMultiplier = 1.5;
@@ -65,6 +65,8 @@ function cheat() {
   document.getElementById("bananasNumber").innerHTML = bananas;
   tiersPricesChecks();
   buffsPricesChecks();
+  bps = calcBPS();
+  document.getElementById("bps").innerHTML = bps;
 }
 
 function clickUp() {
@@ -72,6 +74,8 @@ function clickUp() {
   document.getElementById("bananasNumber").innerHTML = bananas;
   tiersPricesChecks();
   buffsPricesChecks();
+  bps = calcBPS();
+  document.getElementById("bps").innerHTML = bps;
 }
 
 function perSecond() {
@@ -79,21 +83,24 @@ function perSecond() {
   document.getElementById("bananasNumber").innerHTML = bananas;
   tiersPricesChecks();
   buffsPricesChecks();
+  bps = calcBPS();
+  document.getElementById("bps").innerHTML = bps;
 }
 
 // CALC BPS AND BPC
-function calcBPS(multiplier, owned) {
+function calcBPSDetail(multiplier, owned) {
   prod = multiplier * owned;
-  bps = bps + prod;
-  return bps;
+  return prod;
 }
 
-function calcBPSDetail() {
-  clickers = step1Owned * step1Multiplier;
-  gorillas = step2Owned * step2Multiplier;
-  trees = step3Owned * step3Multiplier;
-  bps = clickers + gorillas + trees;
-  return bps;
+function calcBPS() {
+  step1Owned = document.getElementById(step1Name + "Owned").innerHTML;
+  prod = calcBPSDetail(step1Multiplier, step1Owned);
+  step2Owned = document.getElementById(step2Name + "Owned").innerHTML;
+  prod = prod + calcBPSDetail(step2Multiplier, step2Owned);
+  step3Owned = document.getElementById(step3Name + "Owned").innerHTML;
+  prod = prod + calcBPSDetail(step3Multiplier, step3Owned);
+  return prod;
 }
 
 function calcBPC() {}
@@ -140,7 +147,6 @@ function buffPriceCheck(buffName, buffPrice) {
 }
 
 ////////// BUYING TIERS
-
 function buyTier(
   tierName,
   tierPrice,
@@ -162,7 +168,7 @@ function buyTier(
     document.getElementById(tierName + "Price").innerHTML = tierPrice;
     updateTiersPrices();
     // updating bps
-    calcBPS(tierMultiplier, tierOwned);
+    bps = calcBPS();
     document.getElementById("bps").innerHTML = bps;
     // finally checking prices
   } else {
