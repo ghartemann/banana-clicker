@@ -36,7 +36,6 @@
 .mainPageContainer {
   background: url("../images/tropical.jpg");
   background-size: cover;
-  height: 100vh;
 }
 
 /* GRID */
@@ -186,4 +185,19 @@ font-size: 12pt;
 .welcomeText p, .tuto p, .lexique p {
     font-size: 16pt;
     text-align: justify;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: var(--green-dark);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.footerText {
+text-align: center;
+padding: 30px;
+font-size: 16pt;
 }
