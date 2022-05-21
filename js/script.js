@@ -162,8 +162,8 @@ function buyTier(
     document.getElementById(tierName + "Price").innerHTML = tierPrice;
     updateTiersPrices();
     // updating bps
-    calcBPS();
-    document.getElementById("bps").innerHTML = persecond;
+    calcBPS(tierMultiplier, tierOwned);
+    document.getElementById("bps").innerHTML = bps;
     // finally checking prices
   } else {
     alert("Pas assez de bananes !");
