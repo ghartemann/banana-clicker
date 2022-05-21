@@ -17,7 +17,9 @@
       <div class="mainGrid">
         <div class="mainLeftContainer">
           <div class="welcomeText">
-            <h2>Bienvenue sur Banana Clicker, le cliqueur de la jungle !</h2>
+            <h2>
+              Bienvenue sur<br /><span class="greenTitle">Banana Clicker</span>
+            </h2>
             <p>
               Hommage à Cookie Clicker et tentative de création d'un "jeu", le
               développement de cette expérience simpliste m'a beaucoup amusé.
@@ -38,48 +40,76 @@
             <p>bpc = bananes par clic</p>
           </div>
         </div>
-        <div class="mainRightContainer">
+        <div class="UpRightContainer">
           <h1>Améliorations</h1>
-
-          <button
-            id="buffCursorButton"
-            class="buffButton greyedBuff"
-            onclick="buyBuffBPC(buff1Name, buff1Price, buff1PriceMultiplier, buff1Owned, buff1Multiplier);"
-          >
-            <div class="buttonContainer">
-              <div class="buttonPic">
-                <img src="images/cursor.png" width="50px" />
-              </div>
-              <div class="buttonText">
-                <p>Améliorer votre curseur</p>
-                <p>+<span id="buffCursorMultiplier"></span> bpc</p>
-                <p>
-                  <img src="images/banane.png" width="20px" />
-                  <span id="buffCursorPrice"></span>
-                </p>
+          <div class="buffs">
+            <div id="nothing">
+              <p>
+                Rien pour l'instant... Essayez de cliquer un peu ou d'acheter
+                des choses, pour voir.
+              </p>
+            </div>
+            <div id="buffCursorDiv" class="unavailable">
+              <button
+                id="buffCursorButton"
+                class="buffButton greyedBuff"
+                onclick="buyBuffBPC(buff1Name, buff1Price, buff1PriceMultiplier, buff1Owned, buff1Multiplier);"
+              >
+                <div class="buttonContainer">
+                  <div class="buttonPic">
+                    <img src="images/cursor.png" width="50px" />
+                  </div>
+                  <div class="buttonText">
+                    <p>Améliorer votre curseur</p>
+                    <p>+<span id="buffCursorMultiplier"></span> bpc</p>
+                    <p>
+                      <img src="images/banane.png" width="20px" />
+                      <span id="buffCursorPrice"></span>
+                    </p>
+                  </div>
+                </div>
+              </button>
+              <div class="stats">
+                <p>Acquis : <span id="buffCursorOwned">0</span></p>
               </div>
             </div>
-          </button>
 
-          <button
-            id="buffCPUButton"
-            class="buffButton greyedBuff"
-            onclick="buyBuffBPS(buff2Name, buff2Price, buff2PriceMultiplier, buff2Owned, buff2Multiplier, step2Multiplier);"
-          >
-            <div class="buttonContainer">
-              <div class="buttonPic">
-                <img src="images/cpu.png" width="50px" />
-              </div>
-              <div class="buttonText">
-                <p>Robotiser vos singes</p>
-                <p>+<span id="buffCPUMultiplier"></span> bps / gorille</p>
-                <p>
-                  <img src="images/banane.png" width="20px" />
-                  <span id="buffCPUPrice"></span>
-                </p>
+            <div id="buffCPUDiv" class="unavailable">
+              <button
+                id="buffCPUButton"
+                class="buffButton greyedBuff"
+                onclick="buyBuffBPS(buff2Name, buff2Price, buff2PriceMultiplier, buff2Owned, buff2Multiplier, step2Multiplier);"
+              >
+                <div class="buttonContainer">
+                  <div class="buttonPic">
+                    <img src="images/cpu.png" width="50px" />
+                  </div>
+                  <div class="buttonText">
+                    <p>Robotiser vos singes</p>
+                    <p>+<span id="buffCPUMultiplier"></span> bps / gorille</p>
+                    <p>
+                      <img src="images/banane.png" width="20px" />
+                      <span id="buffCPUPrice"></span>
+                    </p>
+                  </div>
+                </div>
+              </button>
+              <div class="stats">
+                <p>Acquis : <span id="buffCPUOwned">0</span></p>
               </div>
             </div>
-          </button>
+          </div>
+        </div>
+
+        <div class="DownRightContainer">
+          <div class="nbClicks">
+            <h1>Statistiques</h1>
+            <p>Nombre de clics : <span id="nbClicks">0</span></p>
+            <p>
+              Vous gagnerez (peut-être) le jeu dans
+              <span id="restClicks">1000000</span> clics.
+            </p>
+          </div>
         </div>
 
         <div class="mainClickerContainer">

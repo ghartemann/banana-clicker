@@ -1,6 +1,8 @@
 /////////// DEFAULT VALUES
 bps = 0;
 clickRate = 1;
+nbclicks = 0;
+restclicks = 1000000;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// TIERS PRICES
@@ -9,7 +11,7 @@ step1Name = "tierClicker";
 step1Owned = 0;
 step1Price = 30;
 step1Multiplier = 1;
-step1PriceMultiplier = 1.6;
+step1PriceMultiplier = 1.4;
 document.getElementById(step1Name + "Price").innerHTML = step1Price;
 document.getElementById(step1Name + "Multiplier").innerHTML = step1Multiplier;
 // Gorilla
@@ -22,7 +24,7 @@ document.getElementById(step2Name + "Price").innerHTML = step2Price;
 document.getElementById(step2Name + "Multiplier").innerHTML = step2Multiplier;
 // Bananier
 step3Name = "tierTree";
-step3Owned = document.getElementById(step3Name + "Owned").innerHTML;
+step3Owned = 0;
 step3Price = 1400;
 step3Multiplier = 80;
 step3PriceMultiplier = 1.5;
@@ -42,7 +44,7 @@ document.getElementById(buff1Name + "Multiplier").innerHTML = buff1Multiplier;
 buff2Name = "buffCPU";
 buff2Owned = 0;
 buff2Price = 3333;
-buff2Multiplier = 3;
+buff2Multiplier = 5;
 buff2PriceMultiplier = 1.64;
 document.getElementById(buff2Name + "Price").innerHTML = buff2Price;
 document.getElementById(buff2Name + "Multiplier").innerHTML = buff2Multiplier;
@@ -65,6 +67,7 @@ function cheat() {
   document.getElementById("bananasNumber").innerHTML = bananas;
   tiersPricesChecks();
   buffsPricesChecks();
+  unavailableCheck();
   bps = calcBPS();
   document.getElementById("bps").innerHTML = bps;
 }
@@ -74,6 +77,10 @@ function clickUp() {
   document.getElementById("bananasNumber").innerHTML = bananas;
   tiersPricesChecks();
   buffsPricesChecks();
+  nbClicks();
+  unavailableCheck();
+  document.getElementById("nbClicks").innerHTML = nbclicks;
+  document.getElementById("restClicks").innerHTML = restclicks;
   bps = calcBPS();
   document.getElementById("bps").innerHTML = bps;
 }
@@ -85,6 +92,13 @@ function perSecond() {
   buffsPricesChecks();
   bps = calcBPS();
   document.getElementById("bps").innerHTML = bps;
+  unavailableCheck();
+}
+
+function nbClicks() {
+  nbclicks++;
+  restclicks--;
+  return nbclicks;
 }
 
 // CALC BPS AND BPC
@@ -103,7 +117,11 @@ function calcBPS() {
   return prod;
 }
 
-function calcBPC() {}
+function calcBPC() {
+  buff1Owned = document.getElementById(buff1Name + "Owned").innerHTML;
+  prod = buff1Multiplier * buff1Owned;
+  return prod;
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CHECKING PRICES AND GREYING OUT BUTTONS
@@ -147,6 +165,36 @@ function buffPriceCheck(buffName, buffPrice) {
   }
 }
 
+function unavailableCheck() {
+  step2Owned = document.getElementById(step2Name + "Owned").innerHTML;
+  unavailable(step2Owned, buff2Name);
+  unavailableCLicks(buff1Name);
+}
+
+function unavailable(owned, notOwned) {
+  if (owned > 0) {
+    notOwned = document.getElementById(notOwned + "Div");
+    const notOwnedList = notOwned.classList;
+    notOwnedList.remove("unavailable");
+    // removing small paragraph
+    nothing = document.getElementById("nothing");
+    const nothingList = nothing.classList;
+    nothingList.add("unavailable");
+  }
+}
+
+function unavailableCLicks(notOwned) {
+  if (nbclicks >= 100) {
+    notOwned = document.getElementById(notOwned + "Div");
+    const notOwnedList = notOwned.classList;
+    notOwnedList.remove("unavailable");
+    // removing small paragraph
+    nothing = document.getElementById("nothing");
+    const nothingList = nothing.classList;
+    nothingList.add("unavailable");
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// BUYING TIERS
 function buyTier(
@@ -187,28 +235,20 @@ function updateTiersPrices() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// BUYING BUFFS
-function buyBuffBPC(
-  buffName,
-  buffPrice,
-  buffPriceMultiplier,
-  buffOwned,
-  buffMultiplier
-) {
+function buyBuffBPC(buffName, buffPrice, buffPriceMultiplier, buffOwned) {
   if (bananas >= buffPrice) {
     // changing stats
     buffOwned++;
     document.getElementById(buffName + "Owned").innerHTML = buffOwned;
-    buffProd = buffOwned * buffMultiplier;
-    document.getElementById(buffName + "Prod").innerHTML = buffProd;
     // purchasing buff BPC
     bananas = bananas - buffPrice;
     document.getElementById("bananasNumber").innerHTML = bananas;
     // updating buff price
-    buffPrice = math.round(buffPrice * buffPriceMultiplier);
+    buffPrice = Math.round(buffPrice * buffPriceMultiplier);
     document.getElementById(buffName + "Price").innerHTML = buffPrice;
     updateBuffsPrices();
     // updating bpc
-    clickRate = clickRate + buffMultiplier;
+    clickRate = 1 + calcBPC();
     document.getElementById("bpc").innerHTML = clickRate;
     // finally checking prices
     buffsPricesChecks();
@@ -228,22 +268,20 @@ function buyBuffBPS(
   if (bananas >= buffPrice) {
     // changing stats
     buffOwned++;
-    /* document.getElementById(buffName + "Owned").innerHTML = buffOwned;
-    buffProd = buffOwned * buffMultiplier;
-    document.getElementById(buffName + "Prod").innerHTML = buffProd; */
+    document.getElementById(buffName + "Owned").innerHTML = buffOwned;
     // purchasing buff BPS
     bananas = bananas - buffPrice;
     document.getElementById("bananasNumber").innerHTML = bananas;
     // updating buff price
-    buffPrice = math.round(buffPrice * buffPriceMultiplier);
+    buffPrice = Math.round(buffPrice * buffPriceMultiplier);
     document.getElementById(buffName + "Price").innerHTML = buffPrice;
     updateBuffsPrices();
-    // changing bps
+    // changing bps ALERT NOT USABLE FOR ANY OTHER BUFF
     tierBuffedMultiplier = tierBuffedMultiplier + buffMultiplier;
     step2Multiplier = tierBuffedMultiplier;
     // updating bps
-    persecond = calcBPS(tierMultiplier, tierOwned);
-    document.getElementById("bps").innerHTML = persecond;
+    bps = calcBPS();
+    document.getElementById("bps").innerHTML = bps;
     // finally checking prices
     buffsPricesChecks();
   } else {
