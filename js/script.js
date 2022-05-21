@@ -1,6 +1,8 @@
 /////////// DEFAULT VALUES
 bps = 0;
 clickRate = 1;
+nbclicks = 0;
+restclicks = 1000000;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// TIERS PRICES
@@ -9,7 +11,7 @@ step1Name = "tierClicker";
 step1Owned = 0;
 step1Price = 30;
 step1Multiplier = 1;
-step1PriceMultiplier = 1.6;
+step1PriceMultiplier = 1.4;
 document.getElementById(step1Name + "Price").innerHTML = step1Price;
 document.getElementById(step1Name + "Multiplier").innerHTML = step1Multiplier;
 // Gorilla
@@ -65,6 +67,7 @@ function cheat() {
   document.getElementById("bananasNumber").innerHTML = bananas;
   tiersPricesChecks();
   buffsPricesChecks();
+  unavailableCheck();
   bps = calcBPS();
   document.getElementById("bps").innerHTML = bps;
 }
@@ -74,6 +77,10 @@ function clickUp() {
   document.getElementById("bananasNumber").innerHTML = bananas;
   tiersPricesChecks();
   buffsPricesChecks();
+  nbClicks();
+  unavailableCheck();
+  document.getElementById("nbClicks").innerHTML = nbclicks;
+  document.getElementById("restClicks").innerHTML = restclicks;
   bps = calcBPS();
   document.getElementById("bps").innerHTML = bps;
 }
@@ -85,6 +92,13 @@ function perSecond() {
   buffsPricesChecks();
   bps = calcBPS();
   document.getElementById("bps").innerHTML = bps;
+  unavailableCheck();
+}
+
+function nbClicks() {
+  nbclicks++;
+  restclicks--;
+  return nbclicks;
 }
 
 // CALC BPS AND BPC
@@ -148,6 +162,36 @@ function buffPriceCheck(buffName, buffPrice) {
     buffNameButton.disabled = false;
     const buffNameButtonList = buffNameButton.classList;
     buffNameButtonList.remove("greyedBuff");
+  }
+}
+
+function unavailableCheck() {
+  step2Owned = document.getElementById(step2Name + "Owned").innerHTML;
+  unavailable(step2Owned, buff2Name);
+  unavailableCLicks(buff1Name);
+}
+
+function unavailable(owned, notOwned) {
+  if (owned > 0) {
+    notOwned = document.getElementById(notOwned + "Div");
+    const notOwnedList = notOwned.classList;
+    notOwnedList.remove("unavailable");
+    // removing small paragraph
+    nothing = document.getElementById("nothing");
+    const nothingList = nothing.classList;
+    nothingList.add("unavailable");
+  }
+}
+
+function unavailableCLicks(notOwned) {
+  if (nbclicks >= 100) {
+    notOwned = document.getElementById(notOwned + "Div");
+    const notOwnedList = notOwned.classList;
+    notOwnedList.remove("unavailable");
+    // removing small paragraph
+    nothing = document.getElementById("nothing");
+    const nothingList = nothing.classList;
+    nothingList.add("unavailable");
   }
 }
 
