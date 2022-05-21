@@ -33,6 +33,13 @@
   font-size: 20pt;
 }
 
+.version {
+    position: absolute;
+  left: 30px;
+  bottom: 30px;
+  font-size: 20pt;
+}
+
 .mainPageContainer {
   background: url("../images/tropical.jpg");
   background-size: cover;
