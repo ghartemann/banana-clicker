@@ -59,9 +59,10 @@
   cursor: pointer;
 }
 
-.version p, .roadmap p {
+.version p,
+.roadmap p {
   color: black;
-padding: 8px;
+  padding: 8px;
 }
 
 .mainPageContainer {
@@ -101,6 +102,10 @@ padding: 8px;
 .mainLeftContainer {
   grid-column: 1;
   grid-row: 1/3;
+}
+
+.mainLeftContainer {
+  max-width: 28vw;
 }
 
 /* CLICKER */
@@ -229,7 +234,8 @@ padding: 8px;
 }
 
 .tuto h2,
-.lexique h2 {
+.lexique h2,
+.warning h2 {
   font-size: 20pt;
   margin-bottom: 2vh;
   margin-top: 5vh;
@@ -237,12 +243,14 @@ padding: 8px;
 
 .welcomeText p,
 .tuto p,
-.lexique p {
+.lexique p,
+.warning p {
   font-size: 16pt;
   text-align: justify;
 }
 
-.DownRightContainer h1, .UpRightContainer h1 {
+.DownRightContainer h1,
+.UpRightContainer h1 {
   margin-bottom: 20px;
 }
 
@@ -265,6 +273,12 @@ footer {
   text-align: center;
   padding: 30px;
   font-size: 16pt;
+}
+
+@media screen and (max-width: 1800px) {
+  .mainPageContainer {
+    height: 100vh;
+  }
 }
 
 @media screen and (max-width: 1200px) {
