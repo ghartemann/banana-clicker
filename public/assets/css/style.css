@@ -24,7 +24,7 @@
 }
 
 .cheatButton {
-  position: absolute;
+  position: fixed;
   right: 30px;
   bottom: 30px;
   width: 40px;
@@ -34,10 +34,21 @@
 }
 
 .version {
-    position: absolute;
+  position: fixed;
   left: 30px;
   bottom: 30px;
+  width: 100px;
+  height: 40px;
   font-size: 20pt;
+  background-image: url("../images/trunk.png");
+  background-size: cover;
+  text-align: center;
+  cursor: pointer;
+}
+
+.version p {
+  color: black;
+padding: 8px;
 }
 
 .mainPageContainer {
@@ -188,15 +199,15 @@
 }
 
 .buffs {
-    height: 90%;
-    overflow-y: scroll;
+  height: 90%;
+  overflow-y: scroll;
 }
 
 /* LEFT DIV */
 .greenTitle {
-    font-size: 45pt;
-    color: var(--green-light);
-    font-weight: bold;
+  font-size: 45pt;
+  color: var(--green-light);
+  font-weight: bold;
 }
 
 .welcomeText h2 {
@@ -219,8 +230,9 @@
 }
 
 /* STATS */
-.nbClicks p, #nothing p {
-    font-size: 16pt;
+.nbClicks p,
+#nothing p {
+  font-size: 16pt;
 }
 
 /* FOOTER */
@@ -239,38 +251,38 @@ footer {
 }
 
 @media screen and (max-width: 1200px) {
-    .mainGrid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 30px;
-      }
-    
-    .mainLeftContainer {
-        display: none;
-      }
+  .mainGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+  }
+
+  .mainLeftContainer {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 860px) {
-    .mainGrid {
-        grid-template-columns: repeat(1, 1fr);
-      }
+  .mainGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
-      .mainClickerContainer {
-        grid-column: 1;
-        grid-row: 1;
-      }
-      
-      .mainButtonsContainer {
-        grid-column: 1;
-        grid-row: 2;
-      }
-      
-      .upRightContainer {
-        grid-column: 1;
-        grid-row: 3;
-      }
-      
-      .downRightContainer {
-        grid-column: 1;
-        grid-row: 4;
-      }
+  .mainClickerContainer {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .mainButtonsContainer {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .upRightContainer {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .downRightContainer {
+    grid-column: 1;
+    grid-row: 4;
+  }
 }

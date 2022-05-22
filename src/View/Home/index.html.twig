@@ -6,6 +6,56 @@
 
 			{% include "Component/_info.html.twig" %}
 
+			<div class="mainClickerContainer">
+				<div class="clickerContainer">
+					<img src="assets/images/banane.png" id="clicker" onclick="clickUp(); animateCSS('.banana', 'jello');" class="banana animate__faster"/>
+					<h1>Bananes :
+						<span id="bananasNumber">0</span>
+					</h1>
+					<h3>Par seconde :
+						<span id="bps">0</span>
+					</h3>
+					<h3>Par clic :
+						<span id="bpc">1</span>
+					</h3>
+				</div>
+			</div>
+
+			<div class="mainButtonsContainer">
+				<div class="buttonsContainer">
+
+					{% for clicker in clickers %}
+						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier(step{{loop.index}}Name, step{{loop.index}}Price, step{{loop.index}}PriceMultiplier, step{{loop.index}}Owned, step{{loop.index}}Multiplier);">
+							<div class="buttonContainer">
+								<div class="buttonPic">
+									<img src="assets/images/{{clicker.img}}" width="50px"/>
+								</div>
+								<div class="buttonText">
+									<p>Acheter un
+										{{clicker.display_name}}</p>
+									<p>+<span id="{{clicker.name}}Multiplier">{{clicker.multiplier}}</span>
+										bps</p>
+									<p>
+										<img src="assets/images/banane.png" width="20px"/>
+										<span id="{{clicker.name}}Price">{{clicker.price}}</span>
+									</p>
+									<p style="display:none" id="{{clicker.name}}PriceMultiplier">{{clicker.price_multiplier}}</p>
+								</div>
+							</div>
+						</button>
+						<div class="stats">
+							<p>Acquis :
+								<span id="{{clicker.name}}Owned">0</span>
+							</p>
+							<p>Production :
+								<span id="{{clicker.name}}Prod">0</span>
+								bps</p>
+						</div>
+					{% endfor %}
+
+				</div>
+			</div>
+
 			<div class="UpRightContainer">
 				<h1>Améliorations</h1>
 				<div class="buffs">
@@ -15,27 +65,56 @@
 						</p>
 					</div>
 
-					{% for buff in buffs %}
-						<div id="{{buff.name}}Div" class="unavailable">
-							<button id="{{buff.name}}Button" class="buffButton greyedBuff" onclick="buyBuff{{buff.type}}(buff1Name, buff1Price, buff1PriceMultiplier, buff1Owned, buff1Multiplier);">
+					{% for buffBPC in buffsBPC %}
+						<div id="{{buffBPC.name}}Div" class="unavailable">
+							<button id="{{buffBPC.name}}Button" class="buffButton greyedBuff" onclick="buyBuffBPC(buffBPC{{loop.index}}Name, buffBPC{{loop.index}}Price, buffBPC{{loop.index}}PriceMultiplier, buffBPC{{loop.index}}Owned, buffBPC{{loop.index}}Multiplier, {{buffBPC.modifies}});">
 								<div class="buttonContainer">
 									<div class="buttonPic">
-										<img src="assets/images/{{buff.img}}" width="50px"/>
+										<img src="assets/images/{{buffBPC.img}}" width="50px"/>
 									</div>
 									<div class="buttonText">
-										<p>{{buff.display_name}}</p>
-										<p>+<span id="{{buff.name}}Multiplier"></span>
-											{{buff.type|lower}}{{buff.modifies_name}}</p>
+										<p>{{buffBPC.display_name}}</p>
+										<p>+<span id="{{buffBPC.name}}Multiplier">{{buffBPC.multiplier}}</span>
+											bpc</p>
 										<p>
-											<img src="images/banane.png" width="20px"/>
-											<span id="{{buff.name}}Price"></span>
+											<img src="assets/images/banane.png" width="20px"/>
+											<span id="{{buffBPC.name}}Price">{{buffBPC.price}}</span>
 										</p>
+										<p style="display:none" id="{{buffBPC.name}}PriceMultiplier">{{buffBPC.price_multiplier}}</p>
 									</div>
 								</div>
 							</button>
 							<div class="stats">
 								<p>Acquis :
-									<span id="{{buff.name}}Owned">0</span>
+									<span id="{{buffBPC.name}}Owned">0</span>
+								</p>
+							</div>
+						</div>
+					{% endfor %}
+
+					{% for buffBPS in buffsBPS %}
+						<div id="{{buffBPS.name}}Div" class="unavailable">
+							<button id="{{buffBPS.name}}Button" class="buffButton greyedBuff" onclick="buyBuffBPS(buffBPS{{loop.index}}Name, buffBPS{{loop.index}}Price, buffBPS{{loop.index}}PriceMultiplier, buffBPS{{loop.index}}Owned, buffBPS{{loop.index}}Multiplier);">
+								<div class="buttonContainer">
+									<div class="buttonPic">
+										<img src="assets/images/{{buffBPS.img}}" width="50px"/>
+									</div>
+									<div class="buttonText">
+										<p>{{buffBPS.display_name}}</p>
+										<p>+<span id="{{buffBPS.name}}Multiplier">{{buffBPS.multiplier}}</span>
+											bps /
+											{{buffBPS.modifies_name}}</p>
+										<p>
+											<img src="assets/images/banane.png" width="20px"/>
+											<span id="{{buffBPS.name}}Price">{{buffBPS.price}}</span>
+										</p>
+										<p style="display:none" id="{{buffBPS.name}}PriceMultiplier">{{buffBPS.price_multiplier}}</p>
+									</div>
+								</div>
+							</button>
+							<div class="stats">
+								<p>Acquis :
+									<span id="{{buffBPS.name}}Owned">0</span>
 								</p>
 							</div>
 						</div>
@@ -53,60 +132,11 @@
 					<p>
 						Vous gagnerez (peut-être) le jeu dans
 						<span id="restClicks">1000000</span>
-						clics.
+						clics. Qui sait ? En tout cas ça fait vraiment beaucoup de clics.
 					</p>
 				</div>
 			</div>
 
-			<div class="mainClickerContainer">
-				<div class="clickerContainer">
-					<img src="assets/images/banane.png" id="clicker" onclick="clickUp(); animateCSS('.banana', 'jello');" class="banana animate__faster"/>
-					<h1>Bananes :
-						<span id="bananasNumber">0</span>
-					</h1>
-					<h3>Par seconde :
-						<span id="bps">0</span>
-					</h3>
-					<h3>Par clic :
-						<span id="bpc">1</span>
-					</h3>
-				</div>
-			</div>
-
-
-			<div class="mainButtonsContainer">
-				<div class="buttonsContainer">
-
-					{% for clicker in clickers %}
-						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier(step1Name, step1Price, step1PriceMultiplier, step1Owned, step1Multiplier);">
-							<div class="buttonContainer">
-								<div class="buttonPic">
-									<img src="assets/images/{{clicker.img}}" width="50px"/>
-								</div>
-								<div class="buttonText">
-									<p>Acheter un
-										{{clicker.display_name}}</p>
-									<p>+<span id="{{clicker.name}}Multiplier"></span>
-										bps</p>
-									<p>
-										<img src="assets/images/banane.png" width="20px"/>
-										<span id="{{clicker.name}}Price"></span>
-									</p>
-								</div>
-							</div>
-						</button>
-						<div class="stats">
-							<p>Acquis :
-								<span id="{{clicker.name}}Owned">0</span>
-							</p>
-							<p>Production :
-								<span id="{{clicker.name}}Prod">0</span>
-								bps</p>
-						</div>
-					{% endfor %}
-
-				</div>
-			</div>
 		</div>
 	</div>
 {% endblock %}

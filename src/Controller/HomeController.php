@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Model\ClickerManager;
-use App\Model\BuffManager;
+use App\Model\BuffBPCManager;
+use App\Model\BuffBPSManager;
 
 class HomeController extends AbstractController
 {
@@ -15,9 +16,12 @@ class HomeController extends AbstractController
         $clickerManager = new ClickerManager;
         $clickers = $clickerManager->selectAll();
 
-        $buffManager = new BuffManager;
-        $buffs = $buffManager->selectAll();
+        $buffBPCManager = new BuffBPCManager;
+        $buffsBPC = $buffBPCManager->selectAll();
 
-        return $this->twig->render('Home/index.html.twig', ["clickers" => $clickers, "buffs" => $buffs]);
+        $buffBPSManager = new BuffBPSManager;
+        $buffsBPS = $buffBPSManager->selectAll();
+
+        return $this->twig->render('Home/index.html.twig', ["clickers" => $clickers, "buffsBPC" => $buffsBPC, "buffsBPS" => $buffsBPS]);
     }
 }
