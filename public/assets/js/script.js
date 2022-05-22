@@ -6,7 +6,7 @@ console.log(
 /////////// PATCHNOTE AND ROADMAP
 function patchNote() {
   alert(
-    "PATCHNOTE\n\nv0.6.0\n* added visual cursors when you buy them (kinda proud of this tbh)\n\nv0.5.1\n* added mega cursor (1000 clicks)\n* small fixes and refactoring\n\nv0.5.0\n* migrated to PHP (simple MVC)\n* prettified the whole thing a bit\n\nv0.4.0\n* added buffs\n* added bpc calculation\n\nv0.3.0\n* added gorillas\n* added banana trees\n\nv0.2.1\n* working bps"
+    "PATCHNOTE\n\nv0.6.5\n* many, many changes to CSS, looks far better now\n\nv0.6.0\n* added visual cursors when you buy them (kinda proud of this tbh)\n\nv0.5.1\n* added mega cursor (1000 clicks)\n* small fixes and refactoring\n\nv0.5.0\n* migrated to PHP (simple MVC)\n* prettified the whole thing a bit\n\nv0.4.0\n* added buffs\n* added bpc calculation\n\nv0.3.0\n* added gorillas\n* added banana trees\n\nv0.2.1\n* working bps"
   );
 }
 
