@@ -6,7 +6,7 @@
 
 			{% include "Component/_info.html.twig" %}
 
-			<div class="mainClickerContainer">
+			<div class="mainClickerContainer animate__animated animate__slideInDown">
 				<div class="clickerContainer">
 					<img src="assets/images/banane.png" id="clicker" onclick="clickUp(); animateCSS('.banana', 'jello');" class="banana animate__faster"/>
 					<h1>Bananes :
@@ -21,7 +21,7 @@
 				</div>
 			</div>
 
-			<div class="mainButtonsContainer">
+			<div class="mainButtonsContainer animate__animated animate__slideInUp">
 				<div class="buttonsContainer">
 
 					{% for clicker in clickers %}
@@ -56,7 +56,7 @@
 				</div>
 			</div>
 
-			<div class="UpRightContainer">
+			<div class="UpRightContainer animate__animated animate__slideInRight">
 				<h1>Améliorations</h1>
 				<div class="buffs">
 					<div id="nothing">
@@ -123,7 +123,7 @@
 				</div>
 			</div>
 
-			<div class="DownRightContainer">
+			<div class="DownRightContainer animate__animated animate__slideInRight">
 				<div class="nbClicks">
 					<h1>Statistiques</h1>
 					<p>Nombre de clics :
