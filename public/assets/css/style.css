@@ -275,12 +275,6 @@ footer {
   font-size: 16pt;
 }
 
-@media screen and (max-width: 1800px) {
-  .mainPageContainer {
-    height: 100vh;
-  }
-}
-
 @media screen and (max-width: 1200px) {
   .mainGrid {
     grid-template-columns: repeat(2, 1fr);

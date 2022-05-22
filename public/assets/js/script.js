@@ -1,8 +1,12 @@
+console.log(
+  "Oui, je pense qu'il est possible de tricher assez facilement. Mais vous ne voudriez pas faire ça, hein ?"
+);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// PATCHNOTE AND ROADMAP
 function patchNote() {
   alert(
-    "PATCHNOTE\n\nv0.5.1\n-added mega cursor (1000 clicks)\n-small fixes and refactoring\n\nv0.5.0\n- migrated to PHP (simple MVC)\n-prettified the whole thing a bit\n\nv0.4.0\n-added buffs\n-added bpc calculation\n\nv0.3.0\n-added gorillas"
+    "PATCHNOTE\n\nv0.6.0\n* added visual cursors when you buy them (kinda proud of this tbh)\n\nv0.5.1\n* added mega cursor (1000 clicks)\n* small fixes and refactoring\n\nv0.5.0\n* migrated to PHP (simple MVC)\n* prettified the whole thing a bit\n\nv0.4.0\n* added buffs\n* added bpc calculation\n\nv0.3.0\n* added gorillas\n* added banana trees\n\nv0.2.1\n* working bps"
   );
 }
 
@@ -252,6 +256,7 @@ function buyTier(
     // finally checking prices
     tiersPricesChecks();
     buffsPricesChecks();
+    showClicker();
   } else {
     alert("Pas assez de bananes !");
   }
@@ -261,6 +266,22 @@ function updateTiersPrices() {
   step1Price = document.getElementById("tierClickerPrice").innerHTML;
   step2Price = document.getElementById("tierTreePrice").innerHTML;
   step3Price = document.getElementById("tierGorillaPrice").innerHTML;
+}
+
+function showClicker() {
+  clickerNb = document.getElementById("tierClickerOwned").innerHTML;
+  clickerNb = parseInt(clickerNb, 10);
+  clickerNb = clickerNb - 1;
+
+  for (let j = 0; j < 18; j++) {
+    warpName = "w" + j;
+    warpGot = document.getElementById(warpName);
+
+    if (clickerNb == warpGot.id.substring(1)) {
+      const warpGotList = warpGot.classList;
+      warpGotList.remove("unavailable");
+    }
+  }
 }
 
 //
