@@ -196,7 +196,7 @@ function unavailableCheck() {
   step2Owned = document.getElementById(step2Name + "Owned").innerHTML;
   unavailable(step3Owned, buffBPS1Name);
   unavailableClicks(buffBPC1Name, 100);
-  unavailableClicks(buffBPC2Name, 110);
+  unavailableClicks(buffBPC2Name, 500);
 }
 
 function unavailable(owned, notOwned) {
