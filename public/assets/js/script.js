@@ -101,6 +101,7 @@ function clickUp() {
   updateNbClicks();
   updateBananas(clickRate);
   runAllChecks();
+  unavailableFirst();
 }
 
 function perSecond() {
@@ -201,6 +202,18 @@ function unavailableCheck() {
   unavailable(step3Owned, buffBPS1Name);
   unavailableClicks(buffBPC1Name, 100);
   unavailableClicks(buffBPC2Name, 500);
+}
+
+function unavailableFirst() {
+  if (nbclicks >= 30) {
+    notAvailable = document.getElementById("buyableTiers");
+    const notAvailableList = notAvailable.classList;
+    notAvailableList.remove("unavailable");
+    // removing small paragraph
+    nothingTiers = document.getElementById("nothingTiers");
+    const nothingTiersList = nothingTiers.classList;
+    nothingTiersList.add("unavailable");
+  }
 }
 
 function unavailable(owned, notOwned) {

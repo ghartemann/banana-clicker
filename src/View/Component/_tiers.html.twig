@@ -1,0 +1,48 @@
+<div class="mainButtonsContainer animate__animated animate__slideInUp">
+	<div class="buttonsContainer">
+
+		<h1>Magasin</h1>
+		<div id="nothingTiers">
+			<p>
+				Cliquez sur la banane.
+			</p>
+		</div>
+
+		<div id="buyableTiers" class="unavailable">
+			{% for clicker in clickers %}
+				<div class="buttonGroup">
+					<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier(step{{loop.index}}Name, step{{loop.index}}Price, step{{loop.index}}PriceMultiplier, step{{loop.index}}Owned, step{{loop.index}}Multiplier);">
+						<div class="buttonPic">
+							<img src="assets/images/{{clicker.img}}" width="50px"/>
+						</div>
+						<div class="buttonText">
+							<p class="textTitle">Acheter un
+								<strong>{{clicker.display_name}}</strong>
+							</p>
+							<p class="buttonSubtext">+<span id="{{clicker.name}}Multiplier">{{clicker.multiplier}}</span>
+								bps</p>
+							<p class="buttonSubtext">
+								<img src="assets/images/banane.png" width="20px"/>
+								<strong>
+									<span id="{{clicker.name}}Price">
+										{{clicker.price}}
+									</span>
+								</strong>
+							</p>
+							<p style="display:none" id="{{clicker.name}}PriceMultiplier">{{clicker.price_multiplier}}</p>
+						</div>
+					</button>
+					<div class="stats">
+						<p>Acquis :
+							<span id="{{clicker.name}}Owned">0</span>
+						</p>
+						<p>Production :
+							<span id="{{clicker.name}}Prod">0</span>
+							bps</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,70 @@
+<div class="buffsContainer animate__animated animate__slideInRight">
+	<h1>Améliorations</h1>
+	<div class="buffs">
+		<div id="nothing">
+			<p>
+				Rien pour l'instant... Essayez de cliquer un peu ou d'acheter des choses, pour voir.
+			</p>
+		</div>
+
+		{% for buffBPC in buffsBPC %}
+			<div id="{{buffBPC.name}}Div" class="unavailable">
+				<div class="buttonGroup">
+					<button id="{{buffBPC.name}}Button" class="buffButton greyedBuff" onclick="buyBuffBPC(buffBPC{{loop.index}}Name, buffBPC{{loop.index}}Price, buffBPC{{loop.index}}PriceMultiplier, buffBPC{{loop.index}}Owned, buffBPC{{loop.index}}Multiplier);">
+						<div class="buttonPic">
+							<img src="assets/images/{{buffBPC.img}}" width="50px"/>
+						</div>
+						<div class="buttonText">
+							<p>{{buffBPC.display_name}}</p>
+							<p>+<span id="{{buffBPC.name}}Multiplier">{{buffBPC.multiplier}}</span>
+								bpc</p>
+							<p>
+								<img src="assets/images/banane.png" width="20px"/>
+								<span id="{{buffBPC.name}}Price">{{buffBPC.price}}</span>
+							</p>
+							<p style="display:none" id="{{buffBPC.name}}PriceMultiplier">{{buffBPC.price_multiplier}}</p>
+						</div>
+					</button>
+					<div class="stats">
+						<p>Acquis :
+							<span id="{{buffBPC.name}}Owned">0</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+
+		{% for buffBPS in buffsBPS %}
+			<div id="{{buffBPS.name}}Div" class="unavailable">
+				<div class="buttonGroup">
+					<button id="{{buffBPS.name}}Button" class="buffButton greyedBuff" onclick="buyBuffBPS(buffBPS{{loop.index}}Name, buffBPS{{loop.index}}Price, buffBPS{{loop.index}}PriceMultiplier, buffBPS{{loop.index}}Owned, buffBPS{{loop.index}}Multiplier);">
+						<div class="buttonPic">
+							<img src="assets/images/{{buffBPS.img}}" width="50px"/>
+						</div>
+						<div class="buttonText">
+							<p class="textTitle">{{buffBPS.display_name}}</p>
+							<p class="buttonSubtext">+<span id="{{buffBPS.name}}Multiplier">{{buffBPS.multiplier}}</span>
+								bps /
+								{{buffBPS.modifies_name}}</p>
+							<p class="buttonSubtext">
+								<img src="assets/images/banane.png" width="20px"/>
+								<strong>
+									<span id="{{buffBPS.name}}Price">
+										{{buffBPS.price}}
+									</span>
+								</strong>
+							</p>
+							<p style="display:none" id="{{buffBPS.name}}PriceMultiplier">{{buffBPS.price_multiplier}}</p>
+						</div>
+					</div>
+				</button>
+				<div class="stats">
+					<p>Acquis :
+						<span id="{{buffBPS.name}}Owned">0</span>
+					</p>
+				</div>
+			</div>
+		{% endfor %}
+
+	</div>
+</div>
