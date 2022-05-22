@@ -68,7 +68,7 @@
 .mainPageContainer {
   background: url("../images/tropical.jpg");
   background-size: cover;
-  min-height: 100vh;
+  min-height: 110vh;
   background-position: center center;
 }
 
