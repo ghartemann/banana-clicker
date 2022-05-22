@@ -23,6 +23,12 @@
   color: var(--white);
 }
 
+body {
+  background: url("../images/tropical.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
 .cheatButton {
   position: fixed;
   right: 30px;
@@ -66,10 +72,8 @@
 }
 
 .mainPageContainer {
-  background: url("../images/tropical.jpg");
-  background-size: cover;
-  min-height: 110vh;
-  background-position: center center;
+  min-height: 100vh;
+  transform: scale(90%);
 }
 
 .greenMainTitle {
@@ -78,11 +82,12 @@
 
 /* GRID */
 .mainGrid {
-  padding: 30px;
   display: grid;
   grid-template-columns: 0.8fr 1.2fr 1fr;
-  grid-template-rows: 450px auto;
+  grid-template-rows: 450px 450px;
   grid-gap: 2vw;
+  margin-left: -40px;
+  margin-right: -40px;
 }
 
 .mainClickerContainer {
@@ -239,8 +244,8 @@
   font-size: 12pt;
 }
 
-.buffs {
-  height: 90%;
+.buffs, .tiers {
+  height: 100%;
   overflow-y: scroll;
 }
 
@@ -328,6 +333,8 @@ footer {
   .mainGrid {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(4, 1fr);
+    margin-left: initial;
+    margin-right: initial;
   }
 
   .mainClickerContainer {
