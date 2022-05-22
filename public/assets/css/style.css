@@ -288,6 +288,11 @@ body {
 #nothing p,
 #nothingTiers p {
   font-size: 16pt;
+text-align: justify;
+}
+
+.statsClicksNumber {
+  margin-bottom: 10px;
 }
 
 /* FOOTER */
