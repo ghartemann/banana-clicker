@@ -6,13 +6,13 @@ console.log(
 /////////// PATCHNOTE AND ROADMAP
 function patchNote() {
   alert(
-    "PATCHNOTE\n\nv0.6.5\n* many, many changes to CSS, looks far better now\n\nv0.6.0\n* added visual cursors when you buy them (kinda proud of this tbh)\n\nv0.5.1\n* added mega cursor (1000 clicks)\n* small fixes and refactoring\n\nv0.5.0\n* migrated to PHP (simple MVC)\n* prettified the whole thing a bit\n\nv0.4.0\n* added buffs\n* added bpc calculation\n\nv0.3.0\n* added gorillas\n* added banana trees\n\nv0.2.1\n* working bps"
+    "PATCHNOTE\n\nv0.6.6\n* Ajout du macaque\n\nv0.6.5\n* Beaucoup, beaucoup d'améliorations du CSS, maintenant un peu plus responsive\n\nv0.6.0\n* Ajout de curseurs visuels à l'achat d'un clicker (assez fier du résultat))\n\nv0.5.1\n* Ajout du mega curseur (1000 clics)\n* Refactorisation et nombreux fixes\n\nv0.5.0\n* Migration vers PHP (simple MVC)\n* Améliorations visuelles en masse\n\nv0.4.0\n* Ajout des buffs\n* Ajout du calcul de bpc\n\nv0.3.0\n* Ajout des gorilles\n* Ajout des bananiers\n\nv0.2.1\n* Calcul du bps pleinement fonctionnel"
   );
 }
 
 function roadMap() {
   alert(
-    "ROADMAP\n\n- Ajout de nombreux autres clickers et buffs\n- Migration sous Symfony\n- Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)\n- Sauvegarde des données (l'actualisation réinitialise la partie actuellement)\n- Devenir millionnaire grâce à la publicité"
+    "ROADMAP\n\n* Ajout de nombreux autres clickers et buffs\n* Migration sous Symfony\n* Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)\n* Sauvegarde des données (l'actualisation réinitialise la partie actuellement)\n* Devenir millionnaire grâce à la publicité"
   );
 }
 
@@ -29,6 +29,7 @@ restclicks = 1000000;
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// TIERS PRICES
+
 // Clicker
 step1Name = "tierClicker";
 step1Owned = document.getElementById("tierClickerOwned").innerHTML;
@@ -37,6 +38,7 @@ step1Multiplier = document.getElementById("tierClickerMultiplier").innerHTML;
 step1PriceMultiplier = document.getElementById(
   "tierClickerPriceMultiplier"
 ).innerHTML;
+
 // Bananier
 step2Name = "tierTree";
 step2Owned = document.getElementById("tierTreeOwned").innerHTML;
@@ -45,6 +47,7 @@ step2Multiplier = document.getElementById("tierTreeMultiplier").innerHTML;
 step2PriceMultiplier = document.getElementById(
   "tierTreePriceMultiplier"
 ).innerHTML;
+
 // Gorilla
 step3Name = "tierGorilla";
 step3Owned = document.getElementById("tierGorillaOwned").innerHTML;
@@ -54,7 +57,17 @@ step3PriceMultiplier = document.getElementById(
   "tierGorillaPriceMultiplier"
 ).innerHTML;
 
+// Macaque
+step4Name = "tierMacaque";
+step4Owned = document.getElementById("tierMacaqueOwned").innerHTML;
+step4Price = document.getElementById("tierMacaquePrice").innerHTML;
+step4Multiplier = document.getElementById("tierMacaqueMultiplier").innerHTML;
+step4PriceMultiplier = document.getElementById(
+  "tierMacaquePriceMultiplier"
+).innerHTML;
+
 /////////// BUFF BPC PRICES
+
 // Cursor
 buffBPC1Name = "buffCursor";
 buffBPC1Owned = document.getElementById("buffCursorOwned").innerHTML;
@@ -76,6 +89,7 @@ buffBPC2PriceMultiplier = document.getElementById(
 ).innerHTML;
 
 /////////// BUFF BPS PRICES
+
 // CPU
 buffBPS1Name = "buffCPU";
 buffBPS1Owned = document.getElementById("buffCPUOwned").innerHTML;
@@ -136,6 +150,8 @@ function calcBPS() {
   prod = prod + calcBPSDetail(step2Multiplier, step2Owned);
   step3Owned = document.getElementById(step3Name + "Owned").innerHTML;
   prod = prod + calcBPSDetail(step3Multiplier, step3Owned);
+  step4Owned = document.getElementById(step4Name + "Owned").innerHTML;
+  prod = prod + calcBPSDetail(step4Multiplier, step4Owned);
   return prod;
 }
 
@@ -160,6 +176,7 @@ function tiersPricesChecks() {
   tierPriceCheck(step1Name, step1Price);
   tierPriceCheck(step2Name, step2Price);
   tierPriceCheck(step3Name, step3Price);
+  tierPriceCheck(step4Name, step4Price);
 }
 
 function tierPriceCheck(tierName, tierPrice) {
@@ -279,6 +296,7 @@ function updateTiersPrices() {
   step1Price = document.getElementById("tierClickerPrice").innerHTML;
   step2Price = document.getElementById("tierTreePrice").innerHTML;
   step3Price = document.getElementById("tierGorillaPrice").innerHTML;
+  step4Price = document.getElementById("tierMacaquePrice").innerHTML;
 }
 
 function showClicker() {

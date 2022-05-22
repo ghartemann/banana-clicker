@@ -84,7 +84,7 @@ body {
 .mainGrid {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr 1fr;
-  grid-template-rows: 450px auto;
+  grid-template-rows: 450px 450px;
   grid-gap: 2vw;
   margin-left: -40px;
   margin-right: -40px;
