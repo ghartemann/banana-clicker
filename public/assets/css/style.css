@@ -46,7 +46,20 @@
   cursor: pointer;
 }
 
-.version p {
+.roadmap {
+  position: fixed;
+  left: 140px;
+  bottom: 30px;
+  width: 140px;
+  height: 40px;
+  font-size: 20pt;
+  background-image: url("../images/trunk.png");
+  background-size: cover;
+  text-align: center;
+  cursor: pointer;
+}
+
+.version p, .roadmap p {
   color: black;
 padding: 8px;
 }

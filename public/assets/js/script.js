@@ -1,8 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////// PATCHNOTE
+/////////// PATCHNOTE AND ROADMAP
 function patchNote() {
   alert(
-    "v0.5.1\n-added mega cursor (1000 clicks)\n-small fixes and refactoring\n\nv0.5.0\n- migrated to PHP (simple MVC)\n-prettified the whole thing a bit\n\nv0.4.0\n-added buffs\n-added bpc calculation\n\nv0.3.0\n-added gorillas"
+    "PATCHNOTE\n\nv0.5.1\n-added mega cursor (1000 clicks)\n-small fixes and refactoring\n\nv0.5.0\n- migrated to PHP (simple MVC)\n-prettified the whole thing a bit\n\nv0.4.0\n-added buffs\n-added bpc calculation\n\nv0.3.0\n-added gorillas"
+  );
+}
+
+function roadMap() {
+  alert(
+    "ROADMAP\n\n- Ajout de nombreux autres clickers et buffs\n- Migration sous Symfony\n- Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)\n- Sauvegarde des données (l'actualisation réinitialise la partie actuellement)\n- Devenir millionnaire grâce à la publicité"
   );
 }
 
