@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="/assets/images/favicon.png">
+
+		<title>
+			Banana Clicker
+			{% block title %}{% endblock %}
+		</title>
+
+		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> {% block stylesheet %}{% endblock %}
+		</head>
+
+		<body>
+			{% block content %}{% endblock %}
+
+			{% include "Component/_version.html.twig" %}
+			{% include "Component/_cheat.html.twig" %}
+			{% include "Component/_footer.html.twig" %}
+
+			<script src="assets/js/script.js"></script>
+			<script src="assets/js/animations.js"></script>
+			{% block javascript %}{% endblock %}
+		</body>
+	</html>
