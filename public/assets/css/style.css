@@ -229,6 +229,10 @@ padding: 8px;
   text-align: justify;
 }
 
+.DownRightContainer h1, .UpRightContainer h1 {
+  margin-bottom: 20px;
+}
+
 /* STATS */
 .nbClicks p,
 #nothing p {

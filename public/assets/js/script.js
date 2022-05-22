@@ -1,10 +1,12 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// PATCHNOTE
 function patchNote() {
   alert(
-    "v0.5.1\n-added mega cursor (1000 clicks)\n\nv0.5.0\n- migrated to PHP (simple MVC)\n-prettified the whole thing a bit\n\nv0.4.0\n-added buffs\n-added bpc calculation\n\nv0.3.0\n-added gorillas"
+    "v0.5.1\n-added mega cursor (1000 clicks)\n-small fixes and refactoring\n\nv0.5.0\n- migrated to PHP (simple MVC)\n-prettified the whole thing a bit\n\nv0.4.0\n-added buffs\n-added bpc calculation\n\nv0.3.0\n-added gorillas"
   );
 }
 
+//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// DEFAULT VALUES
 bananas = 0;
@@ -14,6 +16,7 @@ clickRate = 1;
 nbclicks = 0;
 restclicks = 1000000;
 
+//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// TIERS PRICES
 // Clicker
@@ -72,44 +75,42 @@ buffBPS1PriceMultiplier = document.getElementById(
   "buffCPUPriceMultiplier"
 ).innerHTML;
 
+//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////// SETTING INTERVAL AND DATA
+////////// MAIN FUNCTIONS
 var perSecondIntervel = setInterval(perSecond, 1000);
 
 function cheat() {
-  bananas = bananas + 10000;
-  document.getElementById("bananasNumber").innerHTML = bananas;
+  updateBananas(10000);
   nbclicks = nbclicks + 50;
   document.getElementById("nbClicks").innerHTML = nbclicks;
-  tiersPricesChecks();
-  buffsPricesChecks();
-  unavailableCheck();
+  runAllChecks();
 }
 
 function clickUp() {
-  bananas = bananas + clickRate;
-  document.getElementById("bananasNumber").innerHTML = bananas;
-  tiersPricesChecks();
-  buffsPricesChecks();
-  nbClicks();
-  unavailableCheck();
+  updateNbClicks();
+  updateBananas(clickRate);
+  runAllChecks();
+}
+
+function perSecond() {
+  updateBananas(bps);
+  runAllChecks();
+}
+
+function updateNbClicks() {
+  nbclicks++;
+  restclicks--;
   document.getElementById("nbClicks").innerHTML = nbclicks;
   document.getElementById("restClicks").innerHTML = restclicks;
 }
 
-function perSecond() {
-  bananas = bananas + bps;
+function updateBananas(toAdd) {
+  bananas = bananas + toAdd;
   document.getElementById("bananasNumber").innerHTML = bananas;
-  tiersPricesChecks();
-  buffsPricesChecks();
-  unavailableCheck();
 }
 
-function nbClicks() {
-  nbclicks++;
-  restclicks--;
-}
-
+//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CALC BPS AND BPC
 function calcBPSDetail(multiplier, owned) {
@@ -135,8 +136,15 @@ function calcBPC() {
   return prod;
 }
 
+//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CHECKING PRICES AND GREYING OUT BUTTONS
+function runAllChecks() {
+  tierPricesChecks();
+  buffsPricesChecks();
+  unavailableCheck();
+}
+
 function tiersPricesChecks() {
   tierPriceCheck(step1Name, step1Price);
   tierPriceCheck(step2Name, step2Price);
@@ -209,6 +217,7 @@ function unavailableClicks(notOwned, clicksToMake) {
   }
 }
 
+//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// BUYING TIERS
 function buyTier(
@@ -236,6 +245,7 @@ function buyTier(
     document.getElementById("bps").innerHTML = bps;
     // finally checking prices
     tiersPricesChecks();
+    buffsPricesChecks();
   } else {
     alert("Pas assez de bananes !");
   }
@@ -247,6 +257,7 @@ function updateTiersPrices() {
   step3Price = document.getElementById("tierGorillaPrice").innerHTML;
 }
 
+//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// BUYING BUFFS
 function buyBuffBPC(buffName, buffPrice, buffPriceMultiplier, buffOwned) {
@@ -265,6 +276,7 @@ function buyBuffBPC(buffName, buffPrice, buffPriceMultiplier, buffOwned) {
     clickRate = 1 + calcBPC();
     document.getElementById("bpc").innerHTML = clickRate;
     // finally checking prices
+    tiersPricesChecks();
     buffsPricesChecks();
   } else {
     alert("Pas assez de bananes !");
@@ -307,6 +319,7 @@ function buyBuffBPS(
     bps = calcBPS();
     document.getElementById("bps").innerHTML = bps;
     // finally checking prices
+    tiersPricesChecks();
     buffsPricesChecks();
   } else {
     alert("Pas assez de bananes !");

@@ -4,5 +4,6 @@
 .phpcs-cache
 *.cache
 db.php
+dbionos.php
 .idea
 .vscode
