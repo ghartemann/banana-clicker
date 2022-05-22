@@ -1,1 +1,8 @@
 .DS_Store
+/vendor/
+/temp/*
+.phpcs-cache
+*.cache
+db.php
+.idea
+.vscode
