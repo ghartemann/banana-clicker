@@ -67,7 +67,7 @@
 
 					{% for buffBPC in buffsBPC %}
 						<div id="{{buffBPC.name}}Div" class="unavailable">
-							<button id="{{buffBPC.name}}Button" class="buffButton greyedBuff" onclick="buyBuffBPC(buffBPC{{loop.index}}Name, buffBPC{{loop.index}}Price, buffBPC{{loop.index}}PriceMultiplier, buffBPC{{loop.index}}Owned, buffBPC{{loop.index}}Multiplier, {{buffBPC.modifies}});">
+							<button id="{{buffBPC.name}}Button" class="buffButton greyedBuff" onclick="buyBuffBPC(buffBPC{{loop.index}}Name, buffBPC{{loop.index}}Price, buffBPC{{loop.index}}PriceMultiplier, buffBPC{{loop.index}}Owned, buffBPC{{loop.index}}Multiplier);">
 								<div class="buttonContainer">
 									<div class="buttonPic">
 										<img src="assets/images/{{buffBPC.img}}" width="50px"/>

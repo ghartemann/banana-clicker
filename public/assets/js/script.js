@@ -1,7 +1,7 @@
 /////////// PATCHNOTE
 function patchNote() {
   alert(
-    "v0.5.0\n- migrated to PHP (simple MVC)\n-prettified the whole thing a bit\n\nv0.4.0\n-added buffs\n-added bpc calculation\n\nv0.3.0\n-added gorillas"
+    "v0.5.1\n-added mega cursor (1000 clicks)\n\nv0.5.0\n- migrated to PHP (simple MVC)\n-prettified the whole thing a bit\n\nv0.4.0\n-added buffs\n-added bpc calculation\n\nv0.3.0\n-added gorillas"
   );
 }
 
@@ -51,6 +51,17 @@ buffBPC1PriceMultiplier = document.getElementById(
   "buffCursorPriceMultiplier"
 ).innerHTML;
 
+// Mega Cursor
+buffBPC2Name = "buffMegaCursor";
+buffBPC2Owned = document.getElementById("buffMegaCursorOwned").innerHTML;
+buffBPC2Price = document.getElementById("buffMegaCursorPrice").innerHTML;
+buffBPC2Multiplier = document.getElementById(
+  "buffMegaCursorMultiplier"
+).innerHTML;
+buffBPC2PriceMultiplier = document.getElementById(
+  "buffMegaCursorPriceMultiplier"
+).innerHTML;
+
 /////////// BUFF BPS PRICES
 // CPU
 buffBPS1Name = "buffCPU";
@@ -68,6 +79,8 @@ var perSecondIntervel = setInterval(perSecond, 1000);
 function cheat() {
   bananas = bananas + 10000;
   document.getElementById("bananasNumber").innerHTML = bananas;
+  nbclicks = nbclicks + 50;
+  document.getElementById("nbClicks").innerHTML = nbclicks;
   tiersPricesChecks();
   buffsPricesChecks();
   unavailableCheck();
@@ -116,7 +129,9 @@ function calcBPS() {
 
 function calcBPC() {
   buffBPC1Owned = document.getElementById(buffBPC1Name + "Owned").innerHTML;
+  buffBPC2Owned = document.getElementById(buffBPC2Name + "Owned").innerHTML;
   prod = buffBPC1Multiplier * buffBPC1Owned;
+  prod = prod + buffBPC2Multiplier * buffBPC2Owned;
   return prod;
 }
 
@@ -145,6 +160,7 @@ function tierPriceCheck(tierName, tierPrice) {
 
 function buffsPricesChecks() {
   buffPriceCheck(buffBPC1Name, buffBPC1Price);
+  buffPriceCheck(buffBPC2Name, buffBPC2Price);
   buffPriceCheck(buffBPS1Name, buffBPS1Price);
 }
 
@@ -165,7 +181,8 @@ function buffPriceCheck(buffName, buffPrice) {
 function unavailableCheck() {
   step2Owned = document.getElementById(step2Name + "Owned").innerHTML;
   unavailable(step3Owned, buffBPS1Name);
-  unavailableCLicks(buffBPC1Name);
+  unavailableClicks(buffBPC1Name, 100);
+  unavailableClicks(buffBPC2Name, 110);
 }
 
 function unavailable(owned, notOwned) {
@@ -180,8 +197,8 @@ function unavailable(owned, notOwned) {
   }
 }
 
-function unavailableCLicks(notOwned) {
-  if (nbclicks >= 100) {
+function unavailableClicks(notOwned, clicksToMake) {
+  if (nbclicks >= clicksToMake) {
     notOwned = document.getElementById(notOwned + "Div");
     const notOwnedList = notOwned.classList;
     notOwnedList.remove("unavailable");
@@ -298,5 +315,6 @@ function buyBuffBPS(
 
 function updateBuffsPrices() {
   buffBPC1Price = document.getElementById("buffCursorPrice").innerHTML;
+  buffBPC2Price = document.getElementById("buffMegaCursorPrice").innerHTML;
   buffBPS1Price = document.getElementById("buffCPUPrice").innerHTML;
 }
