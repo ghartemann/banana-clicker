@@ -1,0 +1,21 @@
+<div class="mainClickerContainer animate__animated animate__slideInDown">
+	<div class="clickerContainer">
+		<img src="assets/images/banane.png" id="clicker" onclick="clickUp(); animateCSS('.banana', 'jello');" class="banana animate__faster"/>
+
+		<h1>Bananes :
+			<span id="bananasNumber">0</span>
+		</h1>
+		<h3>Par seconde :
+			<span id="bps">0</span>
+		</h3>
+		<h3>Par clic :
+			<span id="bpc">1</span>
+		</h3>
+
+		<div id='warped'>
+			{% for i in 0..17 %}
+				<span id="w{{i}}" class='w{{i}} unavailable'><img src="assets/images/clicker.png" width="30px"></span>
+			{% endfor %}
+		</div>
+	</div>
+</div>
