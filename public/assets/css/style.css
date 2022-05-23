@@ -100,7 +100,7 @@ body {
   grid-row: 2;
 }
 
-.buffsContainer {
+.mainBuffsContainer {
   grid-column: 3;
   grid-row: 1;
 }
@@ -117,7 +117,7 @@ body {
 
 /* CLICKER */
 .mainClickerContainer,
-.mainButtonsContainer {
+.mainButtonsContainer, .mainBuffsContainer {
   display: flex;
   justify-content: center;
 }
@@ -335,11 +335,17 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+  .mainPageContainer {
+    min-height: 100vh;
+    transform: initial;
+  }
+
   .mainGrid {
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(4);
     margin-left: initial;
     margin-right: initial;
+    grid-template-rows: auto 300px 300px 300px;
   }
 
   .mainClickerContainer {
@@ -352,7 +358,7 @@ footer {
     grid-row: 2;
   }
 
-  .buffsContainer {
+  .mainBuffsContainer {
     grid-column: 1;
     grid-row: 3;
   }
@@ -360,6 +366,20 @@ footer {
   .statsContainer {
     grid-column: 1;
     grid-row: 4;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+  }
+
+  .buyButton {
+    width: 95%;
+  }
+
+  .buffsContainer {
+    min-width: 85%;
   }
 }
 
