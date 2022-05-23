@@ -105,7 +105,7 @@ body {
   grid-row: 1;
 }
 
-.statsContainer {
+.mainStatsContainer {
   grid-column: 3;
   grid-row: 2;
 }
@@ -117,7 +117,8 @@ body {
 
 /* CLICKER */
 .mainClickerContainer,
-.mainButtonsContainer, .mainBuffsContainer {
+.mainButtonsContainer,
+.mainBuffsContainer, .mainStatsContainer {
   display: flex;
   justify-content: center;
 }
@@ -143,11 +144,14 @@ body {
 }
 
 /* BUTTONS */
+.buffsContainer, .buttonsContainer, .statsContainer {
+  width: 90%;
+  }
+
 .buttonsContainer {
   display: flex;
   column-gap: 30px;
   flex-direction: column;
-  min-width: 85%;
 }
 
 .buttonGroup {
@@ -244,7 +248,8 @@ body {
   font-size: 12pt;
 }
 
-.buffs, .tiers {
+.buffs,
+.tiers {
   height: 100%;
   overflow-y: scroll;
 }
@@ -288,7 +293,7 @@ body {
 #nothing p,
 #nothingTiers p {
   font-size: 16pt;
-text-align: justify;
+  text-align: justify;
 }
 
 .statsClicksNumber {
@@ -345,7 +350,7 @@ footer {
     grid-template-rows: repeat(4);
     margin-left: initial;
     margin-right: initial;
-    grid-template-rows: auto 300px 300px 300px;
+    grid-template-rows: auto 400px 400px 400px;
   }
 
   .mainClickerContainer {
@@ -363,7 +368,7 @@ footer {
     grid-row: 3;
   }
 
-  .statsContainer {
+  .mainStatsContainer {
     grid-column: 1;
     grid-row: 4;
   }
@@ -379,7 +384,7 @@ footer {
   }
 
   .buffsContainer {
-    min-width: 85%;
+    min-width: 90%;
   }
 }
 
