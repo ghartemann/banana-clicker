@@ -2,9 +2,9 @@
 /////////// MISC
 
 // ask user if they're sure they actually want to quit, which is understandable but also a bit sad
-window.addEventListener("beforeunload", (event) => {
+/* window.addEventListener("beforeunload", (event) => {
   event.returnValue = `Are you sure you want to leave?`;
-});
+}); */
 
 // displaying a fun little message
 console.log(
@@ -14,6 +14,8 @@ console.log(
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// PATCHNOTE AND ROADMAP
+document.getElementById("version").innerHTML = "v0.7.0";
+
 function patchNote() {
   alert(
     "PATCHNOTE\n\nv0.7.0\n* Responsive™\n* Ajout d'naimations sur les boutons\n* Nombreux fixes de CSS\n\nv0.6.6\n* Ajout du macaque\n\nv0.6.5\n* Beaucoup, beaucoup d'améliorations du CSS, maintenant un peu plus responsive\n\nv0.6.0\n* Ajout de curseurs visuels à l'achat d'un clicker (assez fier du résultat))\n\nv0.5.1\n* Ajout du mega curseur (1000 clics)\n* Refactorisation et nombreux fixes\n\nv0.5.0\n* Migration vers PHP (simple MVC)\n* Améliorations visuelles en masse\n\nv0.4.0\n* Ajout des buffs\n* Ajout du calcul de bpc\n\nv0.3.0\n* Ajout des gorilles\n* Ajout des bananiers\n\nv0.2.1\n* Calcul du bps pleinement fonctionnel"
@@ -23,6 +25,12 @@ function patchNote() {
 function roadMap() {
   alert(
     "ROADMAP\n\n* Ajout de nombreux autres clickers et buffs\n* Migration sous Symfony\n* Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)\n* Sauvegarde des données (l'actualisation réinitialise la partie actuellement)\n* Devenir millionnaire grâce à la publicité"
+  );
+}
+
+function unreleased() {
+  alert(
+    "Cette fonctionnalité n'est pas disponible pour le moment, alors qu'elle serait pourtant diablement utile."
   );
 }
 
@@ -111,8 +119,7 @@ buffBPS1PriceMultiplier = document.getElementById(
 
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////// MAIN FUNCTIONS
-var perSecondIntervel = setInterval(perSecond, 1000);
+////////// CHEATS
 
 function cheat() {
   updateBananas(10000);
@@ -120,6 +127,20 @@ function cheat() {
   document.getElementById("nbClicks").innerHTML = nbclicks;
   runAllChecks();
 }
+
+let cheatCode = new cheatcode("b, a, n, a, n, a", () => {
+  let cheat = document.getElementById("cheat");
+  console.log(cheat);
+  let cheatList = cheat.classList;
+  cheatList.remove("unavailable");
+});
+
+cheatCode.start();
+
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////// MAIN FUNCTIONS
+var perSecondIntervel = setInterval(perSecond, 1000);
 
 function clickUp() {
   updateNbClicks();
@@ -401,8 +422,8 @@ function buyBuffBPS(
       step3Name + "Multiplier"
     ).innerHTML;
     tierBuffedMultiplier =
-      parseInt(tierBuffedMultiplier, 10) + parseInt(buffMultiplier, 10);
-    step3Multiplier = tierBuffedMultiplier;
+      parseInt(tierBuffedMultiplier, 10) * parseFloat(buffMultiplier, 10);
+    step3Multiplier = Math.round(tierBuffedMultiplier);
     document.getElementById(step3Name + "Multiplier").innerHTML =
       step3Multiplier;
     // updating bps
@@ -421,3 +442,7 @@ function updateBuffsPrices() {
   buffBPC2Price = document.getElementById("buffMegaCursorPrice").innerHTML;
   buffBPS1Price = document.getElementById("buffCPUPrice").innerHTML;
 }
+
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////// SAVE FUNCTION
