@@ -14,7 +14,7 @@ create table clickers
 
 insert into clickers (id, name, display_name, img, owned, price, multiplier, price_multiplier)
 values  (1, 'tierClicker', 'autoclicker', 'hand.png', 0, 50, 1, 1.16),
-        (2, 'tierTree', 'bananier', 'leaf.png', 0, 500, 11, 1.4),
+        (2, 'tierTree', 'bananier', 'leaf.png', 0, 510, 11, 1.26),
         (3, 'tierGorilla', 'gorille', 'gorilla.png', 0, 1420, 79, 1.3),
         (4, 'tierMacaque', 'macaque', 'macaque.png', 0, 3800, 166, 1.4);
 
@@ -35,8 +35,9 @@ create table buffsBPC
 )
     auto_increment = 3;
 
-INSERT INTO buffsBPC (id, name, display_name, img, owned, price, multiplier, price_multiplier) VALUES (1, 'buffCursor', 'Meilleur curseur', 'cursor.png', 0, 100, 1, 1.31);
-INSERT INTO buffsBPC (id, name, display_name, img, owned, price, multiplier, price_multiplier) VALUES (2, 'buffMegaCursor', 'Curseur encore plus fort', 'cursor2.png', 0, 10000, 10, 1.37);
+insert into buffsBPC (id, name, display_name, img, owned, price, multiplier, price_multiplier)
+values  (1, 'buffCursor', 'Meilleur curseur', 'cursor.png', 0, 100, 1, 1.31),
+        (2, 'buffMegaCursor', 'Curseur encore plus fort', 'cursor2.png', 0, 10000, 10, 1.21);
 
 
 
@@ -56,4 +57,5 @@ create table buffsBPS
     modifies_name    varchar(50) null
 );
 
-INSERT INTO buffsBPS (id, name, display_name, img, owned, price, multiplier, price_multiplier, `modifies`, modifies_name) VALUES (1, 'buffCPU', 'Robotiser les gorilles', 'cpu.png', 0, 3333, 5, 1.64, 'Gorilla', 'gorille');
+insert into buffsBPS (id, name, display_name, img, owned, price, multiplier, price_multiplier, modifies, modifies_name)
+values  (1, 'buffCPU', 'Robotiser les gorilles', 'cpu.png', 0, 3333, 5, 1.34, 'Gorilla', 'gorille');

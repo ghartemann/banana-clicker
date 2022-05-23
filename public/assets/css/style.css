@@ -143,6 +143,14 @@ body {
   margin-bottom: 20px;
 }
 
+/*
+#enoughClickers {
+  position: absolute;
+  width: 160px;
+  top: 150px;
+  left: 200px;
+} */
+
 /* BUTTONS */
 .buffsContainer, .buttonsContainer, .statsContainer {
   width: 90%;
@@ -171,7 +179,10 @@ body {
   min-width: 350px;
   box-shadow: var(--box-shadow);
   cursor: pointer;
-  column-gap: 20px;
+  column-gap: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  --animate-duration: 0.1s;
 }
 
 .buttonPic {
@@ -286,6 +297,7 @@ body {
 .buffsContainer h1,
 .buttonsContainer h1 {
   margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 /* STATS */
@@ -294,6 +306,7 @@ body {
 #nothingTiers p {
   font-size: 16pt;
   text-align: justify;
+  margin-left: 10px;
 }
 
 .statsClicksNumber {
@@ -406,9 +419,6 @@ footer {
   #clicker {
     width: 154px;
     height: 154px;
-    --animate-duration: 0.2s;
-    cursor: pointer;
-    margin-bottom: 20px;
   }
 
   .buyButton,
