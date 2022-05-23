@@ -12,7 +12,7 @@
 			<div id="buyableTiers" class="unavailable">
 				{% for clicker in clickers %}
 					<div class="buttonGroup">
-						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier(step{{loop.index}}Name, step{{loop.index}}Price, step{{loop.index}}PriceMultiplier, step{{loop.index}}Owned, step{{loop.index}}Multiplier);">
+						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier(step{{loop.index}}Name, step{{loop.index}}Price, step{{loop.index}}PriceMultiplier, step{{loop.index}}Owned, step{{loop.index}}Multiplier); animateCSS('#{{clicker.name}}Button', 'pulse');">
 							<div class="buttonPic">
 								<img src="assets/images/{{clicker.img}}" width="50px"/>
 							</div>

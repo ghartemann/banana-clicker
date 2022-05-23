@@ -13,6 +13,7 @@ Center Y : 209 */
   right: 38px;
   width: 580px;
   height: 440px;
+  cursor: pointer;
 }
 
 #warped > span[class^="w"]:nth-of-type(n + 0) {

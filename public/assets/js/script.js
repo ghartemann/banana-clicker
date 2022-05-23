@@ -273,16 +273,29 @@ function buyTier(
     document.getElementById(tierName + "Owned").innerHTML = tierOwned;
     tierProd = tierOwned * tierMultiplier;
     document.getElementById(tierName + "Prod").innerHTML = tierProd;
+
     // updating bananas
     bananas = bananas - tierPrice;
     document.getElementById("bananasNumber").innerHTML = bananas;
+
     // updating tier price
+    tierPriceMultiplier = document.getElementById(
+      tierName + "PriceMultiplier"
+    ).innerHTML;
     tierPrice = Math.round(tierPrice * tierPriceMultiplier);
     document.getElementById(tierName + "Price").innerHTML = tierPrice;
     updateTiersPrices();
+
+    /* updating tier price multiplier
+    tierPriceMultiplier = tierPriceMultiplier * 0.999;
+    document.getElementById(tierName + "PriceMultiplier").innerHTML =
+      tierPriceMultiplier;
+    console.log(tierPriceMultiplier);*/
+
     // updating bps
     bps = calcBPS();
     document.getElementById("bps").innerHTML = bps;
+
     // finally checking prices
     tiersPricesChecks();
     buffsPricesChecks();
@@ -304,6 +317,7 @@ function showClicker() {
   clickerNb = parseInt(clickerNb, 10);
   clickerNb = clickerNb - 1;
 
+  // adding visual clickers
   for (let j = 0; j < 18; j++) {
     warpName = "w" + j;
     warpGot = document.getElementById(warpName);
@@ -313,6 +327,14 @@ function showClicker() {
       warpGotList.remove("unavailable");
     }
   }
+
+  /*
+  // showing a little explanation as to why there are no more new clickers displayed
+  if (clickerNb > 17) {
+    enoughClickers = document.getElementById("enoughClickers");
+    const enoughClickersList = enoughClickers.classList;
+    enoughClickersList.remove("unavailable");
+  } */
 }
 
 //
