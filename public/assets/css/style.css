@@ -319,6 +319,7 @@ footer {
 @media screen and (max-width: 1200px) {
   .mainGrid {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 500px 450px;
   }
 
   .infoContainer {
@@ -333,6 +334,10 @@ footer {
     font-size: 45pt;
     color: var(--green-light);
     font-weight: bold;
+  }
+
+  .buyButton {
+    width: 400px;
   }
 }
 
@@ -356,6 +361,8 @@ footer {
   .mainClickerContainer {
     grid-column: 1;
     grid-row: 1;
+    margin-bottom: 50px;
+    margin-top: 30px;
   }
 
   .mainButtonsContainer {
@@ -380,7 +387,7 @@ footer {
   }
 
   .buyButton {
-    width: 95%;
+    width: 400px;
   }
 
   .buffsContainer {
@@ -410,6 +417,7 @@ footer {
     font-size: 17pt;
     border-radius: 15px;
     min-width: 250px;
+    max-width: 90%;
     column-gap: 20px;
   }
 }
