@@ -20,17 +20,19 @@
 		<link rel="stylesheet" href="/assets/css/style.css">
 		<link rel="stylesheet" href="/assets/css/warp.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> {% block stylesheet %}{% endblock %}
+
 		</head>
 
 		<body>
 			{% block content %}{% endblock %}
 
-			{% include "Component/_version.html.twig" %}
-			{% include "Component/_cheat.html.twig" %}
+			{% include "Component/_sidenav.html.twig" %}
 			{% include "Component/_footer.html.twig" %}
 
+			<script src="assets/js/cheatcodes.js"></script>
 			<script src="assets/js/script.js"></script>
 			<script src="assets/js/animations.js"></script>
+			<script src="assets/js/sidenav.js"></script>
 			{% block javascript %}{% endblock %}
 		</body>
 	</html>
