@@ -140,6 +140,7 @@ body {
   display: flex;
   column-gap: 30px;
   flex-direction: column;
+align-items: center;
 }
 
 .buttonGroup {
@@ -185,6 +186,14 @@ body {
 
 .buttonSubtext {
   font-size: 15pt;
+}
+
+.ownedNumberOnButton {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  font-size: 20pt;
+  color: rgba(255, 255, 255, 0.392);
 }
 
 .buy10Button {
@@ -234,9 +243,7 @@ body {
 }
 
 .stats {
-  text-align: left;
-  align-self: center;
-  font-size: 12pt;
+display: none;
 }
 
 .buffs,
@@ -385,6 +392,13 @@ footer {
 
   .buffsContainer {
     min-width: 90%;
+  }
+
+  .stats {
+    display:block;
+    text-align: left;
+    align-self: center;
+    font-size: 12pt;
   }
 }
 
