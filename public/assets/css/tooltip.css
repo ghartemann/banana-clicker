@@ -1,3 +1,5 @@
+/* Tooltips from ttps://codepen.io/vincentnavetat/pen/JjPVzGL */
+
 @-webkit-keyframes tooltipFadeIn {
   from {
     opacity: 0;
@@ -23,7 +25,7 @@
   display: none;
   position: absolute;
   top: 0;
-  transform: translateX(-110%);
+  transform: translateX(-60%);
   z-index: 2;
   padding-top: 0px;
 }

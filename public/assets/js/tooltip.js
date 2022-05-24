@@ -48,10 +48,12 @@ class Tooltip extends HTMLElement {
     this.placeholder = this.querySelector("[data-tooltip-placeholder]");
     this.dropdown = this.querySelector("[data-tooltip-dropdown]");
 
+    /* don't know what it's fot but it doesn't work and doesn't do shit
+    
     this.placeholder.addEventListener("mouseover", () =>
       this.handleDropdownPosition()
     );
-    this.placeholder.addEventListener("touchstart", () => this.toggle());
+    this.placeholder.addEventListener("touchstart", () => this.toggle()); */
   }
 }
 

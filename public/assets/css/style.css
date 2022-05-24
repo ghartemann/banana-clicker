@@ -30,28 +30,35 @@ body {
 }
 
 .cheatButton {
-  position: fixed;
-  right: -30px;
-  bottom: 30px;
+  position: absolute;
+  left: 10px;
+  top: 13px;
   width: 40px;
   height: 40px;
   cursor: pointer;
 }
 
-.mainPageContainer {
-  min-height: 100vh;
-  transform: scale(90%);
+.greenMainTitle {
+  display: block;
+  width: 100vw;
+  padding: 30px;
+  margin-top: -50px;
+  text-align: center;
+  font-size: 45pt;
+  color: var(--green-light);
+  font-weight: bold;
 }
 
-.greenMainTitle {
-  display: none;
+.mainPageContainer {
+  transform: scale(90%);
+  min-height: 105.3vh;
 }
 
 /* GRID */
 .mainGrid {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr 1fr;
-  grid-template-rows: 450px 450px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 48vh 41vh;
   grid-gap: 2vw;
   margin-left: -40px;
   margin-right: -40px;
@@ -63,29 +70,30 @@ body {
 }
 
 .mainButtonsContainer {
-  grid-column: 2;
-  grid-row: 2;
+  grid-column: 1;
+  grid-row: 1/3;
 }
 
 .mainBuffsContainer {
   grid-column: 3;
-  grid-row: 1;
+  grid-row: 1/3;
 }
 
 .mainStatsContainer {
-  grid-column: 3;
+  grid-column: 2;
   grid-row: 2;
 }
 
 .infoContainer {
+  display: none;
   grid-column: 1;
   grid-row: 1/3;
 }
 
 /* CLICKER */
 .mainClickerContainer,
-.mainButtonsContainer,
 .mainBuffsContainer,
+.mainButtonsContainer,
 .mainStatsContainer {
   display: flex;
   justify-content: center;
@@ -129,7 +137,11 @@ body {
   left: 200px;
 } */
 
-/* BUTTONS */
+/* TIERS */
+.mainButtonsContainer {
+  justify-content: left;
+}
+
 .buffsContainer,
 .buttonsContainer,
 .statsContainer {
@@ -140,7 +152,6 @@ body {
   display: flex;
   column-gap: 30px;
   flex-direction: column;
-align-items: center;
 }
 
 .buttonGroup {
@@ -206,6 +217,11 @@ align-items: center;
   height: 60px;
 }
 
+/* BUFFS */
+.mainBuffsContainer {
+  justify-content: right;
+}
+
 .buffButton {
   background-color: var(--yellow-dark);
 }
@@ -216,16 +232,6 @@ align-items: center;
 
 .buffButton:hover {
   background-color: var(--yellow-darker);
-}
-
-.unavailable {
-  display: none;
-}
-
-.greyed {
-  background-color: var(--green-dark-transparent);
-  color: var(--white-transparent);
-  cursor: initial;
 }
 
 .greyed:hover {
@@ -242,8 +248,19 @@ align-items: center;
   background-color: var(--yellow-dark-transparent);
 }
 
+/* TIERS AND BUFFS */
+.unavailable {
+  display: none;
+}
+
+.greyed {
+  background-color: var(--green-dark-transparent);
+  color: var(--white-transparent);
+  cursor: initial;
+}
+
 .stats {
-display: none;
+  display: none;
 }
 
 .buffs,
@@ -301,7 +318,6 @@ display: none;
 }
 
 /* FOOTER */
-
 footer {
   background-color: var(--green-dark);
   height: 100px;
@@ -322,18 +338,28 @@ footer {
     grid-template-rows: 500px 450px;
   }
 
-  .infoContainer {
-    display: none;
+  .mainClickerContainer {
+    grid-column: 1;
+    grid-row: 1;
   }
 
-  .greenMainTitle {
-    display: block;
-    width: 100vw;
-    padding: 30px;
-    text-align: center;
-    font-size: 45pt;
-    color: var(--green-light);
-    font-weight: bold;
+  .mainBuffsContainer {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .mainButtonsContainer {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .mainStatsContainer {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .infoContainer {
+    display: none;
   }
 
   .buyButton {
@@ -368,11 +394,13 @@ footer {
   .mainButtonsContainer {
     grid-column: 1;
     grid-row: 2;
+    justify-content: center;
   }
 
   .mainBuffsContainer {
     grid-column: 1;
     grid-row: 3;
+    justify-content: center;
   }
 
   .mainStatsContainer {
@@ -386,6 +414,10 @@ footer {
     align-items: center;
   }
 
+  .greenMainTitle {
+    margin-top: initial;
+  }
+
   .buyButton {
     width: 400px;
   }
@@ -395,7 +427,7 @@ footer {
   }
 
   .stats {
-    display:block;
+    display: block;
     text-align: left;
     align-self: center;
     font-size: 12pt;
@@ -424,75 +456,4 @@ footer {
     max-width: 90%;
     column-gap: 20px;
   }
-}
-
-/* SIDENAV from https://www.codeur.com/tuto/css/menu-burger-html-css/#:~:text=Cr%C3%A9er%20un%20burger%20menu%20en,page%2C%20de%20haut%20en%20bas.*/
-/* Sidenav menu */
-#openBtn {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-}
-
-.sidenav {
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: -250px;
-  background-color: var(--green-dark);
-  padding-top: 60px;
-  transition: right 0.5s ease;
-}
-
-/* Sidenav menu links */
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: var(--white);
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: var(--green-darker);
-}
-
-.sidenav p {
-  display: block;
-  position: absolute;
-  color: var(--white);
-  font-size: 20px;
-  padding: 8px 8px 8px 32px;
-  bottom: 10px;
-}
-
-.sidenav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* Active class */
-.sidenav.active {
-  right: 0;
-}
-
-/* Close btn */
-.sidenav .close {
-  position: absolute;
-  top: 0;
-  font-size: 36px;
-}
-
-/* Icône burger */
-.burger-icon span {
-  display: block;
-  width: 35px;
-  height: 5px;
-  background-color: var(--white);
-  margin: 6px 0;
-  border-radius: 5px;
 }
