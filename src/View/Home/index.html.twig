@@ -1,21 +1,18 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+	{% include "Component/_cheat.html.twig" %}
 	<div class="mainPageContainer">
 		<div class="mainPageTitle">
 			<h1 class="greenMainTitle">Banana Clicker</h1>
 		</div>
 		<div>
 			<div class="mainGrid">
-
 				{% include "Component/_info.html.twig" %}
 				{% include "Component/_clicker.html.twig" %}
 				{% include "Component/_tiers.html.twig" %}
 				{% include "Component/_buffs.html.twig" %}
 				{% include "Component/_stats.html.twig" %}
-				{% include "Component/_cheat.html.twig" %}
-				{% include "Component/_saveform.html.twig" %}
-
 			</div>
 		</div>
 	</div>

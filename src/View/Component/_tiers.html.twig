@@ -11,7 +11,7 @@
 
 			<div id="buyableTiers" class="unavailable">
 				{% for clicker in clickers %}
-					<div class="buttonGroup">
+					<div class="buttonGroup tooltip">
 						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier(step{{loop.index}}Name, step{{loop.index}}Price, step{{loop.index}}PriceMultiplier, step{{loop.index}}Owned, step{{loop.index}}Multiplier); animateCSS('#{{clicker.name}}Button', 'pulse');">
 							<div class="buttonPic">
 								<img src="assets/images/{{clicker.img}}" width="50px"/>
@@ -29,10 +29,37 @@
 											{{clicker.price}}
 										</span>
 									</strong>
+									<div style="position: relative;">
+										<span class="ownedNumberOnButton" id="{{clicker.name}}OwnedC">0</span>
+									</div>
 								</p>
 								<p style="display:none" id="{{clicker.name}}PriceMultiplier">{{clicker.price_multiplier}}</p>
 							</div>
 						</button>
+
+						<wow-tooltip class="tooltip">
+							<div class="tooltip-dropdown" data-tooltip-dropdown>
+								<div role="tooltip" id="tooltip-demo-content" class="tooltip-dropdown__content">
+									<p>{{clicker.desc}}</p>
+									<br>
+									<p>Chaque
+										{{clicker.display_name}}
+										produit
+										{{clicker.multiplier}}
+										banane par seconde</p>
+									<br>
+									<p>Acquis :
+										<span id="{{clicker.name}}OwnedB">0</span>
+									</p>
+									<p>Production :
+										<span id="{{clicker.name}}ProdB">0</span>
+										bps</p>
+
+
+								</div>
+							</div>
+						</wow-tooltip>
+
 						<div class="stats">
 							<p>Acquis :
 								<span id="{{clicker.name}}Owned">0</span>
@@ -41,6 +68,7 @@
 								<span id="{{clicker.name}}Prod">0</span>
 								bps</p>
 						</div>
+
 					</div>
 				{% endfor %}
 			</div>
