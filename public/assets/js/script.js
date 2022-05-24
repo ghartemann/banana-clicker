@@ -38,6 +38,7 @@ function unreleased() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// DEFAULT VALUES
 bananas = 0;
+totalBananas = 0;
 bps = 0;
 bpc = 1;
 clickRate = 1;
@@ -123,6 +124,7 @@ buffBPS1PriceMultiplier = document.getElementById(
 
 function cheat() {
   updateBananas(10000);
+  updateTotalBananas(10000);
   nbclicks = nbclicks + 50;
   document.getElementById("nbClicks").innerHTML = nbclicks;
   runAllChecks();
@@ -145,12 +147,14 @@ var perSecondIntervel = setInterval(perSecond, 1000);
 function clickUp() {
   updateNbClicks();
   updateBananas(clickRate);
+  updateTotalBananas(clickRate);
   runAllChecks();
   unavailableFirst();
 }
 
 function perSecond() {
   updateBananas(bps);
+  updateTotalBananas(bps);
   runAllChecks();
   animateClicker();
 }
@@ -165,6 +169,11 @@ function updateNbClicks() {
 function updateBananas(toAdd) {
   bananas = bananas + toAdd;
   document.getElementById("bananasNumber").innerHTML = bananas;
+}
+
+function updateTotalBananas(toAdd) {
+  totalBananas = totalBananas + toAdd;
+  document.getElementById("totalBananasNumber").innerHTML = totalBananas;
 }
 
 //
