@@ -152,6 +152,7 @@ function clickUp() {
 function perSecond() {
   updateBananas(bps);
   runAllChecks();
+  animateClicker();
 }
 
 function updateNbClicks() {
@@ -366,6 +367,22 @@ function showClicker() {
     const enoughClickersList = enoughClickers.classList;
     enoughClickersList.remove("unavailable");
   } */
+}
+
+function animateClicker() {
+  for (let k = 0; k < 18; k++) {
+    animateClickerToggle("w" + k + "pic");
+    setTimeout(function () {
+      animateClickerToggle("w" + k + "pic");
+    }, 200);
+  }
+}
+
+function animateClickerToggle(clicker) {
+  cursor = document.getElementById(clicker);
+  cursorList = cursor.classList;
+  cursorList.toggle("smallCursor");
+  cursorList.toggle("normalCursor");
 }
 
 //
