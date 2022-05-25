@@ -38,6 +38,10 @@
   width: 265px;
   text-align: left;
   box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 10px 1px;
+  -webkit-user-select: none; /* Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+/Edge */
+user-select: none; /* Standard */
 }
 
 .tooltip--open .tooltip-dropdown {
