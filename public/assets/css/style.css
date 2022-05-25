@@ -146,6 +146,7 @@ body {
 .buttonsContainer,
 .statsContainer {
   width: 90%;
+  z-index: 500;
 }
 
 .buttonsContainer {
