@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// MISC
 
 // ask user if they're sure they actually want to quit, which is understandable but also a bit sad
@@ -12,30 +12,7 @@ console.log(
 );
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////// PATCHNOTE AND ROADMAP
-document.getElementById("version").innerHTML = "v0.7.0";
-
-function patchNote() {
-  alert(
-    "CHANGELOG\n\nv0.7.0\n* Ambiance sonore !\n* Ajout de stats\n* Fixes\n\nv0.6.0\n* Gros changements d'organisation visuelle\n* Des tooltips informent maintenant de l'action des clickers (ceux des buffs suivront)\n\nv0.5.3\n* Animation des curseurs quand ils cliquent\n* Encore plus responsive\n\nv0.5.0\n* Responsive™\n* Ajout d'animations sur les boutons\n* Nombreux fixes de CSS\n\nv0.4.6\n* Ajout du macaque\n\nv0.4.5\n* Beaucoup, beaucoup d'améliorations du CSS, maintenant un peu plus responsive\n\nv0.4.0\n* Ajout de curseurs visuels à l'achat d'un clicker (assez fier du résultat)\n\nv0.3.1\n* Ajout du méga curseur (1000 clics)\n* Refactorisation et nombreux fixes\n\nv0.3.0\n* Migration vers PHP (simple MVC)\n* Améliorations visuelles en masse\n\nv0.2.0\n* Ajout des buffs\n* Ajout du calcul de bpc\n\nv0.1.5\n* Ajout des gorilles\n* Ajout des bananiers\n\nv0.1.1\n* Calcul du bps pleinement fonctionnel"
-  );
-}
-
-function roadMap() {
-  alert(
-    "ROADMAP\n\n* Ajout de nombreux autres clickers et buffs\n* Migration sous Symfony\n* Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)\n* Sauvegarde des données (l'actualisation réinitialise la partie actuellement)\n* Export et import de sauvegardes\n* Rendre cette fenêtre jolie (sans utiliser une alert par exemple)\n* Devenir millionnaire grâce à la publicité"
-  );
-}
-
-function unreleased() {
-  alert(
-    "Cette fonctionnalité n'est pas disponible pour le moment (elle serait pourtant diablement utile)"
-  );
-}
-
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// DEFAULT VALUES
 bananas = 0;
 totalBananas = 0;
@@ -45,8 +22,12 @@ clickRate = 1;
 nbclicks = 0;
 restclicks = 1000000;
 
+// NUMBER OF CLICKERS AND BUFFS (will be used later)
+const nbTiers = document.querySelectorAll("#buyableTiers [id$=Button]");
+const nbBuffs = document.querySelectorAll("#buyableBuffs [id$=Button]");
+
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// TIERS PRICES
 
 // Clicker
@@ -119,8 +100,8 @@ buffBPS1PriceMultiplier = document.getElementById(
 ).innerHTML;
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////// CHEATS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////// CHEATS see cheatcode.js
 
 function cheat() {
   updateBananas(10000);
@@ -128,19 +109,21 @@ function cheat() {
   nbclicks = nbclicks + 50;
   document.getElementById("nbClicks").innerHTML = nbclicks;
   runAllChecks();
+  console.log("+10k bananas");
 }
 
 let cheatCode = new cheatcode("b, a, n, a, n, a", () => {
   let cheat = document.getElementById("cheat");
-  console.log(cheat);
+
   let cheatList = cheat.classList;
   cheatList.remove("unavailable");
+  console.log("Cheat mode activated");
 });
 
 cheatCode.start();
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// MAIN FUNCTIONS
 var perSecondIntervel = setInterval(perSecond, 1000);
 
@@ -177,7 +160,7 @@ function updateTotalBananas(toAdd) {
 }
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CALC BPS AND BPC
 function calcBPSDetail(multiplier, owned) {
   prod = multiplier * owned;
@@ -205,33 +188,67 @@ function calcBPC() {
 }
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CHECKING PRICES AND GREYING OUT BUTTONS
+// runs all checks (for greying buttons)
 function runAllChecks() {
   tiersPricesChecks();
+  tiersPricesChecks10();
   buffsPricesChecks();
   unavailableCheck();
 }
 
+// runs individual checks, couls be optimized with a loop
 function tiersPricesChecks() {
-  tierPriceCheck(step1Name, step1Price);
-  tierPriceCheck(step2Name, step2Price);
-  tierPriceCheck(step3Name, step3Price);
-  tierPriceCheck(step4Name, step4Price);
+  tierPriceCheck(step1Name);
+  tierPriceCheck(step2Name);
+  tierPriceCheck(step3Name);
+  tierPriceCheck(step4Name);
 }
 
-function tierPriceCheck(tierName, tierPrice) {
+// runs a specific check and greys out the related button
+function tierPriceCheck(tierName) {
+  let tierPrice = document.getElementById(tierName + "Price").innerHTML;
+  let tierButton = document.getElementById(tierName + "Button");
+  let tierButtonList = tierButton.classList;
+
   // Graying out prices
   if (tierPrice > bananas) {
-    tierNameButton = document.getElementById(tierName + "Button");
-    tierNameButton.disabled = true;
-    const tierNameButtonList = tierNameButton.classList;
-    tierNameButtonList.add("greyed");
+    tierButton.disabled = true;
+    tierButtonList.add("greyed");
   } else {
-    tierNameButton = document.getElementById(tierName + "Button");
-    tierNameButton.disabled = false;
-    const tierNameButtonList = tierNameButton.classList;
-    tierNameButtonList.remove("greyed");
+    tierButton.disabled = false;
+    tierButtonList.remove("greyed");
+  }
+}
+
+// runs individual checks for x10 buttons, couls be optimized with a loop
+function tiersPricesChecks10() {
+  tierPriceCheck10(step1Name);
+  tierPriceCheck10(step2Name);
+  tierPriceCheck10(step3Name);
+  tierPriceCheck10(step4Name);
+}
+
+// runs a specific check for x10 button and greys it out
+function tierPriceCheck10(tierName) {
+  let tierPrice = document.getElementById(tierName + "Price").innerHTML;
+  let tierPriceMultiplier = document.getElementById(
+    tierName + "PriceMultiplier"
+  ).innerHTML;
+  let tierNameButton10 = document.getElementById(tierName + "Button10");
+  let tierNameButtonList10 = tierNameButton10.classList;
+
+  let tierPrice10 = calcPrice10(tierPrice, tierPriceMultiplier);
+  document.getElementById(tierName + "Price10").innerHTML = tierPrice10;
+
+  // Graying out prices
+  if (tierPrice10 > bananas) {
+    tierNameButton10.disabled = true;
+    tierNameButtonList10.add("greyed");
+  } else {
+    tierNameButton10.disabled = false;
+    tierNameButtonList10.remove("greyed");
   }
 }
 
@@ -242,15 +259,14 @@ function buffsPricesChecks() {
 }
 
 function buffPriceCheck(buffName, buffPrice) {
+  let buffNameButton = document.getElementById(buffName + "Button");
+  let buffNameButtonList = buffNameButton.classList;
+
   if (buffPrice > bananas) {
-    buffNameButton = document.getElementById(buffName + "Button");
     buffNameButton.disabled = true;
-    const buffNameButtonList = buffNameButton.classList;
     buffNameButtonList.add("greyedBuff");
   } else {
-    buffNameButton = document.getElementById(buffName + "Button");
     buffNameButton.disabled = false;
-    const buffNameButtonList = buffNameButton.classList;
     buffNameButtonList.remove("greyedBuff");
   }
 }
@@ -262,6 +278,16 @@ function unavailableCheck() {
   unavailableClicks(buffBPC2Name, 500);
 }
 
+function calcPrice10(price, priceMultiplier) {
+  let price10 = 0;
+  for (let m = 0; m < 10; m++) {
+    price10 = price10 + price * priceMultiplier;
+  }
+  price10 = Math.round(price10);
+  return price10;
+}
+
+// hides everything until there are at least 30 clicks
 function unavailableFirst() {
   if (nbclicks >= 30) {
     notAvailable = document.getElementById("buyableTiers");
@@ -274,6 +300,7 @@ function unavailableFirst() {
   }
 }
 
+// hides unavailable things (parameters : clicker, thing you wanna buy that depends from clicker ownership)
 function unavailable(owned, notOwned) {
   if (owned > 0) {
     notOwned = document.getElementById(notOwned + "Div");
@@ -286,6 +313,7 @@ function unavailable(owned, notOwned) {
   }
 }
 
+// hides unavailable things (parameters : thing you wanna buy, nb of clicks there has to be to unlock it)
 function unavailableClicks(notOwned, clicksToMake) {
   if (nbclicks >= clicksToMake) {
     notOwned = document.getElementById(notOwned + "Div");
@@ -299,22 +327,23 @@ function unavailableClicks(notOwned, clicksToMake) {
 }
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// BUYING TIERS
-function buyTier(
-  tierName,
-  tierPrice,
-  tierPriceMultiplier,
-  tierOwned,
-  tierMultiplier
-) {
+function buyTier(tierName, tierMultiplier) {
+  // fetching initial data
+  let tierPrice = document.getElementById(tierName + "Price").innerHTML;
+  let tierOwned = document.getElementById(tierName + "Owned").innerHTML;
+  let tierPriceMultiplier = document.getElementById(
+    tierName + "PriceMultiplier"
+  ).innerHTML;
+
   if (bananas >= tierPrice) {
     // updating owned number and stats
     tierOwned++;
     document.getElementById(tierName + "Owned").innerHTML = tierOwned;
     document.getElementById(tierName + "OwnedB").innerHTML = tierOwned;
     document.getElementById(tierName + "OwnedC").innerHTML = tierOwned;
-    tierProd = tierOwned * tierMultiplier;
+    let tierProd = tierOwned * tierMultiplier;
     document.getElementById(tierName + "Prod").innerHTML = tierProd;
     document.getElementById(tierName + "ProdB").innerHTML = tierProd;
 
@@ -323,9 +352,6 @@ function buyTier(
     document.getElementById("bananasNumber").innerHTML = bananas;
 
     // updating tier price
-    tierPriceMultiplier = document.getElementById(
-      tierName + "PriceMultiplier"
-    ).innerHTML;
     tierPrice = Math.round(tierPrice * tierPriceMultiplier);
     document.getElementById(tierName + "Price").innerHTML = tierPrice;
     updateTiersPrices();
@@ -341,9 +367,27 @@ function buyTier(
     document.getElementById("bps").innerHTML = bps;
 
     // finally checking prices
-    tiersPricesChecks();
-    buffsPricesChecks();
     showClicker();
+    runAllChecks();
+  } else {
+    alert("Pas assez de bananes !");
+  }
+}
+
+function buyTier10(tierName, tierMultiplier) {
+  // calculating price x10
+  let tierPrice = document.getElementById(tierName + "Price").innerHTML;
+  let tierPriceMultiplier = document.getElementById(
+    tierName + "PriceMultiplier"
+  ).innerHTML;
+
+  let tierPrice10 = calcPrice10(tierPrice, tierPriceMultiplier);
+  document.getElementById(tierName + "Price10").innerHTML = tierPrice10;
+
+  if (tierPrice10 < bananas) {
+    for (let l = 0; l < 10; l++) {
+      buyTier(tierName, tierMultiplier);
+    }
   } else {
     alert("Pas assez de bananes !");
   }
@@ -356,6 +400,9 @@ function updateTiersPrices() {
   step4Price = document.getElementById("tierMacaquePrice").innerHTML;
 }
 
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CURSORPOINTERS ANIMATION
 function showClicker() {
   clickerNb = document.getElementById("tierClickerOwned").innerHTML;
   clickerNb = parseInt(clickerNb, 10);
@@ -363,22 +410,20 @@ function showClicker() {
 
   // adding visual clickers
   for (let j = 0; j < 18; j++) {
-    warpName = "w" + j;
-    warpGot = document.getElementById(warpName);
-
+    let warpName = "w" + j;
+    let warpGot = document.getElementById(warpName);
     if (clickerNb == warpGot.id.substring(1)) {
-      const warpGotList = warpGot.classList;
+      let warpGotList = warpGot.classList;
       warpGotList.remove("unavailable");
     }
   }
 
-  /*
   // showing a little explanation as to why there are no more new clickers displayed
   if (clickerNb > 17) {
-    enoughClickers = document.getElementById("enoughClickers");
-    const enoughClickersList = enoughClickers.classList;
+    let enoughClickers = document.getElementById("enoughClickers");
+    let enoughClickersList = enoughClickers.classList;
     enoughClickersList.remove("unavailable");
-  } */
+  }
 }
 
 function animateClicker() {
@@ -398,7 +443,7 @@ function animateClickerToggle(clicker) {
 }
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// BUYING BUFFS
 function buyBuffBPC(buffName, buffPrice, buffPriceMultiplier, buffOwned) {
   if (bananas >= buffPrice) {
@@ -473,7 +518,7 @@ function updateBuffsPrices() {
 }
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// SAVE FUNCTION
 
 // TODO

@@ -23,10 +23,10 @@
 
 .tooltip-dropdown {
   display: none;
-  position: absolute;
-  top: 0;
-  transform: translateX(-60%);
-  z-index: 2;
+  position: fixed;
+  top: 300px;
+  transform: translateX(30%);
+  z-index: 1000;
   padding-top: 0px;
 }
 

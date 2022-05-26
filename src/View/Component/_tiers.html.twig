@@ -12,7 +12,14 @@
 			<div id="buyableTiers" class="unavailable">
 				{% for clicker in clickers %}
 					<div class="buttonGroup tooltip">
-						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier(step{{loop.index}}Name, step{{loop.index}}Price, step{{loop.index}}PriceMultiplier, step{{loop.index}}Owned, step{{loop.index}}Multiplier); animateCSS('#{{clicker.name}}Button', 'pulse');">
+						<button id="{{clicker.name}}Button10" class="buy10Button greyed" onclick="buyTier10(step{{loop.index}}Name, step{{loop.index}}Multiplier); animateCSS('#{{clicker.name}}Button10', 'pulse');">
+							<p>x 10</p>
+							<p class="displayPrice10">
+								<img src="assets/images/banane.png" width="15px" height="15px"/>
+								<span id="{{clicker.name}}Price10"></span>
+							</p>
+						</button>
+						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier(step{{loop.index}}Name, step{{loop.index}}Multiplier); animateCSS('#{{clicker.name}}Button', 'pulse');">
 							<div class="buttonPic">
 								<img src="assets/images/{{clicker.img}}" width="50px"/>
 							</div>
@@ -43,6 +50,7 @@
 									<p>
 										<strong>{{clicker.desc}}</strong>
 									</p>
+									<p id="enoughClickers" class="unavailable">Plus de place pour les afficher mais promis, ils y sont&nbsp;!!</p>
 									<br>
 									<p>Chaque
 										{{clicker.display_name}}
