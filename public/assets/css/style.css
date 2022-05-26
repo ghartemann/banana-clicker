@@ -317,6 +317,28 @@ body {
   margin-bottom: 10px;
 }
 
+/* SOUNDS */
+.hiddenFrame {
+  height: 1px;
+  width: 1px;
+  opacity: 0;
+}
+
+.videoButton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  display: flex;
+  column-gap: 5px;
+  height: 40px;
+}
+
+.soundText {
+  font-weight: bold;
+  font-size: 14px;
+}
+
 /* FOOTER */
 footer {
   background-color: var(--green-dark);
