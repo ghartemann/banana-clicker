@@ -10,7 +10,7 @@
 		<meta property="og:description" content="<p>Le clicker préféré de la jungle !</p> ">
 		<meta property="og:site_name" content="bananaclicker.ghartemann.fr">
 
-		<link rel="icon" href="/assets/images/favicon.png">
+		<link rel="icon" href="assets/images/favicon.png">
 
 		<title>
 			Banana Clicker
@@ -28,10 +28,12 @@
 		<body>
 			{% block content %}{% endblock %}
 
+			{% include "Component/_ambiance.html.twig" %}
 			{% include "Component/_sidenav.html.twig" %}
 			{% include "Component/_footer.html.twig" %}
 
 			<script src="assets/js/cheatcodes.js"></script>
+			<script src="assets/js/sound.js"></script>
 			<script src="assets/js/script.js"></script>
 			<script src="assets/js/animations.js"></script>
 			<script src="assets/js/sidenav.js"></script>
@@ -39,3 +41,4 @@
 			{% block javascript %}{% endblock %}
 		</body>
 	</html>
+</body></html>
