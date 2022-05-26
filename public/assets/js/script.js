@@ -8,17 +8,17 @@
 
 // displaying a fun little message
 console.log(
-  "Oui, je pense qu'il est possible de tricher assez facilement. Mais vous ne voudriez pas faire ça, hein ?"
+  "Oui, il est possible de tricher assez facilement. Super, bonne ambiance vraiment."
 );
 
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// PATCHNOTE AND ROADMAP
-document.getElementById("version").innerHTML = "v0.8.0";
+document.getElementById("version").innerHTML = "v0.7.0";
 
 function patchNote() {
   alert(
-    "CHANGELOG\n\nv0.8.0\n* Gros changements d'organisation visuelle\n* Des tooltips informent maintenant de l'action des clickers (ceux des buffs suivront)\n\nv0.7.3\n* Animation des curseurs quand ils cliquent\n* Encore plus responsive\n\nv0.7.0\n* Responsive™\n* Ajout d'animations sur les boutons\n* Nombreux fixes de CSS\n\nv0.6.6\n* Ajout du macaque\n\nv0.6.5\n* Beaucoup, beaucoup d'améliorations du CSS, maintenant un peu plus responsive\n\nv0.6.0\n* Ajout de curseurs visuels à l'achat d'un clicker (assez fier du résultat)\n\nv0.5.1\n* Ajout du méga curseur (1000 clics)\n* Refactorisation et nombreux fixes\n\nv0.5.0\n* Migration vers PHP (simple MVC)\n* Améliorations visuelles en masse\n\nv0.4.0\n* Ajout des buffs\n* Ajout du calcul de bpc\n\nv0.3.0\n* Ajout des gorilles\n* Ajout des bananiers\n\nv0.2.1\n* Calcul du bps pleinement fonctionnel"
+    "CHANGELOG\n\nv0.7.0\n* Ambiance sonore !\n* Ajout de stats\n* Fixes\n\nv0.6.0\n* Gros changements d'organisation visuelle\n* Des tooltips informent maintenant de l'action des clickers (ceux des buffs suivront)\n\nv0.5.3\n* Animation des curseurs quand ils cliquent\n* Encore plus responsive\n\nv0.5.0\n* Responsive™\n* Ajout d'animations sur les boutons\n* Nombreux fixes de CSS\n\nv0.4.6\n* Ajout du macaque\n\nv0.4.5\n* Beaucoup, beaucoup d'améliorations du CSS, maintenant un peu plus responsive\n\nv0.4.0\n* Ajout de curseurs visuels à l'achat d'un clicker (assez fier du résultat)\n\nv0.3.1\n* Ajout du méga curseur (1000 clics)\n* Refactorisation et nombreux fixes\n\nv0.3.0\n* Migration vers PHP (simple MVC)\n* Améliorations visuelles en masse\n\nv0.2.0\n* Ajout des buffs\n* Ajout du calcul de bpc\n\nv0.1.5\n* Ajout des gorilles\n* Ajout des bananiers\n\nv0.1.1\n* Calcul du bps pleinement fonctionnel"
   );
 }
 
