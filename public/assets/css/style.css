@@ -37,12 +37,12 @@ body {
 
 .cheatFlex {
   display: flex;
-column-gap: 5px;
+  column-gap: 5px;
 }
 
 .cheatText {
-font-weight: bold;
-font-size: 8px;
+  font-weight: bold;
+  font-size: 8px;
 }
 
 .cheatButton {
@@ -177,7 +177,8 @@ font-size: 8px;
 }
 
 .buyButton,
-.buffButton, .buy10Button {
+.buffButton,
+.buy10Button {
   display: flex;
   background-color: var(--green-dark);
   padding: 15px 15px 15px 20px;
