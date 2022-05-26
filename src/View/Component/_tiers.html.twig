@@ -13,7 +13,7 @@
 				{% for clicker in clickers %}
 					<div class="buttonGroup tooltip">
 						<button id="{{clicker.name}}Button10" class="buy10Button greyed" onclick="buyTier10(step{{loop.index}}Name, step{{loop.index}}Multiplier); animateCSS('#{{clicker.name}}Button10', 'pulse');">
-							<div class="buttonText">x10</div>
+							<p>x10</p>
 						</button>
 						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier(step{{loop.index}}Name, step{{loop.index}}Multiplier); animateCSS('#{{clicker.name}}Button', 'pulse');">
 							<div class="buttonPic">

@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// MISC
 
 // ask user if they're sure they actually want to quit, which is understandable but also a bit sad
@@ -12,30 +12,7 @@ console.log(
 );
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////// PATCHNOTE AND ROADMAP
-document.getElementById("version").innerHTML = "v0.7.0";
-
-function patchNote() {
-  alert(
-    "CHANGELOG\n\nv0.7.0\n* Ambiance sonore !\n* Ajout de stats\n* Fixes\n\nv0.6.0\n* Gros changements d'organisation visuelle\n* Des tooltips informent maintenant de l'action des clickers (ceux des buffs suivront)\n\nv0.5.3\n* Animation des curseurs quand ils cliquent\n* Encore plus responsive\n\nv0.5.0\n* Responsive™\n* Ajout d'animations sur les boutons\n* Nombreux fixes de CSS\n\nv0.4.6\n* Ajout du macaque\n\nv0.4.5\n* Beaucoup, beaucoup d'améliorations du CSS, maintenant un peu plus responsive\n\nv0.4.0\n* Ajout de curseurs visuels à l'achat d'un clicker (assez fier du résultat)\n\nv0.3.1\n* Ajout du méga curseur (1000 clics)\n* Refactorisation et nombreux fixes\n\nv0.3.0\n* Migration vers PHP (simple MVC)\n* Améliorations visuelles en masse\n\nv0.2.0\n* Ajout des buffs\n* Ajout du calcul de bpc\n\nv0.1.5\n* Ajout des gorilles\n* Ajout des bananiers\n\nv0.1.1\n* Calcul du bps pleinement fonctionnel"
-  );
-}
-
-function roadMap() {
-  alert(
-    "ROADMAP\n\n* Ajout de nombreux autres clickers et buffs\n* Migration sous Symfony\n* Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)\n* Sauvegarde des données (l'actualisation réinitialise la partie actuellement)\n* Export et import de sauvegardes\n* Rendre cette fenêtre jolie (sans utiliser une alert par exemple)\n* Devenir millionnaire grâce à la publicité"
-  );
-}
-
-function unreleased() {
-  alert(
-    "Cette fonctionnalité n'est pas disponible pour le moment (elle serait pourtant diablement utile)"
-  );
-}
-
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// DEFAULT VALUES
 bananas = 0;
 totalBananas = 0;
@@ -46,7 +23,7 @@ nbclicks = 0;
 restclicks = 1000000;
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// TIERS PRICES
 
 // Clicker
@@ -119,8 +96,8 @@ buffBPS1PriceMultiplier = document.getElementById(
 ).innerHTML;
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////// CHEATS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////// CHEATS see cheatcode.js
 
 function cheat() {
   updateBananas(10000);
@@ -142,7 +119,7 @@ let cheatCode = new cheatcode("b, a, n, a, n, a", () => {
 cheatCode.start();
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// MAIN FUNCTIONS
 var perSecondIntervel = setInterval(perSecond, 1000);
 
@@ -179,7 +156,7 @@ function updateTotalBananas(toAdd) {
 }
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CALC BPS AND BPC
 function calcBPSDetail(multiplier, owned) {
   prod = multiplier * owned;
@@ -207,8 +184,9 @@ function calcBPC() {
 }
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CHECKING PRICES AND GREYING OUT BUTTONS
+// runs all checks (for greying buttons)
 function runAllChecks() {
   tiersPricesChecks();
   tiersPricesChecks10();
@@ -216,6 +194,7 @@ function runAllChecks() {
   unavailableCheck();
 }
 
+// runs individual checks, couls be optimized with a loop
 function tiersPricesChecks() {
   tierPriceCheck(step1Name, step1Price);
   tierPriceCheck(step2Name, step2Price);
@@ -223,6 +202,7 @@ function tiersPricesChecks() {
   tierPriceCheck(step4Name, step4Price);
 }
 
+// runs a specific check and greys out the related button
 function tierPriceCheck(tierName, tierPrice) {
   let tierNameButton = document.getElementById(tierName + "Button");
   let tierNameButtonList = tierNameButton.classList;
@@ -237,6 +217,7 @@ function tierPriceCheck(tierName, tierPrice) {
   }
 }
 
+// runs individual checks for x10 buttons, couls be optimized with a loop
 function tiersPricesChecks10() {
   tierPriceCheck10(step1Name);
   tierPriceCheck10(step2Name);
@@ -244,6 +225,7 @@ function tiersPricesChecks10() {
   tierPriceCheck10(step4Name);
 }
 
+// runs a specific check for x10 button and greys it out
 function tierPriceCheck10(tierName) {
   let tierPrice = document.getElementById(tierName + "Price").innerHTML;
   let tierPriceMultiplier = document.getElementById(
@@ -253,16 +235,20 @@ function tierPriceCheck10(tierName) {
   let tierNameButtonList10 = tierNameButton10.classList;
 
   let tierPrice10 = tierPrice * tierPriceMultiplier;
-  for (m = 0; m < 10; m++) {
+  for (let m = 0; m < 9; m++) {
     tierPrice10 = tierPrice10 * tierPriceMultiplier;
   }
+  tierPrice10 = Math.round(tierPrice10);
+
   // Graying out prices
   if (tierPrice10 > bananas) {
     tierNameButton10.disabled = true;
     tierNameButtonList10.add("greyed");
+    console.log("hidden");
   } else {
     tierNameButton10.disabled = false;
     tierNameButtonList10.remove("greyed");
+    console.log("shown");
   }
 }
 
@@ -292,6 +278,7 @@ function unavailableCheck() {
   unavailableClicks(buffBPC2Name, 500);
 }
 
+// hides everything until there are at least 30 clicks
 function unavailableFirst() {
   if (nbclicks >= 30) {
     notAvailable = document.getElementById("buyableTiers");
@@ -304,6 +291,7 @@ function unavailableFirst() {
   }
 }
 
+// hides unavailable things (parameters : clicker, thing you wanna buy that depends from clicker ownership)
 function unavailable(owned, notOwned) {
   if (owned > 0) {
     notOwned = document.getElementById(notOwned + "Div");
@@ -316,6 +304,7 @@ function unavailable(owned, notOwned) {
   }
 }
 
+// hides unavailable things (parameters : thing you wanna buy, nb of clicks there has to be to unlock it)
 function unavailableClicks(notOwned, clicksToMake) {
   if (nbclicks >= clicksToMake) {
     notOwned = document.getElementById(notOwned + "Div");
@@ -329,7 +318,7 @@ function unavailableClicks(notOwned, clicksToMake) {
 }
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// BUYING TIERS
 function buyTier(tierName, tierMultiplier) {
   // fetching initial data
@@ -369,9 +358,8 @@ function buyTier(tierName, tierMultiplier) {
     document.getElementById("bps").innerHTML = bps;
 
     // finally checking prices
-    tiersPricesChecks();
-    buffsPricesChecks();
     showClicker();
+    runAllChecks();
   } else {
     alert("Pas assez de bananes !");
   }
@@ -384,13 +372,14 @@ function buyTier10(tierName, tierMultiplier) {
     tierName + "PriceMultiplier"
   ).innerHTML;
 
-  tierPrice10 = tierPrice * tierPriceMultiplier;
-  for (m = 0; m < 10; m++) {
+  let tierPrice10 = tierPrice * tierPriceMultiplier;
+  for (let m = 0; m < 9; m++) {
     tierPrice10 = tierPrice10 * tierPriceMultiplier;
   }
+  tierPrice10 = Math.round(tierPrice10);
 
   if (bananas > tierPrice10) {
-    for (let l = 1; l < 11; l++) {
+    for (let l = 0; l < 10; l++) {
       buyTier(tierName, tierMultiplier);
     }
   } else {
@@ -405,6 +394,9 @@ function updateTiersPrices() {
   step4Price = document.getElementById("tierMacaquePrice").innerHTML;
 }
 
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CURSORPOINTERS ANIMATION
 function showClicker() {
   clickerNb = document.getElementById("tierClickerOwned").innerHTML;
   clickerNb = parseInt(clickerNb, 10);
@@ -445,7 +437,7 @@ function animateClickerToggle(clicker) {
 }
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// BUYING BUFFS
 function buyBuffBPC(buffName, buffPrice, buffPriceMultiplier, buffOwned) {
   if (bananas >= buffPrice) {
@@ -520,7 +512,7 @@ function updateBuffsPrices() {
 }
 
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// SAVE FUNCTION
 
 // TODO
