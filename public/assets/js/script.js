@@ -128,13 +128,15 @@ function cheat() {
   nbclicks = nbclicks + 50;
   document.getElementById("nbClicks").innerHTML = nbclicks;
   runAllChecks();
+  console.log("+10k bananas");
 }
 
 let cheatCode = new cheatcode("b, a, n, a, n, a", () => {
   let cheat = document.getElementById("cheat");
-  console.log(cheat);
+
   let cheatList = cheat.classList;
   cheatList.remove("unavailable");
+  console.log("Cheat mode activated");
 });
 
 cheatCode.start();
@@ -301,20 +303,21 @@ function unavailableClicks(notOwned, clicksToMake) {
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// BUYING TIERS
-function buyTier(
-  tierName,
-  tierPrice,
-  tierPriceMultiplier,
-  tierOwned,
-  tierMultiplier
-) {
+function buyTier(tierName, tierMultiplier) {
+  // fetching initial data
+  let tierPrice = document.getElementById(tierName + "Price").innerHTML;
+  let tierOwned = document.getElementById(tierName + "Owned").innerHTML;
+  let tierPriceMultiplier = document.getElementById(
+    tierName + "PriceMultiplier"
+  ).innerHTML;
+
   if (bananas >= tierPrice) {
     // updating owned number and stats
     tierOwned++;
     document.getElementById(tierName + "Owned").innerHTML = tierOwned;
     document.getElementById(tierName + "OwnedB").innerHTML = tierOwned;
     document.getElementById(tierName + "OwnedC").innerHTML = tierOwned;
-    tierProd = tierOwned * tierMultiplier;
+    let tierProd = tierOwned * tierMultiplier;
     document.getElementById(tierName + "Prod").innerHTML = tierProd;
     document.getElementById(tierName + "ProdB").innerHTML = tierProd;
 
@@ -323,9 +326,6 @@ function buyTier(
     document.getElementById("bananasNumber").innerHTML = bananas;
 
     // updating tier price
-    tierPriceMultiplier = document.getElementById(
-      tierName + "PriceMultiplier"
-    ).innerHTML;
     tierPrice = Math.round(tierPrice * tierPriceMultiplier);
     document.getElementById(tierName + "Price").innerHTML = tierPrice;
     updateTiersPrices();
@@ -337,13 +337,34 @@ function buyTier(
     console.log(tierPriceMultiplier);*/
 
     // updating bps
-    bps = calcBPS();
+    let bps = calcBPS();
     document.getElementById("bps").innerHTML = bps;
 
     // finally checking prices
     tiersPricesChecks();
     buffsPricesChecks();
     showClicker();
+  } else {
+    alert("Pas assez de bananes !");
+  }
+}
+
+function buyTier10(tierName, tierMultiplier) {
+  // calculating price x10
+  let tierPrice = document.getElementById(tierName + "Price").innerHTML;
+  let tierPriceMultiplier = document.getElementById(
+    tierName + "PriceMultiplier"
+  ).innerHTML;
+
+  tierPrice10 = tierPrice * tierPriceMultiplier;
+  for (m = 0; m < 10; m++) {
+    tierPrice10 = tierPrice10 * tierPriceMultiplier;
+  }
+
+  if (bananas > tierPrice10) {
+    for (let l = 1; l < 11; l++) {
+      buyTier(tierName, tierMultiplier);
+    }
   } else {
     alert("Pas assez de bananes !");
   }
@@ -363,22 +384,20 @@ function showClicker() {
 
   // adding visual clickers
   for (let j = 0; j < 18; j++) {
-    warpName = "w" + j;
-    warpGot = document.getElementById(warpName);
-
+    let warpName = "w" + j;
+    let warpGot = document.getElementById(warpName);
     if (clickerNb == warpGot.id.substring(1)) {
-      const warpGotList = warpGot.classList;
+      let warpGotList = warpGot.classList;
       warpGotList.remove("unavailable");
     }
   }
 
-  /*
   // showing a little explanation as to why there are no more new clickers displayed
   if (clickerNb > 17) {
-    enoughClickers = document.getElementById("enoughClickers");
-    const enoughClickersList = enoughClickers.classList;
+    let enoughClickers = document.getElementById("enoughClickers");
+    let enoughClickersList = enoughClickers.classList;
     enoughClickersList.remove("unavailable");
-  } */
+  }
 }
 
 function animateClicker() {
