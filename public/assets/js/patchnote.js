@@ -1,11 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// PATCHNOTE AND ROADMAP
 
-document.getElementById("version").innerHTML = "v0.7.0";
+document.getElementById("version").innerHTML = "v0.7.7";
 
 function patchNote() {
   alert(
     "CHANGELOG\n\n" +
+      "v0.7.7\n" +
+      "* Possibilité d'acheter les clickers par lots de 10" +
+      "* Nombreux fixes au CSS\n\n" +
       "v0.7.0\n" +
       "* Ambiance sonore !\n" +
       "* Ajout de stats\n" +
