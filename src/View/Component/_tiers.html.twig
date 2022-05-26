@@ -13,7 +13,11 @@
 				{% for clicker in clickers %}
 					<div class="buttonGroup tooltip">
 						<button id="{{clicker.name}}Button10" class="buy10Button greyed" onclick="buyTier10(step{{loop.index}}Name, step{{loop.index}}Multiplier); animateCSS('#{{clicker.name}}Button10', 'pulse');">
-							<p>x10</p>
+							<p>x 10</p>
+							<p class="displayPrice10">
+								<img src="assets/images/banane.png" width="15px" height="15px"/>
+								<span id="{{clicker.name}}Price10"></span>
+							</p>
 						</button>
 						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier(step{{loop.index}}Name, step{{loop.index}}Multiplier); animateCSS('#{{clicker.name}}Button', 'pulse');">
 							<div class="buttonPic">

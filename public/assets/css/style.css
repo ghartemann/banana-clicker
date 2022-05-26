@@ -29,10 +29,23 @@ body {
   background-position: center center;
 }
 
-.cheatButton {
+#cheat {
   position: absolute;
-  left: 10px;
-  top: 70px;
+  left: 90px;
+  top: 10px;
+}
+
+.cheatFlex {
+  display: flex;
+column-gap: 5px;
+}
+
+.cheatText {
+font-weight: bold;
+font-size: 8px;
+}
+
+.cheatButton {
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -158,6 +171,8 @@ body {
   display: flex;
   column-gap: 10px;
   align-items: center;
+  vertical-align: middle;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -179,11 +194,20 @@ body {
 
 .buy10Button {
   min-width: initial;
-  width: 20px;
-  height: 20px;
-  font-size: 9pt;
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 10px 15px 10px;
+  height: 100px;
+  width: 100px;
+  font-size: 13pt;
   margin-left: 0px;
-  margin-top: 0px;
+}
+
+.displayPrice10 {
+  display: flex;
 }
 
 .buttonPic {
@@ -216,16 +240,6 @@ body {
   color: rgba(255, 255, 255, 0.392);
 }
 
-.buy10Button {
-  order: 2;
-}
-
-.buy10Button {
-  min-width: initial;
-  width: 60px;
-  height: 60px;
-}
-
 /* BUFFS */
 .mainBuffsContainer {
   justify-content: right;
@@ -255,27 +269,6 @@ body {
 
 .greyedBuff:hover {
   background-color: var(--yellow-dark-transparent);
-}
-
-/* TIERS AND BUFFS */
-.unavailable {
-  display: none;
-}
-
-.greyed {
-  background-color: var(--green-dark-transparent);
-  color: var(--white-transparent);
-  cursor: initial;
-}
-
-.stats {
-  display: none;
-}
-
-.buffs,
-.tiers {
-  height: 100%;
-  overflow-y: scroll;
 }
 
 /* LEFT DIV */
@@ -360,6 +353,27 @@ footer {
   text-align: center;
   padding: 30px;
   font-size: 16pt;
+}
+
+/* TIERS AND BUFFS */
+.unavailable {
+  display: none;
+}
+
+.greyed {
+  background-color: var(--green-dark-transparent);
+  color: var(--white-transparent);
+  cursor: initial;
+}
+
+.stats {
+  display: none;
+}
+
+.buffs,
+.tiers {
+  height: 100%;
+  overflow-y: scroll;
 }
 
 /* MEDIA QUERIES */

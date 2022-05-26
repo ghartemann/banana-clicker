@@ -22,6 +22,10 @@ clickRate = 1;
 nbclicks = 0;
 restclicks = 1000000;
 
+// NUMBER OF CLICKERS AND BUFFS (will be used later)
+const nbTiers = document.querySelectorAll("#buyableTiers [id$=Button]");
+const nbBuffs = document.querySelectorAll("#buyableBuffs [id$=Button]");
+
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// TIERS PRICES
@@ -196,24 +200,25 @@ function runAllChecks() {
 
 // runs individual checks, couls be optimized with a loop
 function tiersPricesChecks() {
-  tierPriceCheck(step1Name, step1Price);
-  tierPriceCheck(step2Name, step2Price);
-  tierPriceCheck(step3Name, step3Price);
-  tierPriceCheck(step4Name, step4Price);
+  tierPriceCheck(step1Name);
+  tierPriceCheck(step2Name);
+  tierPriceCheck(step3Name);
+  tierPriceCheck(step4Name);
 }
 
 // runs a specific check and greys out the related button
-function tierPriceCheck(tierName, tierPrice) {
-  let tierNameButton = document.getElementById(tierName + "Button");
-  let tierNameButtonList = tierNameButton.classList;
+function tierPriceCheck(tierName) {
+  let tierPrice = document.getElementById(tierName + "Price").innerHTML;
+  let tierButton = document.getElementById(tierName + "Button");
+  let tierButtonList = tierButton.classList;
 
   // Graying out prices
   if (tierPrice > bananas) {
-    tierNameButton.disabled = true;
-    tierNameButtonList.add("greyed");
+    tierButton.disabled = true;
+    tierButtonList.add("greyed");
   } else {
-    tierNameButton.disabled = false;
-    tierNameButtonList.remove("greyed");
+    tierButton.disabled = false;
+    tierButtonList.remove("greyed");
   }
 }
 
@@ -234,21 +239,16 @@ function tierPriceCheck10(tierName) {
   let tierNameButton10 = document.getElementById(tierName + "Button10");
   let tierNameButtonList10 = tierNameButton10.classList;
 
-  let tierPrice10 = tierPrice * tierPriceMultiplier;
-  for (let m = 0; m < 9; m++) {
-    tierPrice10 = tierPrice10 * tierPriceMultiplier;
-  }
-  tierPrice10 = Math.round(tierPrice10);
+  let tierPrice10 = calcPrice10(tierPrice, tierPriceMultiplier);
+  document.getElementById(tierName + "Price10").innerHTML = tierPrice10;
 
   // Graying out prices
   if (tierPrice10 > bananas) {
     tierNameButton10.disabled = true;
     tierNameButtonList10.add("greyed");
-    console.log("hidden");
   } else {
     tierNameButton10.disabled = false;
     tierNameButtonList10.remove("greyed");
-    console.log("shown");
   }
 }
 
@@ -276,6 +276,15 @@ function unavailableCheck() {
   unavailable(step3Owned, buffBPS1Name);
   unavailableClicks(buffBPC1Name, 100);
   unavailableClicks(buffBPC2Name, 500);
+}
+
+function calcPrice10(price, priceMultiplier) {
+  let price10 = 0;
+  for (let m = 0; m < 10; m++) {
+    price10 = price10 + price * priceMultiplier;
+  }
+  price10 = Math.round(price10);
+  return price10;
 }
 
 // hides everything until there are at least 30 clicks
@@ -372,13 +381,10 @@ function buyTier10(tierName, tierMultiplier) {
     tierName + "PriceMultiplier"
   ).innerHTML;
 
-  let tierPrice10 = tierPrice * tierPriceMultiplier;
-  for (let m = 0; m < 9; m++) {
-    tierPrice10 = tierPrice10 * tierPriceMultiplier;
-  }
-  tierPrice10 = Math.round(tierPrice10);
+  let tierPrice10 = calcPrice10(tierPrice, tierPriceMultiplier);
+  document.getElementById(tierName + "Price10").innerHTML = tierPrice10;
 
-  if (bananas > tierPrice10) {
+  if (tierPrice10 < bananas) {
     for (let l = 0; l < 10; l++) {
       buyTier(tierName, tierMultiplier);
     }
