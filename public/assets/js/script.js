@@ -211,6 +211,7 @@ function calcBPC() {
 // CHECKING PRICES AND GREYING OUT BUTTONS
 function runAllChecks() {
   tiersPricesChecks();
+  tiersPricesChecks10();
   buffsPricesChecks();
   unavailableCheck();
 }
@@ -223,17 +224,45 @@ function tiersPricesChecks() {
 }
 
 function tierPriceCheck(tierName, tierPrice) {
+  let tierNameButton = document.getElementById(tierName + "Button");
+  let tierNameButtonList = tierNameButton.classList;
+
   // Graying out prices
   if (tierPrice > bananas) {
-    tierNameButton = document.getElementById(tierName + "Button");
     tierNameButton.disabled = true;
-    const tierNameButtonList = tierNameButton.classList;
     tierNameButtonList.add("greyed");
   } else {
-    tierNameButton = document.getElementById(tierName + "Button");
     tierNameButton.disabled = false;
-    const tierNameButtonList = tierNameButton.classList;
     tierNameButtonList.remove("greyed");
+  }
+}
+
+function tiersPricesChecks10() {
+  tierPriceCheck10(step1Name);
+  tierPriceCheck10(step2Name);
+  tierPriceCheck10(step3Name);
+  tierPriceCheck10(step4Name);
+}
+
+function tierPriceCheck10(tierName) {
+  let tierPrice = document.getElementById(tierName + "Price").innerHTML;
+  let tierPriceMultiplier = document.getElementById(
+    tierName + "PriceMultiplier"
+  ).innerHTML;
+  let tierNameButton10 = document.getElementById(tierName + "Button10");
+  let tierNameButtonList10 = tierNameButton10.classList;
+
+  let tierPrice10 = tierPrice * tierPriceMultiplier;
+  for (m = 0; m < 10; m++) {
+    tierPrice10 = tierPrice10 * tierPriceMultiplier;
+  }
+  // Graying out prices
+  if (tierPrice10 > bananas) {
+    tierNameButton10.disabled = true;
+    tierNameButtonList10.add("greyed");
+  } else {
+    tierNameButton10.disabled = false;
+    tierNameButtonList10.remove("greyed");
   }
 }
 
@@ -244,15 +273,14 @@ function buffsPricesChecks() {
 }
 
 function buffPriceCheck(buffName, buffPrice) {
+  let buffNameButton = document.getElementById(buffName + "Button");
+  let buffNameButtonList = buffNameButton.classList;
+
   if (buffPrice > bananas) {
-    buffNameButton = document.getElementById(buffName + "Button");
     buffNameButton.disabled = true;
-    const buffNameButtonList = buffNameButton.classList;
     buffNameButtonList.add("greyedBuff");
   } else {
-    buffNameButton = document.getElementById(buffName + "Button");
     buffNameButton.disabled = false;
-    const buffNameButtonList = buffNameButton.classList;
     buffNameButtonList.remove("greyedBuff");
   }
 }
@@ -337,7 +365,7 @@ function buyTier(tierName, tierMultiplier) {
     console.log(tierPriceMultiplier);*/
 
     // updating bps
-    let bps = calcBPS();
+    bps = calcBPS();
     document.getElementById("bps").innerHTML = bps;
 
     // finally checking prices

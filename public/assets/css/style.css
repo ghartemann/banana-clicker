@@ -162,7 +162,7 @@ body {
 }
 
 .buyButton,
-.buffButton {
+.buffButton, .buy10Button {
   display: flex;
   background-color: var(--green-dark);
   padding: 15px 15px 15px 20px;
@@ -175,6 +175,12 @@ body {
   margin-left: 10px;
   margin-top: 10px;
   --animate-duration: 0.1s;
+}
+
+.buy10Button {
+  min-width: initial;
+  width: 60px;
+  height: 60px;
 }
 
 .buttonPic {
