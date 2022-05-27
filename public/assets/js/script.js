@@ -13,8 +13,8 @@ console.log(
 
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////// DEFAULT VALUES
-bananas = 0;
+/////////// DEFAULT VALUES AND GAMA INITIALIZATION
+let bananas = 0;
 totalBananas = 0;
 bps = 0;
 bpc = 1;
@@ -28,12 +28,63 @@ const nbBuffs = document.querySelectorAll("#buyableBuffs [id$=Button]");
 
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////// SAVE FUNCTION
+// localStorage.clear();
+
+let tiersArray = ["Clicker", "Tree", "Gorilla", "Macaque"];
+let buffsBPCArray = ["Cursor", "MegaCursor"];
+let buffsBPSArray = ["CPU"];
+
+function saveTiers() {
+  localStorage.setItem("savedState", true);
+  saveOneTier("tierClicker");
+  saveOneTier("tierTree");
+  saveOneTier("tierGorilla");
+  saveOneTier("tierMacaque");
+}
+
+function saveOneTier(tierName) {
+  let tierValue = document.getElementById(tierName + "Owned").innerHTML;
+  console.log(tierValue);
+  localStorage.setItem(tierName + "Saved", tierValue);
+}
+
+function saveToLocalStorage() {
+  saveTiers();
+  localStorage.setItem("nbClicks", nbClicks.innerHTML);
+  localStorage.setItem("bananas", bananas);
+}
+
+function getAllSaved() {
+  getAllSavedTiers();
+  let bananas = localStorage.getItem("bananas");
+  document.getElementById("bananasNumber").innerHTML = bananas;
+}
+
+function getAllSavedTiers() {
+  getSavedTiers("tierClicker");
+}
+
+function getSavedTiers(tierName) {
+  let savedTier = localStorage.getItem(tierName + "Saved");
+  document.getElementById(tierName + "Owned").innerHTML = savedTier;
+  document.getElementById(tierName + "OwnedB").innerHTML = savedTier;
+  document.getElementById(tierName + "OwnedC").innerHTML = savedTier;
+}
+
+if (localStorage.getItem("savedState") != null) {
+  getAllSaved();
+}
+console.log(localStorage);
+
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// TIERS PRICES
 
 // Clicker
 step1Name = "tierClicker";
-step1Owned = document.getElementById("tierClickerOwned").innerHTML;
-step1Price = document.getElementById("tierClickerPrice").innerHTML;
+// step1Owned = document.getElementById("tierClickerOwned").innerHTML;
+// step1Price = document.getElementById("tierClickerPrice").innerHTML;
 step1Multiplier = document.getElementById("tierClickerMultiplier").innerHTML;
 step1PriceMultiplier = document.getElementById(
   "tierClickerPriceMultiplier"
@@ -42,7 +93,7 @@ step1PriceMultiplier = document.getElementById(
 // Bananier
 step2Name = "tierTree";
 step2Owned = document.getElementById("tierTreeOwned").innerHTML;
-step2Price = document.getElementById("tierTreePrice").innerHTML;
+// step2Price = document.getElementById("tierTreePrice").innerHTML;
 step2Multiplier = document.getElementById("tierTreeMultiplier").innerHTML;
 step2PriceMultiplier = document.getElementById(
   "tierTreePriceMultiplier"
@@ -51,7 +102,7 @@ step2PriceMultiplier = document.getElementById(
 // Gorilla
 step3Name = "tierGorilla";
 step3Owned = document.getElementById("tierGorillaOwned").innerHTML;
-step3Price = document.getElementById("tierGorillaPrice").innerHTML;
+// step3Price = document.getElementById("tierGorillaPrice").innerHTML;
 step3Multiplier = document.getElementById("tierGorillaMultiplier").innerHTML;
 step3PriceMultiplier = document.getElementById(
   "tierGorillaPriceMultiplier"
@@ -60,7 +111,7 @@ step3PriceMultiplier = document.getElementById(
 // Macaque
 step4Name = "tierMacaque";
 step4Owned = document.getElementById("tierMacaqueOwned").innerHTML;
-step4Price = document.getElementById("tierMacaquePrice").innerHTML;
+// step4Price = document.getElementById("tierMacaquePrice").innerHTML;
 step4Multiplier = document.getElementById("tierMacaqueMultiplier").innerHTML;
 step4PriceMultiplier = document.getElementById(
   "tierMacaquePriceMultiplier"
@@ -136,10 +187,12 @@ function clickUp() {
 }
 
 function perSecond() {
+  let bps = calcBPS();
   updateBananas(bps);
   updateTotalBananas(bps);
   runAllChecks();
   animateClicker();
+  saveToLocalStorage();
 }
 
 function updateNbClicks() {
@@ -162,20 +215,21 @@ function updateTotalBananas(toAdd) {
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CALC BPS AND BPC
-function calcBPSDetail(multiplier, owned) {
-  prod = multiplier * owned;
+function calcBPS() {
+  let step1Owned = document.getElementById(step1Name + "Owned").innerHTML;
+  prod = calcBPSDetail(step1Multiplier, step1Owned);
+  let step2Owned = document.getElementById(step2Name + "Owned").innerHTML;
+  prod = prod + calcBPSDetail(step2Multiplier, step2Owned);
+  let step3Owned = document.getElementById(step3Name + "Owned").innerHTML;
+  prod = prod + calcBPSDetail(step3Multiplier, step3Owned);
+  let step4Owned = document.getElementById(step4Name + "Owned").innerHTML;
+  prod = prod + calcBPSDetail(step4Multiplier, step4Owned);
+  document.getElementById("bps").innerHTML = prod;
   return prod;
 }
 
-function calcBPS() {
-  step1Owned = document.getElementById(step1Name + "Owned").innerHTML;
-  prod = calcBPSDetail(step1Multiplier, step1Owned);
-  step2Owned = document.getElementById(step2Name + "Owned").innerHTML;
-  prod = prod + calcBPSDetail(step2Multiplier, step2Owned);
-  step3Owned = document.getElementById(step3Name + "Owned").innerHTML;
-  prod = prod + calcBPSDetail(step3Multiplier, step3Owned);
-  step4Owned = document.getElementById(step4Name + "Owned").innerHTML;
-  prod = prod + calcBPSDetail(step4Multiplier, step4Owned);
+function calcBPSDetail(multiplier, owned) {
+  prod = multiplier * owned;
   return prod;
 }
 
@@ -363,8 +417,7 @@ function buyTier(tierName, tierMultiplier) {
     console.log(tierPriceMultiplier);*/
 
     // updating bps
-    bps = calcBPS();
-    document.getElementById("bps").innerHTML = bps;
+    calcBPS();
 
     // finally checking prices
     showClicker();
@@ -501,8 +554,7 @@ function buyBuffBPS(
     document.getElementById(step3Name + "Multiplier").innerHTML =
       step3Multiplier;
     // updating bps
-    bps = calcBPS();
-    document.getElementById("bps").innerHTML = bps;
+    calcBPS();
     // finally checking prices
     tiersPricesChecks();
     buffsPricesChecks();
@@ -516,9 +568,3 @@ function updateBuffsPrices() {
   buffBPC2Price = document.getElementById("buffMegaCursorPrice").innerHTML;
   buffBPS1Price = document.getElementById("buffCPUPrice").innerHTML;
 }
-
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////// SAVE FUNCTION
-
-// TODO
