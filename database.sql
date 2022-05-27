@@ -10,14 +10,14 @@ create table clickers
     price            int         null,
     multiplier       float       null,
     price_multiplier float       null,
-    `desc`           text        null
+    description           text        null
 );
 
-insert into bananaclicker.clickers (id, name, display_name, img, owned, price, multiplier, price_multiplier, desc)
-values  (1, 'tierClicker', 'autoclicker', 'hand.png', 0, 50, 1, 1.16, 'Un curseur qui clique tout seul. C''est pas formidable, ça ?'),
-        (2, 'tierTree', 'bananier', 'leaf.png', 0, 510, 11, 1.26, 'Un bananier tout ce qu''il y a de plus classique. Avec un sacré rendement tout de même.'),
-        (3, 'tierGorilla', 'gorille', 'gorilla.png', 0, 1420, 79, 1.3, 'Un gorille qui produit des bananes. Comment ? Pourquoi ? Ne me demandez pas.'),
-        (4, 'tierMacaque', 'macaque', 'macaque.png', 0, 3800, 166, 1.4, 'Un macaque qui fait à peu près la même chose que le gorille, mais beaucoup plus efficacement.');
+insert into clickers (id, name, display_name, img, owned, price, multiplier, price_multiplier, description)
+values  (1, 'tierClicker', 'autoclicker', 'hand.png', 0, 40, 1, 1.15, 'Un curseur qui clique tout seul. En plus on le voit faire. C''est pas formidable, ça ?'),
+        (2, 'tierTree', 'bananier', 'leaf.png', 0, 200, 7, 1.15, 'Un bananier qui en a vu d''autres, mais somme toute assez classique. Avec un sacré rendement tout de même.'),
+        (3, 'tierGorilla', 'gorille', 'gorilla.png', 0, 1200, 47, 1.15, 'Un gorille qui produit des bananes. Comment ? Pourquoi ? Écoutez je n''en sais rien, il le fait et puis c''est tout.'),
+        (4, 'tierMacaque', 'macaque', 'macaque.png', 0, 11000, 260, 1.15, 'Un macaque qui fait à peu près la même chose que le gorille, mais de façon remarquablement plus efficace.');
 
 
 
@@ -32,13 +32,13 @@ create table buffsBPC
     owned            int         null,
     price            int         null,
     multiplier       float       null,
-    price_multiplier float       null
-)
-    auto_increment = 3;
+    price_multiplier float       null,
+    description           text        null
+);
 
-insert into buffsBPC (id, name, display_name, img, owned, price, multiplier, price_multiplier)
-values  (1, 'buffCursor', 'Meilleur curseur', 'cursor.png', 0, 100, 1, 1.31),
-        (2, 'buffMegaCursor', 'Curseur encore plus fort', 'cursor2.png', 0, 10000, 10, 1.21);
+insert into buffsBPC (id, name, display_name, img, owned, price, multiplier, price_multiplier, description)
+values  (1, 'buffCursor', 'Meilleur curseur', 'cursor.png', 0, 100, 1, 1.19, 'Votre curseur mais en mieux afin de cliquer toujours plus efficacement.'),
+        (2, 'buffMegaCursor', 'Curseur encore plus fort', 'cursor2.png', 0, 10000, 10, 1.19, 'VOtre curseur mais en vraiment, vraiment mieux. Y a pas à dire, ça fait toute la différence.');
 
 
 
@@ -55,8 +55,9 @@ create table buffsBPS
     multiplier       float       null,
     price_multiplier float       null,
     `modifies`       varchar(50) null,
-    modifies_name    varchar(50) null
+    modifies_name    varchar(50) null,
+    description           text        null
 );
 
-insert into buffsBPS (id, name, display_name, img, owned, price, multiplier, price_multiplier, modifies, modifies_name)
-values  (1, 'buffCPU', 'Robotiser les gorilles', 'cpu.png', 0, 3333, 5, 1.34, 'Gorilla', 'gorille');
+insert into buffsBPS (id, name, display_name, img, owned, price, multiplier, price_multiplier, modifies, modifies_name, description)
+values  (1, 'buffCPU', 'Robotiser les gorilles', 'cpu.png', 0, 3333, 1.1, 1.15, 'Gorilla', 'gorille', 'Les gorilles c''est bien, mais les robots-gorilles c''est mieux. On vous propose profiter de cette remarquable transformation pour une somme assez réduite.');
