@@ -11,10 +11,10 @@ https://bananaclicker.ghartemann.fr
 Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, il n'y a pas de fin et les prix sont incrémentaux.
 
 ## Roadmap
-* Ajout de nombreux autres clickers et buffs
+* WIP : Sauvegarde des données (l'actualisation réinitialise la partie actuellement)
+* WIP : Ajout de nombreux autres clickers et buffs
 * Migration sous Symfony
 * Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)
-* Sauvegarde des données (l'actualisation réinitialise la partie actuellement)
 * Export et import de sauvegardes
 * Rendre cette fenêtre jolie (sans utiliser une alert par exemple)
 * Devenir millionnaire grâce à la publicité
