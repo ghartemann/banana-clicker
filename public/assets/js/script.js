@@ -443,7 +443,6 @@ function buyTier(tierName) {
     // updating tier price
     tierPrice = Math.round(tierPrice * tierPriceMultiplier);
     document.getElementById(tierName + "Price").innerHTML = tierPrice;
-    // updateTiersPrices();
 
     // updating bps
     calcBPS();
@@ -481,13 +480,6 @@ function buyTier10(tierName) {
     alert("Pas assez de bananes !");
   }
 }
-
-// function updateTiersPrices() {
-//   step1Price = document.getElementById("tierClickerPrice").innerHTML;
-//   step2Price = document.getElementById("tierTreePrice").innerHTML;
-//   step3Price = document.getElementById("tierGorillaPrice").innerHTML;
-//   step4Price = document.getElementById("tierMacaquePrice").innerHTML;
-// }
 
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
