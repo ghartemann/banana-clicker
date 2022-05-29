@@ -250,7 +250,7 @@ body {
   background-color: var(--yellow-dark);
 }
 
-.buyButton:hover {
+.buyButton:hover, .buy10Button:hover {
   background-color: var(--yellow-dark);
 }
 

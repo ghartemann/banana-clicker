@@ -1,5 +1,3 @@
-console.log(localStorage);
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// MISC
 
@@ -120,6 +118,7 @@ function loadAllSaved() {
   loadAllSavedTiers();
   loadAllStats();
   runAllChecks();
+  unavailableFirst();
 }
 
 function loadAllSavedTiers() {
@@ -279,6 +278,10 @@ function tiersPricesChecks() {
 
 // runs a specific check and greys out the related button
 function tierPriceCheck(tierName) {
+  let bananas = parseInt(
+    document.getElementById("bananasNumber").innerHTML,
+    10
+  );
   let tierPrice = document.getElementById(tierName + "Price").innerHTML;
   let tierButton = document.getElementById(tierName + "Button");
   let tierButtonList = tierButton.classList;
@@ -302,6 +305,10 @@ function tiersPricesChecks10() {
 
 // runs a specific check for x10 button and greys it out
 function tierPriceCheck10(tierName) {
+  let bananas = parseInt(
+    document.getElementById("bananasNumber").innerHTML,
+    10
+  );
   let tierPrice = document.getElementById(tierName + "Price").innerHTML;
   let tierPriceMultiplier = document.getElementById(
     tierName + "PriceMultiplier"
@@ -329,6 +336,10 @@ function buffsPricesChecks() {
 }
 
 function buffPriceCheck(buffName, buffPrice) {
+  let bananas = parseInt(
+    document.getElementById("bananasNumber").innerHTML,
+    10
+  );
   let buffNameButton = document.getElementById(buffName + "Button");
   let buffNameButtonList = buffNameButton.classList;
 
@@ -402,6 +413,10 @@ function unavailableClicks(notOwned, clicksToMake) {
 ////////// BUYING TIERS
 function buyTier(tierName) {
   // fetching initial data
+  let bananas = parseInt(
+    document.getElementById("bananasNumber").innerHTML,
+    10
+  );
   let tierMultiplier = document.getElementById(
     tierName + "Multiplier"
   ).innerHTML;
@@ -443,6 +458,10 @@ function buyTier(tierName) {
 
 function buyTier10(tierName) {
   // calculating price x10
+  let bananas = parseInt(
+    document.getElementById("bananasNumber").innerHTML,
+    10
+  );
   let tierMultiplier = document.getElementById(
     tierName + "Multiplier"
   ).innerHTML;
@@ -518,6 +537,10 @@ function animateClickerToggle(clicker) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// BUYING BUFFS
 function buyBuffBPC(buffName, buffPrice, buffPriceMultiplier, buffOwned) {
+  let bananas = parseInt(
+    document.getElementById("bananasNumber").innerHTML,
+    10
+  );
   if (bananas >= buffPrice) {
     // changing stats
     buffOwned++;
@@ -552,6 +575,10 @@ function buyBuffBPS(
   console.log(buffPriceMultiplier);
   console.log(buffOwned);
   console.log(buffMultiplier);
+  let bananas = parseInt(
+    document.getElementById("bananasNumber").innerHTML,
+    10
+  );
   if (bananas >= buffPrice) {
     // changing stats
     buffOwned++;
