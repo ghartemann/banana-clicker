@@ -1,10 +1,7 @@
+console.log(localStorage);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// MISC
-
-// ask user if they're sure they actually want to quit, which is understandable but also a bit sad
-/* window.addEventListener("beforeunload", (event) => {
-  event.returnValue = `Are you sure you want to leave?`;
-}); */
 
 // displaying a fun little message
 console.log(
@@ -23,6 +20,10 @@ clickRate = 1;
 nbclicks = 0;
 restclicks = 1000000;
 
+let tiersArray = ["Clicker", "Tree", "Gorilla", "Macaque"];
+let buffsBPCArray = ["Cursor", "MegaCursor"];
+let buffsBPSArray = ["CPU"];
+
 // NUMBER OF CLICKERS AND BUFFS (will be used later)
 const nbTiers = document.querySelectorAll("#buyableTiers [id$=Button]");
 const nbBuffs = document.querySelectorAll("#buyableBuffs [id$=Button]");
@@ -31,41 +32,7 @@ const nbBuffs = document.querySelectorAll("#buyableBuffs [id$=Button]");
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// TIERS PRICES
 
-// Clicker
-step1Name = "tierClicker";
-// step1Owned = document.getElementById("tierClickerOwned").innerHTML;
-// step1Price = document.getElementById("tierClickerPrice").innerHTML;
-step1Multiplier = document.getElementById("tierClickerMultiplier").innerHTML;
-step1PriceMultiplier = document.getElementById(
-  "tierClickerPriceMultiplier"
-).innerHTML;
-
-// Bananier
-step2Name = "tierTree";
-step2Owned = document.getElementById("tierTreeOwned").innerHTML;
-// step2Price = document.getElementById("tierTreePrice").innerHTML;
-step2Multiplier = document.getElementById("tierTreeMultiplier").innerHTML;
-step2PriceMultiplier = document.getElementById(
-  "tierTreePriceMultiplier"
-).innerHTML;
-
-// Gorilla
-step3Name = "tierGorilla";
-step3Owned = document.getElementById("tierGorillaOwned").innerHTML;
-// step3Price = document.getElementById("tierGorillaPrice").innerHTML;
-step3Multiplier = document.getElementById("tierGorillaMultiplier").innerHTML;
-step3PriceMultiplier = document.getElementById(
-  "tierGorillaPriceMultiplier"
-).innerHTML;
-
-// Macaque
-step4Name = "tierMacaque";
-step4Owned = document.getElementById("tierMacaqueOwned").innerHTML;
-// step4Price = document.getElementById("tierMacaquePrice").innerHTML;
-step4Multiplier = document.getElementById("tierMacaqueMultiplier").innerHTML;
-step4PriceMultiplier = document.getElementById(
-  "tierMacaquePriceMultiplier"
-).innerHTML;
+// old and almost useless code I'll delete soon
 
 /////////// BUFF BPC PRICES
 
@@ -103,22 +70,27 @@ buffBPS1PriceMultiplier = document.getElementById(
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// SAVE FUNCTION
-// localStorage.clear();
+function resetSave() {
+  // reset doesn't work if it waits for confirmation, will fix it later
+  // if (
+  //   window.confirm(
+  //     "ATTENTION : toutes les bananes seront perdues et les gorilles devront s'inscrire à Pôle Emploi. Vous en assumez les conséquences ?"
+  //   )
+  // ) {
+  localStorage.clear();
+  location.reload();
+  // }
+}
 
 if (localStorage.getItem("savedState") != null) {
   loadAllSaved();
 }
 
-let tiersArray = ["Clicker", "Tree", "Gorilla", "Macaque"];
-let buffsBPCArray = ["Cursor", "MegaCursor"];
-let buffsBPSArray = ["CPU"];
-
 function saveTiers() {
   localStorage.setItem("savedState", true);
-  saveOneTier("tierClicker");
-  saveOneTier("tierTree");
-  saveOneTier("tierGorilla");
-  saveOneTier("tierMacaque");
+  for (let tier of tiersArray) {
+    saveOneTier("tier" + tier);
+  }
 }
 
 function saveOneTier(tierName) {
@@ -127,21 +99,16 @@ function saveOneTier(tierName) {
 }
 
 function saveStats() {
-  // saving nbclicks
-  let nbClicks = document.getElementById("nbClicks").innerHTML;
-  localStorage.setItem("nbClicks", nbClicks);
-  // saving bananas
-  let bananas = document.getElementById("bananasNumber").innerHTML;
-  localStorage.setItem("bananas", bananas);
-  // saving bps
-  let bps = document.getElementById("bps").innerHTML;
-  localStorage.setItem("bps", bps);
-  // saving total bananas
-  let totalBananas = document.getElementById("totalBananasNumber").innerHTML;
-  localStorage.setItem("totalBananas", totalBananas);
-  // saving restclicks
-  let restClicks = document.getElementById("restClicks").innerHTML;
-  localStorage.setItem("restClicks", restClicks);
+  saveOneStat("nbClicks", "nbClicks");
+  saveOneStat("bananasNumber", "bananas");
+  saveOneStat("bps", "bps");
+  saveOneStat("totalBananasNumber", "totalBananas");
+  saveOneStat("restClicks", "restClicks");
+}
+
+function saveOneStat(htmlid, localstoragename) {
+  let toSave = document.getElementById(htmlid).innerHTML;
+  localStorage.setItem(localstoragename, toSave);
 }
 
 function saveToLocalStorage() {
@@ -156,10 +123,9 @@ function loadAllSaved() {
 }
 
 function loadAllSavedTiers() {
-  loadSavedTiers("tierClicker");
-  loadSavedTiers("tierTree");
-  loadSavedTiers("tierGorilla");
-  loadSavedTiers("tierMacaque");
+  for (let tier of tiersArray) {
+    loadSavedTiers("tier" + tier);
+  }
 }
 
 function loadSavedTiers(tierName) {
@@ -170,19 +136,22 @@ function loadSavedTiers(tierName) {
 }
 
 function loadAllStats() {
+  // don't know why the first call to loadOneStat doesn't work, I'll fix it later I guess
   bananas = parseInt(localStorage.getItem("bananas"), 10);
   document.getElementById("bananasNumber").innerHTML = bananas;
-  nbclicks = parseInt(localStorage.getItem("nbClicks"), 10);
-  document.getElementById("nbClicks").innerHTML = nbclicks;
-  bps = parseInt(localStorage.getItem("bps"), 10);
-  document.getElementById("bps").innerHTML = bps;
-  restclicks = parseInt(localStorage.getItem("restClicks"), 10);
-  document.getElementById("restClicks").innerHTML = restclicks;
-  totalBananas = parseInt(localStorage.getItem("totalBananas"), 10);
-  document.getElementById("totalBananasNumber").innerHTML = totalBananas;
+  // loadOneStat("bananas", "bananasNumber");
+  loadOneStat("nbClicks", "nbClicks");
+  loadOneStat("bps", "bps");
+  loadOneStat("restClicks", "restClicks");
+  let total = parseInt(localStorage.getItem("totalBananas"), 10);
+  document.getElementById("totalBananasNumber").innerHTML = total;
+  // loadOneStat("totalBananas", "totalBananasNumber");
 }
 
-console.log(localStorage);
+function loadOneStat(localstoragename, htmlid) {
+  toLoad = parseInt(localStorage.getItem(localstoragename), 10);
+  document.getElementById(htmlid).innerHTML = toLoad;
+}
 
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -231,6 +200,7 @@ function perSecond() {
 }
 
 function updateNbClicks() {
+  let nbclicks = parseInt(document.getElementById("nbClicks").innerHTML, 10);
   nbclicks++;
   restclicks--;
   document.getElementById("nbClicks").innerHTML = nbclicks;
@@ -238,11 +208,19 @@ function updateNbClicks() {
 }
 
 function updateBananas(toAdd) {
+  let bananas = parseInt(
+    document.getElementById("bananasNumber").innerHTML,
+    10
+  );
   bananas = bananas + toAdd;
   document.getElementById("bananasNumber").innerHTML = bananas;
 }
 
 function updateTotalBananas(toAdd) {
+  let totalBananas = parseInt(
+    document.getElementById("totalBananasNumber").innerHTML,
+    10
+  );
   totalBananas = totalBananas + toAdd;
   document.getElementById("totalBananasNumber").innerHTML = totalBananas;
 }
@@ -250,15 +228,18 @@ function updateTotalBananas(toAdd) {
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CALC BPS AND BPC
+
 function calcBPS() {
-  let step1Owned = document.getElementById(step1Name + "Owned").innerHTML;
-  prod = calcBPSDetail(step1Multiplier, step1Owned);
-  let step2Owned = document.getElementById(step2Name + "Owned").innerHTML;
-  prod = prod + calcBPSDetail(step2Multiplier, step2Owned);
-  let step3Owned = document.getElementById(step3Name + "Owned").innerHTML;
-  prod = prod + calcBPSDetail(step3Multiplier, step3Owned);
-  let step4Owned = document.getElementById(step4Name + "Owned").innerHTML;
-  prod = prod + calcBPSDetail(step4Multiplier, step4Owned);
+  prod = 0;
+
+  for (let tier of tiersArray) {
+    let tierOwned = document.getElementById("tier" + tier + "Owned").innerHTML;
+    let tierMultiplier = document.getElementById(
+      "tier" + tier + "Multiplier"
+    ).innerHTML;
+    prod = prod + calcBPSDetail(tierMultiplier, tierOwned);
+  }
+
   document.getElementById("bps").innerHTML = prod;
   return prod;
 }
@@ -268,6 +249,7 @@ function calcBPSDetail(multiplier, owned) {
   return prod;
 }
 
+// TO REFACTOR
 function calcBPC() {
   buffBPC1Owned = document.getElementById(buffBPC1Name + "Owned").innerHTML;
   buffBPC2Owned = document.getElementById(buffBPC2Name + "Owned").innerHTML;
@@ -280,6 +262,7 @@ function calcBPC() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CHECKING PRICES AND GREYING OUT BUTTONS
 // runs all checks (for greying buttons)
+
 function runAllChecks() {
   tiersPricesChecks();
   tiersPricesChecks10();
@@ -289,10 +272,9 @@ function runAllChecks() {
 
 // runs individual checks, couls be optimized with a loop
 function tiersPricesChecks() {
-  tierPriceCheck("tierClicker");
-  tierPriceCheck("tierTree");
-  tierPriceCheck("tierGorilla");
-  tierPriceCheck("tierMacaque");
+  for (let tier of tiersArray) {
+    tierPriceCheck("tier" + tier);
+  }
 }
 
 // runs a specific check and greys out the related button
@@ -313,10 +295,9 @@ function tierPriceCheck(tierName) {
 
 // runs individual checks for x10 buttons, couls be optimized with a loop
 function tiersPricesChecks10() {
-  tierPriceCheck10("tierClicker");
-  tierPriceCheck10("tierTree");
-  tierPriceCheck10("tierGorilla");
-  tierPriceCheck10("tierMacaque");
+  for (let tier of tiersArray) {
+    tierPriceCheck10("tier" + tier);
+  }
 }
 
 // runs a specific check for x10 button and greys it out
@@ -361,8 +342,8 @@ function buffPriceCheck(buffName, buffPrice) {
 }
 
 function unavailableCheck() {
-  step2Owned = document.getElementById(step2Name + "Owned").innerHTML;
-  unavailable(step3Owned, buffBPS1Name);
+  // step2Owned = document.getElementById(step2Name + "Owned").innerHTML;
+  unavailable("tierGorillaOwned", buffBPS1Name);
   unavailableClicks(buffBPC1Name, 100);
   unavailableClicks(buffBPC2Name, 500);
 }
@@ -378,7 +359,8 @@ function calcPrice10(price, priceMultiplier) {
 
 // hides everything until there are at least 30 clicks
 function unavailableFirst() {
-  if (bananas >= 30) {
+  let tierClickerOwned = document.getElementById("tierClickerOwned").innerHTML;
+  if (bananas >= 30 || tierClickerOwned >= 1) {
     notAvailable = document.getElementById("buyableTiers");
     const notAvailableList = notAvailable.classList;
     notAvailableList.remove("unavailable");
@@ -418,8 +400,11 @@ function unavailableClicks(notOwned, clicksToMake) {
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// BUYING TIERS
-function buyTier(tierName, tierMultiplier) {
+function buyTier(tierName) {
   // fetching initial data
+  let tierMultiplier = document.getElementById(
+    tierName + "Multiplier"
+  ).innerHTML;
   let tierPrice = document.getElementById(tierName + "Price").innerHTML;
   let tierOwned = document.getElementById(tierName + "Owned").innerHTML;
   let tierPriceMultiplier = document.getElementById(
@@ -443,13 +428,7 @@ function buyTier(tierName, tierMultiplier) {
     // updating tier price
     tierPrice = Math.round(tierPrice * tierPriceMultiplier);
     document.getElementById(tierName + "Price").innerHTML = tierPrice;
-    updateTiersPrices();
-
-    /* updating tier price multiplier
-    tierPriceMultiplier = tierPriceMultiplier * 0.999;
-    document.getElementById(tierName + "PriceMultiplier").innerHTML =
-      tierPriceMultiplier;
-    console.log(tierPriceMultiplier);*/
+    // updateTiersPrices();
 
     // updating bps
     calcBPS();
@@ -462,8 +441,11 @@ function buyTier(tierName, tierMultiplier) {
   }
 }
 
-function buyTier10(tierName, tierMultiplier) {
+function buyTier10(tierName) {
   // calculating price x10
+  let tierMultiplier = document.getElementById(
+    tierName + "Multiplier"
+  ).innerHTML;
   let tierPrice = document.getElementById(tierName + "Price").innerHTML;
   let tierPriceMultiplier = document.getElementById(
     tierName + "PriceMultiplier"
@@ -481,12 +463,12 @@ function buyTier10(tierName, tierMultiplier) {
   }
 }
 
-function updateTiersPrices() {
-  step1Price = document.getElementById("tierClickerPrice").innerHTML;
-  step2Price = document.getElementById("tierTreePrice").innerHTML;
-  step3Price = document.getElementById("tierGorillaPrice").innerHTML;
-  step4Price = document.getElementById("tierMacaquePrice").innerHTML;
-}
+// function updateTiersPrices() {
+//   step1Price = document.getElementById("tierClickerPrice").innerHTML;
+//   step2Price = document.getElementById("tierTreePrice").innerHTML;
+//   step3Price = document.getElementById("tierGorillaPrice").innerHTML;
+//   step4Price = document.getElementById("tierMacaquePrice").innerHTML;
+// }
 
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
