@@ -20,7 +20,6 @@ INSERT INTO clickers (id, name, display_name, img, owned, price, multiplier, pri
 
 
 
-
 drop table if exists buffsBPC;
 create table buffsBPC
 (
@@ -57,4 +56,4 @@ create table buffsBPS
     description      text        not null
 );
 
-INSERT INTO buffsBPS (id, name, display_name, img, type, price, multiplier, price_multiplier, `modifies`, modifies_name, description) VALUES (1, 'buffCPU', 'Robotiser les gorilles', 'cpu.png', 'BPS', 3333, 1.1, 1.15, 'Gorilla', 'gorille', 'Les gorilles c''est bien, mais les robots-gorilles c''est mieux. On vous propose profiter de cette remarquable transformation pour une somme assez réduite.');
+INSERT INTO buffsBPS (id, name, display_name, img, type, price, multiplier, price_multiplier, `modifies`, modifies_name, description) VALUES (1, 'buffCPU', 'Robotiser les gorilles', 'cpu.png', 'BPS', 3333, 1.1, 1.15, 'Gorilla', 'gorille', 'Les gorilles c''est bien, mais les robots-gorilles c''est mieux. Les progrès remarquables en matière de bioingéniérie et de robotisation vous permettent de rendre vos gorilles encore plus efficaces.');
