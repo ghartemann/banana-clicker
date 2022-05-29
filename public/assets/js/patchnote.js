@@ -56,7 +56,7 @@ function roadMap() {
       "* Ajout de nombreux autres clickers et buffs\n" +
       "* Migration sous Symfony\n" +
       "* Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)\n" +
-      "* Sauvegarde des données (l'actualisation réinitialise la partie actuellement)\n" +
+      "* Profil utilisateur et sauvegarde des données en BDD\n" +
       "* Export et import de sauvegardes\n" +
       "* Rendre cette fenêtre jolie (sans utiliser une alert par exemple)\n" +
       "* Devenir millionnaire grâce à la publicité"
@@ -64,7 +64,5 @@ function roadMap() {
 }
 
 function unreleased() {
-  alert(
-    "Cette fonctionnalité n'est pas disponible pour le moment (elle serait pourtant diablement utile)"
-  );
+  alert("Le jeu sauvegarde maintenant tout seul, à chaque seconde.");
 }
