@@ -1,11 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// PATCHNOTE AND ROADMAP
 
-document.getElementById("version").innerHTML = "v0.7.7";
+document.getElementById("version").innerHTML = "v0.8.0";
 
 function patchNote() {
   alert(
     "CHANGELOG\n\n" +
+      "v0.8.0\n" +
+      "* Ajout de la fonction SAUVEGARDE AUTO\n" +
+      "* Énorme refactorisation du code (ça vous fait une belle jambe)\n" +
+      "* Fixes au CSS\n\n" +
       "v0.7.7\n" +
       "* Possibilité d'acheter les clickers par lots de 10" +
       "* Nombreux fixes au CSS\n\n" +
