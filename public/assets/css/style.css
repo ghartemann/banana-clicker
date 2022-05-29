@@ -193,6 +193,10 @@ body {
   --animate-duration: 0.1s;
 }
 
+.buffButton {
+  min-width: 380px;
+}
+
 .buy10Button {
   min-width: initial;
   order: 2;
@@ -250,7 +254,7 @@ body {
   background-color: var(--yellow-dark);
 }
 
-.buyButton:hover {
+.buyButton:hover, .buy10Button:hover {
   background-color: var(--yellow-dark);
 }
 
@@ -335,6 +339,7 @@ body {
   display: flex;
   column-gap: 5px;
   height: 40px;
+  max-width: 65px;
 }
 
 .soundText {

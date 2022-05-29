@@ -17,15 +17,20 @@
   }
 }
 
-.tooltip {
-  position: relative;
-}
-
 .tooltip-dropdown {
   display: none;
-  position: fixed;
-  top: 300px;
-  transform: translateX(30%);
+  position: absolute;
+  top: 60px;
+  right: -200px;
+  z-index: 1000;
+  padding-top: 0px;
+}
+
+.tooltip-dropdown-buffs {
+  display: none;
+  position: absolute;
+  top: 62px;
+  left: -220px;
   z-index: 1000;
   padding-top: 0px;
 }
@@ -44,14 +49,14 @@
   user-select: none; /* Standard */
 }
 
-.tooltip--open .tooltip-dropdown {
+.tooltip--open .tooltip-dropdown, .tooltip--open .tooltip-dropdown-buffs {
   -webkit-animation: tooltipFadeIn 0.15s;
   animation: tooltipFadeIn 0.15s;
   display: block;
 }
 
 @media (hover: hover) {
-  .tooltip:hover .tooltip-dropdown {
+  .tooltip:hover .tooltip-dropdown, .tooltip:hover .tooltip-dropdown-buffs {
     -webkit-animation: tooltipFadeIn 0.15s;
     animation: tooltipFadeIn 0.15s;
     display: block;
