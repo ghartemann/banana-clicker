@@ -610,13 +610,11 @@ function showClicker() {
   );
 
   // adding visual clickers
-  if (clickerNb > 0 && clickerNb <= 18) {
-    for (let i = 1; i <= clickerNb; i++) {
-      let warpName = "w" + i;
-      let warpGot = document.getElementById(warpName);
-      let warpGotList = warpGot.classList;
-      warpGotList.remove("unavailable");
-    }
+  for (let i = 1; i <= clickerNb; i++) {
+    let warpName = "w" + i;
+    let warpGot = document.getElementById(warpName);
+    let warpGotList = warpGot.classList;
+    warpGotList.remove("unavailable");
   }
 
   // showing a little explanation as to why there are no more new clickers displayed
