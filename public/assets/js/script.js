@@ -199,6 +199,7 @@ cheatCode.start();
 var perSecondIntervel = setInterval(perSecond, 1000);
 
 function clickUp() {
+  let clickRate = calcBPC() + 1;
   updateNbClicks();
   updateBananas(clickRate);
   updateTotalBananas(clickRate);
@@ -282,7 +283,6 @@ function calcBPC() {
     prod = prod + calcBPCDetail(buffMultiplier, buffOwned);
   }
 
-  // document.getElementById("bpc").innerHTML = prod;
   return prod;
 }
 
