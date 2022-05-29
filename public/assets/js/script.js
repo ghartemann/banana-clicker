@@ -45,10 +45,6 @@ function resetSave() {
   // }
 }
 
-if (localStorage.getItem("savedState") != null) {
-  loadAllSaved();
-}
-
 function saveTiers() {
   localStorage.setItem("savedState", true);
   for (let tier of tiersArray) {
@@ -57,8 +53,13 @@ function saveTiers() {
 }
 
 function saveOneTier(tierName) {
-  let tierValue = document.getElementById(tierName + "Owned").innerHTML;
-  localStorage.setItem(tierName + "Saved", tierValue);
+  let tierOwned = document.getElementById(tierName + "Owned").innerHTML;
+  localStorage.setItem(tierName + "Saved", tierOwned);
+
+  if (tierOwned > 0) {
+    let tierProd = document.getElementById(tierName + "Prod").innerHTML;
+    localStorage.setItem(tierName + "Prod", tierProd);
+  }
 }
 
 function saveBuffs() {
@@ -72,8 +73,8 @@ function saveBuffs() {
 }
 
 function saveOneBuff(buffName) {
-  let buffValue = document.getElementById(buffName + "Owned").innerHTML;
-  localStorage.setItem(buffName + "Saved", buffValue);
+  let buffOwned = document.getElementById(buffName + "Owned").innerHTML;
+  localStorage.setItem(buffName + "Saved", buffOwned);
 }
 
 function saveStats() {
@@ -96,6 +97,11 @@ function saveToLocalStorage() {
   saveStats();
 }
 
+// load everything at startup
+if (localStorage.getItem("savedState") != null) {
+  loadAllSaved();
+}
+
 function loadAllSaved() {
   loadAllSavedTiers();
   loadAllSavedBuffs();
@@ -115,6 +121,12 @@ function loadSavedTiers(tierName) {
   document.getElementById(tierName + "Owned").innerHTML = savedTier;
   document.getElementById(tierName + "OwnedB").innerHTML = savedTier;
   document.getElementById(tierName + "OwnedC").innerHTML = savedTier;
+
+  if (savedTier > 0) {
+    let tierProd = localStorage.getItem(tierName + "Prod");
+    document.getElementById(tierName + "Prod").innerHTML = tierProd;
+    document.getElementById(tierName + "ProdB").innerHTML = tierProd;
+  }
 }
 
 function loadAllSavedBuffs() {
@@ -203,19 +215,19 @@ function clickUp() {
   updateNbClicks();
   updateBananas(clickRate);
   updateTotalBananas(clickRate);
-  runAllChecks();
   unavailableFirst();
+  runAllChecks();
 }
 
 function perSecond() {
   let bps = calcBPS();
   updateBananas(bps);
   updateTotalBananas(bps);
-  runAllChecks();
-  animateClicker();
-  saveToLocalStorage();
-  unavailableFirst();
   showClicker();
+  animateClicker();
+  unavailableFirst();
+  runAllChecks();
+  saveToLocalStorage();
 }
 
 function updateNbClicks() {
@@ -512,9 +524,6 @@ function buyTier10(tierName) {
     document.getElementById("bananasNumber").innerHTML,
     10
   );
-  let tierMultiplier = document.getElementById(
-    tierName + "Multiplier"
-  ).innerHTML;
   let tierPrice = document.getElementById(tierName + "Price").innerHTML;
   let tierPriceMultiplier = document.getElementById(
     tierName + "PriceMultiplier"
@@ -525,7 +534,7 @@ function buyTier10(tierName) {
 
   if (tierPrice10 < bananas) {
     for (let l = 0; l < 10; l++) {
-      buyTier(tierName, tierMultiplier);
+      buyTier(tierName);
     }
   } else {
     alert("Pas assez de bananes !");
@@ -609,8 +618,13 @@ function showClicker() {
     10
   );
 
+  let increment = clickerNb;
+  if (increment > 18) {
+    increment = 18;
+  }
+
   // adding visual clickers
-  for (let i = 1; i <= clickerNb; i++) {
+  for (let i = 1; i <= increment; i++) {
     let warpName = "w" + i;
     let warpGot = document.getElementById(warpName);
     let warpGotList = warpGot.classList;
