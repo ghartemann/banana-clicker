@@ -55,6 +55,8 @@ function saveTiers() {
 function saveOneTier(tierName) {
   let tierOwned = document.getElementById(tierName + "Owned").innerHTML;
   localStorage.setItem(tierName + "Saved", tierOwned);
+  let tierPrice = document.getElementById(tierName + "Price").innerHTML;
+  localStorage.setItem(tierName + "Price", tierPrice);
 
   if (tierOwned > 0) {
     let tierProd = document.getElementById(tierName + "Prod").innerHTML;
@@ -127,6 +129,9 @@ function loadSavedTiers(tierName) {
     document.getElementById(tierName + "Prod").innerHTML = tierProd;
     document.getElementById(tierName + "ProdB").innerHTML = tierProd;
   }
+
+  let savedPrice = localStorage.getItem(tierName + "Price");
+  document.getElementById(tierName + "Price").innerHTML = savedPrice;
 }
 
 function loadAllSavedBuffs() {
