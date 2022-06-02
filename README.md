@@ -20,7 +20,10 @@ Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, 
 * Devenir millionnaire grâce à la publicité
 
 ## Changelog
-
+> **v0.8.5**
+>   * Ajout de la bananeraie, du bateau, de l'avion, du toucan, du paresseux et du fusil
+>   * Correction de bugs mineurs
+>
 > **v0.8.2**
 >   * Correction de nombreux bugs
 >   * Known bug: l'achat par lot de 10 ne fonctionne pas parfaitement bien

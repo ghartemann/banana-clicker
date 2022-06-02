@@ -9,7 +9,7 @@ console.log(
 //
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////// DEFAULT VALUES AND GAMA INITIALIZATION
+/////////// DEFAULT VALUES AND GAME INITIALIZATION
 
 // I should delete these values and find another way to store them but it crashes if I do, so...
 bananas = 0;
@@ -21,7 +21,18 @@ nbclicks = 0;
 restclicks = 1000000;
 
 // Array containing stuff you can buy, should be the only place where to intervene when adding stuff
-const tiersArray = ["Clicker", "Tree", "Gorilla", "Macaque"];
+const tiersArray = [
+  "Clicker",
+  "Tree",
+  "Gorilla",
+  "Macaque",
+  "Plantation",
+  "Boat",
+  "Plane",
+  "Toucan",
+  "Sloth",
+  "Rifle",
+];
 const buffsBPCArray = ["Cursor", "MegaCursor"];
 const buffsBPSArray = ["CPU"];
 
@@ -33,8 +44,9 @@ const nbBuffs = document.querySelectorAll("#buyableBuffs [id$=Button]");
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////// SAVE FUNCTION
+
+// reset doesn't work if it waits for confirmation, will fix it later
 function resetSave() {
-  // reset doesn't work if it waits for confirmation, will fix it later
   // if (
   //   window.confirm(
   //     "ATTENTION : toutes les bananes seront perdues et les gorilles devront s'inscrire à Pôle Emploi. Vous en assumez les conséquences ?"
@@ -266,6 +278,7 @@ function updateTotalBananas(toAdd) {
 }
 
 //
+//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CALC BPS AND BPC
 
@@ -277,15 +290,10 @@ function calcBPS() {
     let tierMultiplier = document.getElementById(
       "tier" + tier + "Multiplier"
     ).innerHTML;
-    prod = prod + calcBPSDetail(tierMultiplier, tierOwned);
+    prod = prod + calcDetail(tierMultiplier, tierOwned);
   }
 
   document.getElementById("bps").innerHTML = prod;
-  return prod;
-}
-
-function calcBPSDetail(multiplier, owned) {
-  let prod = multiplier * owned;
   return prod;
 }
 
@@ -297,13 +305,13 @@ function calcBPC() {
     let buffMultiplier = document.getElementById(
       "buff" + buff + "Multiplier"
     ).innerHTML;
-    prod = prod + calcBPCDetail(buffMultiplier, buffOwned);
+    prod = prod + calcDetail(buffMultiplier, buffOwned);
   }
 
   return prod;
 }
 
-function calcBPCDetail(multiplier, owned) {
+function calcDetail(multiplier, owned) {
   let prod = multiplier * owned;
   return prod;
 }
@@ -381,24 +389,26 @@ function tierPriceCheck10(tierName) {
   }
 }
 
+// calculating base price x10 or checking purposes
 function calcPrice10(price, priceMultiplier) {
   let price10 = 0;
   for (let m = 0; m < 10; m++) {
     price10 = price10 + price * priceMultiplier;
   }
-  price10 = Math.round(price10);
-  return price10;
+  return Math.round(price10);
 }
 
+// checking all buffs prices
 function buffsPricesChecks() {
-  for (let buff of buffsBPSArray) {
-    buffPriceCheck("buff" + buff);
+  for (let buffBPS of buffsBPSArray) {
+    buffPriceCheck("buff" + buffBPS);
   }
-  for (let buff of buffsBPCArray) {
-    buffPriceCheck("buff" + buff);
+  for (let buffBPC of buffsBPCArray) {
+    buffPriceCheck("buff" + buffBPC);
   }
 }
 
+// checking buffs prices and greying out related buttons
 function buffPriceCheck(buffName) {
   let bananas = parseInt(
     document.getElementById("bananasNumber").innerHTML,
@@ -408,7 +418,7 @@ function buffPriceCheck(buffName) {
   let buffNameButton = document.getElementById(buffName + "Button");
   let buffNameButtonList = buffNameButton.classList;
 
-  // Graying out buttons
+  // greying out buttons
   if (buffPrice > bananas) {
     buffNameButton.disabled = true;
     buffNameButtonList.add("greyedBuff");
@@ -495,6 +505,10 @@ function buyTier(tierName) {
 
   // determining if able to buy tier
   if (bananas >= tierPrice) {
+    // updating bananas
+    bananas = bananas - tierPrice;
+    document.getElementById("bananasNumber").innerHTML = bananas;
+
     // updating owned number and stats
     tierOwned++;
     document.getElementById(tierName + "Owned").innerHTML = tierOwned;
@@ -503,10 +517,6 @@ function buyTier(tierName) {
     let tierProd = tierOwned * tierMultiplier;
     document.getElementById(tierName + "Prod").innerHTML = tierProd;
     document.getElementById(tierName + "ProdB").innerHTML = tierProd;
-
-    // updating bananas
-    bananas = bananas - tierPrice;
-    document.getElementById("bananasNumber").innerHTML = bananas;
 
     // updating tier price
     tierPrice = Math.round(tierPrice * tierPriceMultiplier);
@@ -564,15 +574,15 @@ function buyBuff(buffType, buffName, buffedTierName) {
 
   // determining if able to buy buff
   if (bananas >= buffPrice) {
+    // purchasing buff
+    bananas = bananas - buffPrice;
+    document.getElementById("bananasNumber").innerHTML = bananas;
+
     // updating owned number and stats
     buffOwned++;
     document.getElementById(buffName + "Owned").innerHTML = buffOwned;
     document.getElementById(buffName + "OwnedB").innerHTML = buffOwned;
     document.getElementById(buffName + "OwnedC").innerHTML = buffOwned;
-
-    // purchasing buff
-    bananas = bananas - buffPrice;
-    document.getElementById("bananasNumber").innerHTML = bananas;
 
     // updating buff price
     buffPrice = Math.round(buffPrice * buffPriceMultiplier);
@@ -593,7 +603,7 @@ function buyBuff(buffType, buffName, buffedTierName) {
       buffedTierMultiplier = Math.round(
         parseInt(buffedTierMultiplier, 10) * parseFloat(buffMultiplier, 10)
       );
-      // puting it back
+      // putting it back
       document.getElementById(buffedTierName + "Multiplier").innerHTML =
         buffedTierMultiplier;
 

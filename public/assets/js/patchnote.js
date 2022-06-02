@@ -1,15 +1,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// PATCHNOTE AND ROADMAP
 
-document.getElementById("version").innerHTML = "v0.8.0";
+document.getElementById("version").innerHTML = "v0.8.5";
 
 function patchNote() {
   alert(
     "CHANGELOG\n\n" +
+      "v0.8.5\n" +
+      "* Ajout de la bananeraie, du bateau, de l'avion, du toucan, du paresseux et du fusil\n" +
+      "* Correction de bugs mineurs\n" +
       "v0.8.0\n" +
       "* Ajout de la fonction SAUVEGARDE AUTO\n" +
       "* Énorme refactorisation du code (ça vous fait une belle jambe)\n" +
-      "* Fixes au CSS\n\n" +
+      "* Corrections de bugs\n\n" +
       "v0.7.7\n" +
       "* Possibilité d'acheter les clickers par lots de 10" +
       "* Nombreux fixes au CSS\n\n" +
@@ -53,7 +56,8 @@ function patchNote() {
 function roadMap() {
   alert(
     "ROADMAP\n\n" +
-      "* Ajout de nombreux autres clickers et buffs\n" +
+      "* WIP : Ajout de nombreux autres clickers et buffs\n" +
+      "* Gros (ré)équilibrage\n" +
       "* Migration sous Symfony\n" +
       "* Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)\n" +
       "* Profil utilisateur et sauvegarde des données en BDD\n" +

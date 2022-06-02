@@ -24,7 +24,8 @@
 								<img src="assets/images/{{clicker.img}}" width="50px"/>
 							</div>
 							<div class="buttonText">
-								<p class="textTitle">Acheter un
+								<p class="textTitle">Acheter
+									{{clicker.article}}
 									<strong>{{clicker.display_name}}</strong>
 								</p>
 								<p class="buttonSubtext">+<span id="{{clicker.name}}Multiplier">{{clicker.multiplier}}</span>
@@ -56,34 +57,38 @@
 										{{clicker.display_name}}
 										produit
 										<b>{{clicker.multiplier}}</b>
+										{% if clicker.multiplier > 1 %}
+											bananes par seconde</p>
+									{% endif %}
+									{% if clicker.multiplier == 1 %}
 										banane par seconde</p>
-									<br>
-									<p>Acquis :
-										<strong>
-											<span id="{{clicker.name}}OwnedB">0</span>
-										</strong>
-									</p>
-									<p>Production :
-										<strong>
-											<span id="{{clicker.name}}ProdB">0</span>
-										</strong>
-										bps</p>
-								</div>
+								{% endif %}
+								<br>
+								<p>Acquis :
+									<strong>
+										<span id="{{clicker.name}}OwnedB">0</span>
+									</strong>
+								</p>
+								<p>Production :
+									<strong>
+										<span id="{{clicker.name}}ProdB">0</span>
+									</strong>
+									bps</p>
 							</div>
-						</wow-tooltip>
-
-						<div class="stats">
-							<p>Acquis :
-								<span id="{{clicker.name}}Owned">0</span>
-							</p>
-							<p>Production :
-								<span id="{{clicker.name}}Prod">0</span>
-								bps</p>
 						</div>
+					</wow-tooltip>
 
+					<div class="stats">
+						<p>Acquis :
+							<span id="{{clicker.name}}Owned">0</span>
+						</p>
+						<p>Production :
+							<span id="{{clicker.name}}Prod">0</span>
+							bps</p>
 					</div>
-				{% endfor %}
-			</div>
+
+				</div>
+			{% endfor %}
 		</div>
 	</div>
-</div>
+</div></div>
