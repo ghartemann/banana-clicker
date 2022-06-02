@@ -24,6 +24,10 @@ Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, 
 >   * Ajout de la bananeraie, du bateau, de l'avion, du toucan, du paresseux et du fusil
 >   * Correction de bugs mineurs
 >
+> **v0.8.2**
+>   * Correction de nombreux bugs
+>   * Known bug: l'achat par lot de 10 ne fonctionne pas parfaitement bien
+>
 > **v0.8.0**
 >   * Ajout de la fonction SAUVEGARDE AUTO
 >   * Énorme refactorisation du code (ça vous fait une belle jambe)
@@ -32,6 +36,7 @@ Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, 
 > **v0.7.7**
 >   * Possibilité d'acheter les clickers par lots de 10
 >   * Nombreux fixes au CSS
+>   * Tooltips sur les buffs
 >
 > **v0.7.0**
 >   * Ambiance sonore !
