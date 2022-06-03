@@ -53,6 +53,9 @@ function resetSave() {
   //   )
   // ) {
   localStorage.clear();
+  // setTimeout(function () {
+  //   localStorage.clear();
+  // }, 2000);
   location.reload();
   // }
 }
