@@ -8,7 +8,10 @@ function patchNote() {
     "CHANGELOG\n\n" +
       "v0.8.5\n" +
       "* Ajout de la bananeraie, du bateau, de l'avion, du toucan, du paresseux et du fusil\n" +
-      "* Correction de bugs mineurs\n" +
+      "* Correction de bugs mineurs\n\n" +
+      "v0.8.2\n" +
+      "* Correction de nombreux bugs\n" +
+      "* Known bug: l'achat par lot de 10 ne fonctionne pas parfaitement bien\n\n" +
       "v0.8.0\n" +
       "* Ajout de la fonction SAUVEGARDE AUTO\n" +
       "* Énorme refactorisation du code (ça vous fait une belle jambe)\n" +
