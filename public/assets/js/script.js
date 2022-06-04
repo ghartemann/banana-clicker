@@ -447,14 +447,19 @@ function buffPriceCheck(buffName) {
   let buffPrice = document.getElementById(buffName + "Price").innerHTML;
   let buffNameButton = document.getElementById(buffName + "Button");
   let buffNameButtonList = buffNameButton.classList;
+  let buffOwned = document.getElementById(buffName + "Owned").innerHTML;
 
   // greying out buttons
-  if (buffPrice > bananas) {
-    buffNameButton.disabled = true;
-    buffNameButtonList.add("greyedBuff");
-  } else {
+  if (buffPrice < bananas && buffOwned < 10) {
     buffNameButton.disabled = false;
     buffNameButtonList.remove("greyedBuff");
+  } else {
+    buffNameButton.disabled = true;
+    buffNameButtonList.add("greyedBuff");
+  }
+
+  if (buffOwned >= 10) {
+    document.getElementById(buffName + "OwnedC").innerHTML = "MAX";
   }
 }
 
