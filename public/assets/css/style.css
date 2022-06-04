@@ -254,7 +254,8 @@ body {
   background-color: var(--yellow-dark);
 }
 
-.buyButton:hover, .buy10Button:hover {
+.buyButton:hover,
+.buy10Button:hover {
   background-color: var(--yellow-dark);
 }
 
@@ -277,7 +278,8 @@ body {
 }
 
 /* LEFT DIV */
-.greenTitle, .yellowTitle {
+.greenTitle,
+.yellowTitle {
   font-size: 45pt;
   color: var(--green-light);
   font-weight: bold;
@@ -384,6 +386,11 @@ footer {
 .tiers {
   height: 100%;
   overflow-y: scroll;
+}
+
+.buffs::-webkit-scrollbar,
+.tiers::-webkit-scrollbar {
+  display: none;
 }
 
 /* MEDIA QUERIES */
