@@ -8,7 +8,8 @@ function patchNote() {
     "CHANGELOG\n\n" +
       "v0.8.9\n" +
       "* Correction de nombreux bugs d'affichage\n" +
-      "* Ajout de trois nouveaux buffs (engrais, bulldozer et mégaphone)\n\n" +
+      "* Ajout de trois nouveaux buffs (engrais, bulldozer et mégaphone)\n" +
+      "* Impossibilité d'acquérir plus de 10 buffs (pour des questions d'équilibrage)\n\n" +
       "v0.8.7\n" +
       "* Retour du panel d'infos, maintenant plus joli (accessible via le ? en haut à gauche)\n\n" +
       "v0.8.5\n" +

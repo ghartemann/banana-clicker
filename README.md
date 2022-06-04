@@ -23,6 +23,7 @@ Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, 
 > **v0.8.9**
 >   * Correction de nombreux bugs d'affichage
 >   * Ajout de trois nouveaux buffs (engrais, bulldozer et mégaphone)
+>   * Impossibilité d'acquérir plus de 10 buffs (pour des questions d'équilibrage)
 >
 > **v0.8.7**
 >   * Retour du panel d'infos, maintenant plus joli (accessible via le ? en haut à gauche)
