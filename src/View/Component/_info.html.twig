@@ -1,12 +1,14 @@
-<div class="infoContainer animate__animated animate__slideInLeft">
+<div id="mySideInfo" class="sideinfo">
+	<a id="closeBtnInfo" href="#" class="close">×</a>
+
 	<div class="welcomeText">
 		<h2>
-			Bienvenue sur<br/><span class="greenTitle">Banana Clicker</span>
+			Bienvenue sur<br/><span class="yellowTitle">Banana Clicker</span>
 		</h2>
 		<p>
 			Hommage à
 			<a class="cookieClickerLink" href="https://orteil.dashnet.org/cookieclicker/" target="_blank">Cookie Clicker</a>
-			et tentative de création d'un premier jeu vidéo, le développement de cette expérience simpliste m'a beaucoup amusé. J'espère que son utilisation saura susciter chez vous des émotions au moins similaires sinon plus intenses encore.
+			et tentative de création d'un premier jeu vidéo, le développement de cette expérience somme toute assez simpliste m'a beaucoup amusé. J'espère que son utilisation saura susciter chez vous des émotions au moins similaires sinon plus intenses encore.
 		</p>
 	</div>
 	<div class="tuto">
@@ -16,12 +18,19 @@
 		</p>
 	</div>
 	<div class="warning">
-		<h2>ATTENTION :</h2>
-		<p>Le jeu ne sauvegarde pas (pour l'instant). Votre partie sera perdue si vous quittez la page ou l'actualisez.</p>
+		<h2>Sauvegarde :</h2>
+		<p>Le jeu dispose d'une fonctonnalité de sauvegarde automatique. Où ? Pour combien de temps ? Ce sont les mystères du
+			<i>local storage</i>...</p>
+		<p>Il est possible de la réinitialiser dans le menu de droite (il faut parfois le faire une deuxième fois pour que ça fonctionne, c'est comme ça).</p>
 	</div>
 	<div class="lexique">
 		<h2>Lexique :</h2>
 		<p>bps = bananes par seconde</p>
 		<p>bpc = bananes par clic</p>
 	</div>
+
 </div>
+
+<a href="#" id="openBtnInfo">
+	<img class="btnInfo" src="assets/images/question-mark.png">
+</a>
