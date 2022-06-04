@@ -128,4 +128,8 @@
   .sideinfo {
     width: 100%;
   }
+
+  .welcomeText>h2 {
+    text-align: center;
+  }
 }
