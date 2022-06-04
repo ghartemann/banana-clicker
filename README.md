@@ -16,10 +16,17 @@ Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, 
 * Migration sous Symfony
 * Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)
 * Export et import de sauvegardes
-* Rendre cette fenêtre jolie (sans utiliser une alert par exemple)
+* Rendre le changelog et la roadmap plus jolies
 * Devenir millionnaire grâce à la publicité
 
 ## Changelog
+> **v0.8.9**
+>   * Correction de nombreux bugs d'affichage
+>   * Ajout de trois nouveaux buffs (engrais, bulldozer et mégaphone)
+>
+> **v0.8.7**
+>   * Retour du panel d'infos, maintenant plus joli (accessible via le ? en haut à gauche)
+>
 > **v0.8.5**
 >   * Ajout de la bananeraie, du bateau, de l'avion, du toucan, du paresseux et du fusil
 >   * Correction de bugs mineurs

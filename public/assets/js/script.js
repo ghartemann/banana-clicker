@@ -11,7 +11,8 @@ console.log(
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// DEFAULT VALUES AND GAME INITIALIZATION
 
-// I should delete these values and find another way to store them but it crashes if I do, so...
+// I should delete these values and find another way to store them,
+// or at least add "let" in front of them but then it crashes if I do, so...
 bananas = 0;
 totalBananas = 0;
 bps = 0;
@@ -20,23 +21,41 @@ clickRate = 1;
 nbclicks = 0;
 restclicks = 1000000;
 
-// Array containing stuff you can buy, should be the only place where to intervene when adding stuff
+// Arrays containing stuff to buy, should be the only place where to intervene when adding stuff
+// array containg tiers names
 const tiersArray = [
   "Clicker",
   "Tree",
-  "Gorilla",
   "Macaque",
+  "Gorilla",
   "Plantation",
-  "Boat",
-  "Plane",
   "Toucan",
   "Sloth",
   "Rifle",
+  "Boat",
+  "Plane",
 ];
-const buffsBPCArray = ["Cursor", "MegaCursor"];
-const buffsBPSArray = ["CPU"];
 
-// NUMBER OF CLICKERS AND BUFFS (will be used later)
+// arrays containing buffs names by category (bps/bpc)
+const buffsBPCArray = ["Cursor", "MegaCursor"];
+const buffsBPSArray = ["CPU", "Bulldozer", "Fertilizer", "Megaphone"];
+
+// arrays containing buffs unlocking modalities :
+// [buff, modifiedTier] -- will get unlocked after 5 owned tiers
+const buffsBPSArrayModality = [
+  ["CPU", "Gorilla"],
+  ["Bulldozer", "Plantation"],
+  ["Fertilizer", "Tree"],
+  ["Megaphone", "Sloth"],
+];
+
+// [buff, nbClicksNeeded]
+const buffsBPCArrayModality = [
+  ["Cursor", 100],
+  ["MegaCursor", 500],
+];
+
+// NUMBER OF CLICKERS AND BUFFS (will probably be used later)
 const nbTiers = document.querySelectorAll("#buyableTiers [id$=Button]");
 const nbBuffs = document.querySelectorAll("#buyableBuffs [id$=Button]");
 
@@ -72,6 +91,10 @@ function saveOneTier(tierName) {
   localStorage.setItem(tierName + "Saved", tierOwned);
   let tierPrice = document.getElementById(tierName + "Price").innerHTML;
   localStorage.setItem(tierName + "Price", tierPrice);
+  let tierMultiplier = document.getElementById(
+    tierName + "Multiplier"
+  ).innerHTML;
+  localStorage.setItem(tierName + "Multiplier", tierMultiplier);
 
   if (tierOwned > 0) {
     let tierProd = document.getElementById(tierName + "Prod").innerHTML;
@@ -147,6 +170,10 @@ function loadSavedTiers(tierName) {
 
   let savedPrice = localStorage.getItem(tierName + "Price");
   document.getElementById(tierName + "Price").innerHTML = savedPrice;
+
+  let savedMultiplier = localStorage.getItem(tierName + "Multiplier");
+  document.getElementById(tierName + "Multiplier").innerHTML = savedMultiplier;
+  document.getElementById(tierName + "MultiplierB").innerHTML = savedMultiplier;
 }
 
 function loadAllSavedBuffs() {
@@ -432,9 +459,15 @@ function buffPriceCheck(buffName) {
 }
 
 function unavailableCheck() {
-  unavailable("tierGorillaOwned", "buffCPU");
-  unavailableClicks("buffCursor", 100);
-  unavailableClicks("buffMegaCursor", 500);
+  for (let buffBPSModality of buffsBPSArrayModality) {
+    unavailable(
+      "tier" + buffBPSModality[1] + "Owned",
+      "buff" + buffBPSModality[0]
+    );
+  }
+  for (let buffBPCModality of buffsBPCArrayModality) {
+    unavailableClicks("buff" + buffBPCModality[0], buffBPCModality[1]);
+  }
 }
 
 // hides everything until there are at least 30 clicks or 1 clicker owned
@@ -446,11 +479,11 @@ function unavailableFirst() {
   );
 
   if (bananas >= 30 || tierClickerOwned > 0) {
-    notAvailable = document.getElementById("buyableTiers");
-    const notAvailableList = notAvailable.classList;
+    let notAvailable = document.getElementById("buyableTiers");
+    let notAvailableList = notAvailable.classList;
     notAvailableList.remove("unavailable");
     // removing small paragraph
-    nothingTiers = document.getElementById("nothingTiers");
+    let nothingTiers = document.getElementById("nothingTiers");
     const nothingTiersList = nothingTiers.classList;
     nothingTiersList.add("unavailable");
   }
@@ -460,13 +493,13 @@ function unavailableFirst() {
 function unavailable(owned, notOwned) {
   let ownedThing = document.getElementById(owned).innerHTML;
 
-  if (ownedThing > 0) {
-    notOwned = document.getElementById(notOwned + "Div");
-    const notOwnedList = notOwned.classList;
+  if (ownedThing >= 5) {
+    let notOwnedThing = document.getElementById(notOwned + "Div");
+    let notOwnedList = notOwnedThing.classList;
     notOwnedList.remove("unavailable");
     // removing small paragraph
-    nothing = document.getElementById("nothing");
-    const nothingList = nothing.classList;
+    let nothing = document.getElementById("nothing");
+    let nothingList = nothing.classList;
     nothingList.add("unavailable");
   }
 }
@@ -476,12 +509,12 @@ function unavailableClicks(notOwned, clicksToMake) {
   let nbclicks = document.getElementById("nbClicks").innerHTML;
 
   if (nbclicks >= clicksToMake) {
-    notOwned = document.getElementById(notOwned + "Div");
-    const notOwnedList = notOwned.classList;
+    let notOwnedThing = document.getElementById(notOwned + "Div");
+    let notOwnedList = notOwnedThing.classList;
     notOwnedList.remove("unavailable");
     // removing small paragraph
-    nothing = document.getElementById("nothing");
-    const nothingList = nothing.classList;
+    let nothing = document.getElementById("nothing");
+    let nothingList = nothing.classList;
     nothingList.add("unavailable");
   }
 }
@@ -598,17 +631,33 @@ function buyBuff(buffType, buffName, buffedTierName) {
     }
 
     if (buffType == "BPS") {
-      // getting buffed tier multiplier
-      buffedTierMultiplier = document.getElementById(
+      // getting buffed tier multiplier and prod
+      let buffedTierMultiplier = document.getElementById(
         buffedTierName + "Multiplier"
       ).innerHTML;
-      // calculating change
+      let buffedTierProd = document.getElementById(
+        buffedTierName + "Prod"
+      ).innerHTML;
+      let buffedTierOwned = document.getElementById(
+        buffedTierName + "Owned"
+      ).innerHTML;
+
+      // calculating change for multiplier and prod
       buffedTierMultiplier = Math.round(
         parseInt(buffedTierMultiplier, 10) * parseFloat(buffMultiplier, 10)
       );
-      // putting it back
+      buffedTierProd =
+        parseInt(buffedTierMultiplier, 10) * parseInt(buffedTierOwned, 10);
+
+      // putting values back
       document.getElementById(buffedTierName + "Multiplier").innerHTML =
         buffedTierMultiplier;
+      document.getElementById(buffedTierName + "MultiplierB").innerHTML =
+        buffedTierMultiplier;
+      document.getElementById(buffedTierName + "Prod").innerHTML =
+        buffedTierProd;
+      document.getElementById(buffedTierName + "ProdB").innerHTML =
+        buffedTierProd;
 
       // updating bps
       calcBPS();

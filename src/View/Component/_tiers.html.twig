@@ -56,12 +56,12 @@
 									<p>Chaque
 										{{clicker.display_name}}
 										produit
-										<b>{{clicker.multiplier}}</b>
+										<b id="{{clicker.name}}MultiplierB">{{clicker.multiplier}}</b>
 										{% if clicker.multiplier > 1 %}
-											bananes par seconde</p>
+											bananes par seconde.</p>
 									{% endif %}
 									{% if clicker.multiplier == 1 %}
-										banane par seconde</p>
+										banane par seconde.</p>
 								{% endif %}
 								<br>
 								<p>Acquis :

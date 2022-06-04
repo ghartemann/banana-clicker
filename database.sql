@@ -62,4 +62,7 @@ create table buffsBPS
     description      text        not null
 );
 
-INSERT INTO buffsBPS (id, name, display_name, img, type, price, multiplier, price_multiplier, `modifies`, modifies_name, description) VALUES (1, 'buffCPU', 'Robotiser les gorilles', 'cpu.png', 'BPS', 3333, 1.1, 1.15, 'Gorilla', 'gorille', 'Les gorilles c''est bien, mais les robots-gorilles c''est mieux. Les progrès remarquables en matière de bioingéniérie et de robotisation vous permettent de rendre vos gorilles encore plus efficaces.');
+insert into bananaclicker.buffsBPS (id, name, display_name, img, type, price, multiplier, price_multiplier, `modifies`, modifies_name, description)
+values  (1, 'buffFertilizer', 'Sac d''engrais Monsanto', 'fertilizer.png', 'BPS', 2000, 1.1, 1.15, 'Tree', 'bananier', 'Du bon engrais Monsanto chargé de pesticides pour rendre vos bananiers plus grands, plus forts, plus productifs et plus intelligents. Le parfait outil si les risques de cancer des intestins vous importent peu.'),
+        (2, 'buffCPU', 'Robotiser les gorilles', 'cpu.png', 'BPS', 33333, 1.1, 1.15, 'Gorilla', 'gorille', 'Les gorilles c''est bien, mais les robots-gorilles c''est mieux. Les progrès remarquables en matière de bioingéniérie et de robotisation vous permettent de rendre vos gorilles encore plus efficaces.'),
+        (3, 'buffBulldozer', 'Déforestation massive', 'bulldozer.png', 'BPS', 85000, 1.1, 1.15, 'Plantation', 'bananeraie', 'Arracher des arbres centenaires et les remplacer par des bananiers. Sur des kilomètres carrés. Vous voulez des bananes ou sauver la planète ? Alors.');
