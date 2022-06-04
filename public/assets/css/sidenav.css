@@ -127,6 +127,7 @@
 @media screen and (max-width: 500px) {
   .sideinfo {
     width: 100%;
+    left: -100%;
   }
 
   .welcomeText>h2 {

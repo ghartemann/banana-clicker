@@ -35,7 +35,7 @@
   padding-top: 0px;
 }
 
-.tooltip-dropdown__content {
+.tooltip-dropdown__content, .mobileTooltip {
   color: white;
   background-color: #f1c40f;
   border-radius: 10px;
@@ -47,6 +47,17 @@
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+}
+
+.mobileTooltip {
+  display: none;
+}
+
+.mobileTooltip::active {
+  display: block;
+position: absolute;
+top: -100px;
+left: 20%;
 }
 
 .tooltip--open .tooltip-dropdown, .tooltip--open .tooltip-dropdown-buffs {

@@ -472,7 +472,6 @@ footer {
   }
 
   .buttonGroup {
-    flex-direction: column;
     row-gap: 20px;
     align-items: center;
   }
@@ -482,7 +481,7 @@ footer {
   }
 
   .buyButton {
-    width: 400px;
+    width: 60%;
   }
 
   .buffsContainer {
@@ -490,10 +489,7 @@ footer {
   }
 
   .stats {
-    display: block;
-    text-align: left;
-    align-self: center;
-    font-size: 12pt;
+    display: none;
   }
 
   .videoButton {
