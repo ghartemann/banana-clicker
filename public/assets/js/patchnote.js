@@ -1,13 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// PATCHNOTE AND ROADMAP
 
-document.getElementById("version").innerHTML = "v0.8.7";
+document.getElementById("version").innerHTML = "v0.8.9";
 
 function patchNote() {
   alert(
     "CHANGELOG\n\n" +
+      "v0.8.9\n" +
+      "* Correction de nombreux bugs d'affichage\n" +
+      "* Ajout de trois nouveaux buffs (engrais, bulldozer et mégaphone)\n\n" +
       "v0.8.7\n" +
-      "* Retour du panel d'infos, maintenant plus joli\n\n" +
+      "* Retour du panel d'infos, maintenant plus joli (accessible via le ? en haut à gauche)\n\n" +
       "v0.8.5\n" +
       "* Ajout de la bananeraie, du bateau, de l'avion, du toucan, du paresseux et du fusil\n" +
       "* Correction de bugs mineurs\n\n" +
@@ -62,12 +65,11 @@ function roadMap() {
   alert(
     "ROADMAP\n\n" +
       "* WIP : Ajout de nombreux autres clickers et buffs\n" +
-      "* Gros (ré)équilibrage\n" +
       "* Migration sous Symfony\n" +
       "* Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)\n" +
       "* Profil utilisateur et sauvegarde des données en BDD\n" +
       "* Export et import de sauvegardes\n" +
-      "* Rendre cette fenêtre jolie (sans utiliser une alert par exemple)\n" +
+      "* Rendre le changelog et la roadmap plus jolies\n" +
       "* Devenir millionnaire grâce à la publicité"
   );
 }
