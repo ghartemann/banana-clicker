@@ -22,7 +22,18 @@
   right: 10px;
 }
 
-.sidenav {
+#openBtnInfo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.btnInfo {
+  width: 40px;
+}
+
+.sidenav,
+.sideinfo {
   height: 100%;
   width: 250px;
   position: fixed;
@@ -32,6 +43,16 @@
   background-color: var(--green-dark);
   padding-top: 60px;
   transition: right 0.5s ease;
+  box-shadow: var(--box-shadow);
+}
+
+.sideinfo {
+  width: 500px;
+  left: -500px;
+  padding: 30px;
+  padding-top: 60px;
+  transition: left 0.5s ease;
+  overflow-y: scroll;
 }
 
 /* Sidenav menu links */
@@ -41,6 +62,13 @@
   font-size: 25px;
   color: var(--white);
   display: block;
+  transition: 0.3s;
+}
+
+.sideinfo a {
+  text-decoration: none;
+  font-size: 25px;
+  color: var(--white);
   transition: 0.3s;
 }
 
@@ -68,10 +96,21 @@
   right: 0;
 }
 
+.sideinfo.active {
+  left: 0;
+}
+
 /* Close btn */
 .sidenav .close {
   position: absolute;
   top: 0;
+  font-size: 36px;
+}
+
+.sideinfo .close {
+  position: absolute;
+  top: 0;
+  right: 15px;
   font-size: 36px;
 }
 
@@ -83,4 +122,10 @@
   background-color: var(--white);
   margin: 6px 0;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  .sideinfo {
+    width: 100%;
+  }
 }

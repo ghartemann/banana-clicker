@@ -31,7 +31,7 @@ body {
 
 #cheat {
   position: absolute;
-  left: 90px;
+  left: 135px;
   top: 10px;
 }
 
@@ -277,10 +277,14 @@ body {
 }
 
 /* LEFT DIV */
-.greenTitle {
+.greenTitle, .yellowTitle {
   font-size: 45pt;
   color: var(--green-light);
   font-weight: bold;
+}
+
+.yellowTitle {
+  color: #ffe36e;
 }
 
 .welcomeText h2 {
@@ -334,7 +338,7 @@ body {
 .videoButton {
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: 60px;
   cursor: pointer;
   display: flex;
   column-gap: 5px;

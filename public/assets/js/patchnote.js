@@ -1,11 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// PATCHNOTE AND ROADMAP
 
-document.getElementById("version").innerHTML = "v0.8.5";
+document.getElementById("version").innerHTML = "v0.8.7";
 
 function patchNote() {
   alert(
     "CHANGELOG\n\n" +
+      "v0.8.7\n" +
+      "* Retour du panel d'infos, maintenant plus joli\n\n" +
       "v0.8.5\n" +
       "* Ajout de la bananeraie, du bateau, de l'avion, du toucan, du paresseux et du fusil\n" +
       "* Correction de bugs mineurs\n\n" +
