@@ -386,6 +386,7 @@ footer {
 .tiers {
   height: 100%;
   overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .buffs::-webkit-scrollbar,
