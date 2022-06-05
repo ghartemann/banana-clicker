@@ -29,7 +29,7 @@
 
 						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier('{{clicker.name}}'); animateCSS('#{{clicker.name}}Button', 'pulse');">
 							<div class="buttonPic">
-								<img src="assets/images/{{clicker.img}}" width="50px"/>
+								<img src="assets/images/{{clicker.img}}" width="50px" alt="Une image de {{clicker.display_name}}."/>
 							</div>
 							<div class="buttonText">
 								<p class="textTitle">Acheter
@@ -39,7 +39,7 @@
 								<p class="buttonSubtext">+<span id="{{clicker.name}}Multiplier">{{clicker.multiplier}}</span>
 									bps</p>
 								<p class="buttonSubtext">
-									<img src="assets/images/banane.png" width="20px"/>
+									<img src="assets/images/banane.png" width="20px" alt="Une toute petite banane."/>
 									<strong>
 										<span id="{{clicker.name}}Price">
 											{{clicker.price}}
@@ -88,7 +88,7 @@
 
 						<wow-tooltip class="tooltip">
 							<div class="tooltip-dropdown" data-tooltip-dropdown>
-								<div role="tooltip" id="tooltip-demo-content" class="tooltip-dropdown__content">
+								<div role="tooltip" class="tooltip-dropdown__content">
 									<p>
 										<strong>{{clicker.description}}</strong>
 									</p>

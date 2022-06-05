@@ -3,14 +3,14 @@ create table clickers
 (
     id               int auto_increment
         primary key,
-    name             varchar(50) null,
-    article          varchar(3)  null,
-    display_name     varchar(50) null,
-    img              varchar(50) null,
-    price            int         null,
-    multiplier       float       null,
-    price_multiplier float       null,
-    description      text        null
+    name             varchar(30) not null,
+    article          varchar(3)  not null,
+    display_name     varchar(30) not null,
+    img              varchar(20) not null,
+    price            bigint      not null,
+    multiplier       float       not null,
+    price_multiplier float       not null,
+    description      text        not null
 );
 
 insert into clickers (id, name, article, display_name, img, price, multiplier, price_multiplier, description)
@@ -23,7 +23,8 @@ values  (1, 'tierClicker', 'un', 'autoclicker', 'hand.png', 40, 1, 1.15, 'Un cur
         (7, 'tierSloth', 'un', 'paresseux', 'sloth.png', 290000, 500, 1.16, 'Un paresseux qui, paradoxalement, ramasse des bananes avec une rapidité déconcertante. C''est assez peu logique mais que voulez-vous, il faut bien trouver des idées dans le thème.'),
         (8, 'tierRifle', 'un', 'fusil', 'rifle.png', 1000000, 1776, 1.17, 'Un fusil. Pour chasser les bananes sauvages. Ça paraît assez évident.'),
         (9, 'tierBoat', 'un', 'gros bateau', 'boat.png', 2000000, 2500, 1.19, 'Un bateau qui transporte des bananes, pourquoi pas. Mais si on suit le fil rouge de nos achats précédents, est-ce que ce bateau ne devrait pas lui-même produire des bananes ? Ce jeu commence à prendre de grosses libertés vis-à-vis du lore, c''est assez irritant.'),
-        (10, 'tierPlane', 'un', 'avion cargo', 'airplane.png', 3000000, 3500, 1.19, 'Allez c''est bon c''est n''importe quoi, l''avion produit des bananes maintenant. Bon écoutez on va jouer le jeu et faire comme si de rien n''était, hein ?');
+        (10, 'tierPlane', 'un', 'avion cargo', 'airplane.png', 3000000, 3500, 1.19, 'Un transport très rapide, très efficace et très peu éco-responsable. Mais priverait-on le monde de bananes pour de vulgaires considérations écologiques ? Allons.'),
+        (11, 'tierWormhole', 'un', 'trou de ver', 'wormhole.png', 15000000000, 100000, 1.23, 'Allez chercher vos bananes dans une autre galaxie. Le risque d''un effondrement de l''espace-temps est non nul, non négligeable et non improbable, mais l''appel des bananes est plus important que ces basses considérations.');
 
 
 
@@ -32,19 +33,19 @@ create table buffsBPC
 (
     id               int auto_increment
         primary key,
-    name             varchar(50) null,
-    display_name     varchar(50) null,
-    img              varchar(50) null,
-    price            int         null,
-    multiplier       float       null,
-    price_multiplier float       null,
-    description      text        null
+    name             varchar(50) not null,
+    display_name     varchar(50) not null,
+    img              varchar(50) not null,
+    price            int         not null,
+    multiplier       float       not null,
+    price_multiplier float       not null,
+    description      text        not null
 );
 
 insert into buffsBPC (id, name, display_name, img, price, multiplier, price_multiplier, description)
 values  (1, 'buffCursor', 'Meilleur curseur', 'cursor.png', 100, 1, 1.19, 'Votre curseur mais en mieux afin de cliquer toujours plus efficacement.'),
-        (2, 'buffMegaCursor', 'Curseur encore plus fort', 'cursor2.png', 10000, 10, 1.19, 'Votre curseur mais en vraiment, vraiment mieux. Y a pas à dire, ça fait toute la différence.');
-        -- (4, 'buffSolidCursor', 'Curseur en béton armé', 'solidcursor.png', 100000, 100, 1.19, 'Votre curseur est remplacé par une version en béton armé. On a pas vraiment compris comment ça marchait ni pourquoi il était plus productif que les autres mais vous n''allez pas vous en plaindre, hein ?');
+        (2, 'buffMegaCursor', 'Curseur encore plus fort', 'cursor2.png', 10000, 10, 1.19, 'Votre curseur mais en vraiment, vraiment mieux. Y a pas à dire, ça fait toute la différence.'),
+        (3, 'buffSolidCursor', 'Curseur en béton armé', 'solidcursor.png', 100000, 100, 1.19, 'Votre curseur est remplacé par une version en béton armé. On a pas vraiment compris comment ça marchait ni pourquoi il était plus productif que les autres mais vous n''allez pas vous en plaindre, hein ?');
 
 
 
@@ -53,17 +54,17 @@ create table buffsBPS
 (
     id               int auto_increment
         primary key,
-    name             varchar(50) null,
-    display_name     varchar(50) not null,
-    img              varchar(50) not null,
-    type             varchar(3)  not null,
-    price            int         not null,
-    multiplier       float       not null,
-    multiplier_percent varchar(3)  null,
-    price_multiplier float       not null,
-    `modifies`       varchar(50) null,
-    modifies_name    varchar(50) null,
-    description      text        not null
+    name                varchar(50)    not null,
+    display_name        varchar(50)    not null,
+    img                 varchar(50)    not null,
+    type                varchar(3)     not null,
+    price               int            not null,
+    multiplier          float          not null,
+    multiplier_percent  varchar(3)     not null,
+    price_multiplier    float          not null,
+    `modifies`          varchar(50)    not null,
+    modifies_name       varchar(50)    not null,
+    description         text           not null
 );
 
 insert into buffsBPS (id, name, display_name, img, type, price, multiplier, multiplier_percent, price_multiplier, `modifies`, modifies_name, description)

@@ -25,6 +25,10 @@
 
 html {
   height: 100vh;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 body {
@@ -74,7 +78,7 @@ body {
 .mainGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 48vh 42vh;
+  grid-template-rows: 45vh 40vh;
   grid-gap: 2vw;
   margin-left: -40px;
   margin-right: -40px;

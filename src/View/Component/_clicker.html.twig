@@ -1,6 +1,6 @@
 <div class="mainClickerContainer animate__animated animate__bounceIn">
 	<div class="clickerContainer">
-		<img src="assets/images/banane.png" id="clicker" onclick="clickUp(); animateCSS('.banana', 'jello');" class="banana animate__faster"/>
+		<img src="assets/images/banane.png" id="clicker" onclick="clickUp(); animateCSS('.banana', 'jello');" class="banana animate__faster" alt="Une image de banane."/>
 
 		<h1>Bananes :
 			<span id="bananasNumber">0</span>
@@ -14,7 +14,7 @@
 
 		<div id='warped' onclick="clickUp(); animateCSS('.banana', 'jello');">
 			{% for i in 1..18 %}
-				<span id="w{{i}}" class='w{{i}} unavailable'><img src="assets/images/clicker.png" id="w{{i}}pic" class="normalCursor"></span>
+				<span id="w{{i}}" class='w{{i}} unavailable'><img src="assets/images/clicker.png" alt="Une grosse banane sur laquelle il faut cliquer." id="w{{i}}pic" class="normalCursor"></span>
 			{% endfor %}
 		</div>
 	</div>

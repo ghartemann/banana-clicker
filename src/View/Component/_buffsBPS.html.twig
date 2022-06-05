@@ -3,7 +3,7 @@
 		<div class="buttonGroup tooltip">
 			<button id="{{buffBPS.name}}Button" class="buffButton greyedBuff" onclick="buyBuff('BPS', '{{buffBPS.name}}', 'tier{{buffBPS.modifies}}'); animateCSS('#{{buffBPS.name}}Button', 'pulse');">
 				<div class="buttonPic">
-					<img src="assets/images/{{buffBPS.img}}" width="50px"/>
+					<img src="assets/images/{{buffBPS.img}}" width="50px" alt="Une image de {{buffBPS.name}}."/>
 				</div>
 				<div class="buttonText">
 					<p class="textTitle">{{buffBPS.display_name}}</p>
@@ -14,7 +14,7 @@
 					</p>
 					<p id="{{buffBPS.name}}Multiplier" class="unavailable">{{buffBPS.multiplier}}</p>
 					<p class="buttonSubtext">
-						<img src="assets/images/banane.png" width="20px"/>
+						<img src="assets/images/banane.png" width="20px" alt="Une toute petite banane."/>
 						<strong>
 							<span id="{{buffBPS.name}}Price">
 								{{buffBPS.price}}

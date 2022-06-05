@@ -3,14 +3,14 @@
 		<div class="buttonGroup tooltip">
 			<button id="{{buffBPC.name}}Button" class="buffButton greyedBuff" onclick="buyBuff('BPC', '{{buffBPC.name}}', 'none'); animateCSS('#{{buffBPC.name}}Button', 'pulse');">
 				<div class="buttonPic">
-					<img src="assets/images/{{buffBPC.img}}" width="50px"/>
+					<img src="assets/images/{{buffBPC.img}}" width="50px" alt="Une image de {{buffBPC.name}}.">
 				</div>
 				<div class="buttonText">
 					<p class="textTitle">{{buffBPC.display_name}}</p>
 					<p class="buttonSubtext">+<span id="{{buffBPC.name}}Multiplier">{{buffBPC.multiplier}}</span>
 						bpc</p>
 					<p class="buttonSubtext">
-						<img src="assets/images/banane.png" width="20px"/>
+						<img src="assets/images/banane.png" width="20px" alt="Une toute petite banane."/>
 						<strong>
 							<span id="{{buffBPC.name}}Price">{{buffBPC.price}}</span>
 						</strong>
