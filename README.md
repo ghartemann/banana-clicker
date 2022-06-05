@@ -19,6 +19,16 @@ Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, 
 * Devenir millionnaire grâce à la publicité
 
 ## Changelog
+> **v0.9.3**
+>   * Nombreuses améliorations cosmétiques
+>   * Ajout de liens vers LinkedIn et mon beau site
+>   * Regroupement du changelog et de la roadmap en un seul endroit
+>
+> **v0.9.2**
+>   * Ajout de buffs (Iceberg, Scooter, Baillon, Laser) et d'un clicker (Trou de ver)
+>   * Les bénéfices des buffs sont maintenant affichés en pourcents
+>   * Corrections de bugs
+>
 > **v0.9.0**
 >   * Modification de l'affichage du changelog et de la roadmap
 >   * Les clickers sont maintenant masqués par défaut (chaque premier achat d'un tier débloque le suivant)
