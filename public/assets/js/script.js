@@ -751,7 +751,7 @@ function showClicker() {
 
   // showing a little explanation as to why there are no more new clickers displayed
   if (clickerNb > 18) {
-    let enoughClickers = document.getElementById("enoughClickers");
+    let enoughClickers = document.getElementById("enoughClickerstierClicker");
     let enoughClickersList = enoughClickers.classList;
     enoughClickersList.remove("unavailable");
   }

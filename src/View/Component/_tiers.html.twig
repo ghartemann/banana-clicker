@@ -17,13 +17,13 @@
 							<button id="{{clicker.name}}Button10" class="buy10Button greyed" onclick="buyTier10('{{clicker.name}}'); animateCSS('#{{clicker.name}}Button10', 'pulse');">
 								<p>x 10</p>
 								<p class="displayPrice10">
-									<img src="assets/images/banane.png" width="15px" height="15px"/>
+									<img src="assets/images/banane.png" width="15px" height="15px" alt="Une toute petite banane."/>
 									<span id="{{clicker.name}}Price10"></span>
 								</p>
 							</button>
 
 							<div class="infoMobile" onclick="displayMobileTooltip('{{clicker.name}}');">
-								<img src="assets/images/info.png" width="60px">
+								<img src="assets/images/info.png" width="60px" alt="Un bouton d'information.">
 							</div>
 						</div>
 
@@ -38,7 +38,7 @@
 								</p>
 								<p class="buttonSubtext">+<span id="{{clicker.name}}Multiplier">{{clicker.multiplier}}</span>
 									bps</p>
-								<p class="buttonSubtext">
+								<div class="buttonSubtext">
 									<img src="assets/images/banane.png" width="20px" alt="Une toute petite banane."/>
 									<strong>
 										<span id="{{clicker.name}}Price">
@@ -48,7 +48,7 @@
 									<div style="position: relative;">
 										<span class="ownedNumberOnButton" id="{{clicker.name}}OwnedC">0</span>
 									</div>
-								</p>
+								</div>
 								<p style="display:none" id="{{clicker.name}}PriceMultiplier">{{clicker.price_multiplier}}</p>
 							</div>
 						</button>
@@ -92,7 +92,7 @@
 									<p>
 										<strong>{{clicker.description}}</strong>
 									</p>
-									<p id="enoughClickers" class="unavailable">Plus de place pour les afficher mais promis, ils y sont&nbsp;!!</p>
+									<p id="enoughClickers{{clicker.name}}" class="unavailable">Plus de place pour les afficher mais promis, ils y sont&nbsp;!!</p>
 									<br>
 									<p>
 										Chaque
