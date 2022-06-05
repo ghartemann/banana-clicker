@@ -444,7 +444,7 @@ footer {
 @media screen and (max-width: 992px) {
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 970px) {
   .mainPageContainer {
     min-height: 100vh;
     transform: initial;
@@ -559,5 +559,9 @@ footer {
   .tiers {
     height: initial;
     overflow-y: initial;
+  }
+
+  .downArrow {
+    display: none;
   }
 }

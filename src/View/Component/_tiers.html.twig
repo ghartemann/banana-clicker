@@ -11,7 +11,7 @@
 
 			<div id="buyableTiers" class="unavailable">
 				{% for clicker in clickers %}
-					<div class="buttonGroup tooltip">
+					<div id="{{clicker.name}}ButtonGroup" class="buttonGroup tooltip unavailable">
 
 						<div class="additionalButtons">
 							<button id="{{clicker.name}}Button10" class="buy10Button greyed" onclick="buyTier10('{{clicker.name}}'); animateCSS('#{{clicker.name}}Button10', 'pulse');">

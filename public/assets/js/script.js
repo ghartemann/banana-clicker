@@ -484,6 +484,9 @@ function unavailableFirst() {
   );
 
   if (bananas >= 30 || tierClickerOwned > 0) {
+    let clickerButtonGroup = document.getElementById("tierClickerButtonGroup");
+    let clickerButtonGroupList = clickerButtonGroup.classList;
+    clickerButtonGroupList.remove("unavailable");
     let notAvailable = document.getElementById("buyableTiers");
     let notAvailableList = notAvailable.classList;
     notAvailableList.remove("unavailable");
@@ -524,6 +527,31 @@ function unavailableClicks(notOwned, clicksToMake) {
   }
 }
 
+function unavailableUntilBought() {
+  for (let x = 0; x < tiersArray.length - 1; x++) {
+    unavailableUntilBoughtDetail(
+      "tier" + tiersArray[x],
+      "tier" + tiersArray[x + 1]
+    );
+  }
+
+  unavailableUntilBoughtDetail("tierTree", "tierMacaque");
+  unavailableUntilBoughtDetail("tierMacaque", "tierGorilla");
+  unavailableUntilBoughtDetail("tierGorilla", "tierPlantation");
+  unavailableUntilBoughtDetail("tierPlantation", "tierToucan");
+}
+
+function unavailableUntilBoughtDetail(owned, notOwned) {
+  let ownedTier = document.getElementById(owned + "Owned").innerHTML;
+  let notOwnedTier = document.getElementById(notOwned + "ButtonGroup");
+  let notOwnedList = notOwnedTier.classList;
+
+  if (ownedTier >= 1) {
+    notOwnedList.remove("unavailable");
+  }
+}
+
+window.onload = unavailableUntilBought();
 //
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -569,6 +597,7 @@ function buyTier(tierName) {
     // finally checking prices
     showClicker();
     runAllChecks();
+    unavailableUntilBought();
   } else {
     alert("Pas assez de bananes !");
   }
