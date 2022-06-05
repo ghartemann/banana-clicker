@@ -348,6 +348,11 @@ body {
 }
 
 /* CHANGELOG PANEL */
+#changelogText h2, #roadmapText h2 {
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+
 #changelogText p {
   margin-bottom: 10px;
   margin-top: 15px;
