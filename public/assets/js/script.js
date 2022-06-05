@@ -6,7 +6,7 @@ console.log(
   "Oui, il est possible de tricher assez facilement. Super, bonne ambiance vraiment."
 );
 
-document.getElementById("version").innerHTML = "v0.9.0";
+document.getElementById("version").innerHTML = "v0.9.2";
 
 function unreleased() {
   alert("Le jeu sauvegarde maintenant tout seul, à chaque seconde.");
@@ -40,25 +40,40 @@ const tiersArray = [
   "Rifle",
   "Boat",
   "Plane",
+  "Wormhole",
 ];
 
 // arrays containing buffs names by category (bps/bpc)
-const buffsBPCArray = ["Cursor", "MegaCursor"];
-const buffsBPSArray = ["CPU", "Bulldozer", "Fertilizer", "Megaphone"];
+const buffsBPCArray = ["Cursor", "MegaCursor", "SolidCursor"];
+const buffsBPSArray = [
+  "Fertilizer",
+  "Motorcycle",
+  "CPU",
+  "Bulldozer",
+  "Gag",
+  "Megaphone",
+  "Laser",
+  "Iceberg",
+];
 
 // arrays containing buffs unlocking modalities :
 // [buff, modifiedTier] -- will get unlocked after 5 owned tiers
 const buffsBPSArrayModality = [
+  ["Fertilizer", "Tree"],
+  ["Motorcycle", "Macaque"],
   ["CPU", "Gorilla"],
   ["Bulldozer", "Plantation"],
-  ["Fertilizer", "Tree"],
+  ["Gag", "Toucan"],
   ["Megaphone", "Sloth"],
+  ["Laser", "Rifle"],
+  ["Iceberg", "Boat"],
 ];
 
 // [buff, nbClicksNeeded]
 const buffsBPCArrayModality = [
   ["Cursor", 100],
   ["MegaCursor", 500],
+  ["SolidCursor", 1000],
 ];
 
 // NUMBER OF CLICKERS AND BUFFS (will probably be used later)
@@ -225,8 +240,8 @@ function loadOneStat(localstoragename, htmlid) {
 
 function cheat() {
   // adding bananas
-  updateBananas(10000);
-  updateTotalBananas(10000);
+  updateBananas(1000000);
+  updateTotalBananas(1000000);
 
   // adding 50 clicks to total
   let nbclicks = parseInt(document.getElementById("nbClicks").innerHTML, 10);
@@ -466,6 +481,7 @@ function buffPriceCheck(buffName) {
 
   if (buffOwned >= 10) {
     document.getElementById(buffName + "OwnedC").innerHTML = "MAX";
+    // document.getElementById(buffName + "Button").classList.add("lastBuff");
   }
 }
 

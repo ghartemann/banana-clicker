@@ -9,9 +9,10 @@
 					<p class="textTitle">{{buffBPS.display_name}}</p>
 					<p class="buttonSubtext">bps /
 						{{buffBPS.modifies_name}}
-						x
-						<span id="{{buffBPS.name}}Multiplier">{{buffBPS.multiplier}}</span>
+						+
+						<span>{{buffBPS.multiplier_percent}}</span>
 					</p>
+					<p id="{{buffBPS.name}}Multiplier" class="unavailable">{{buffBPS.multiplier}}</p>
 					<p class="buttonSubtext">
 						<img src="assets/images/banane.png" width="20px"/>
 						<strong>

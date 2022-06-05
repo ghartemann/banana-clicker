@@ -41,8 +41,10 @@ create table buffsBPC
     description      text        null
 );
 
-INSERT INTO buffsBPC (id, name, display_name, img, price, multiplier, price_multiplier, description) VALUES (1, 'buffCursor', 'Meilleur curseur', 'cursor.png', 100, 1, 1.19, 'Votre curseur mais en mieux afin de cliquer toujours plus efficacement.');
-INSERT INTO buffsBPC (id, name, display_name, img, price, multiplier, price_multiplier, description) VALUES (2, 'buffMegaCursor', 'Curseur encore plus fort', 'cursor2.png', 10000, 10, 1.19, 'Votre curseur mais en vraiment, vraiment mieux. Y a pas à dire, ça fait toute la différence.');
+insert into buffsBPC (id, name, display_name, img, price, multiplier, price_multiplier, description)
+values  (1, 'buffCursor', 'Meilleur curseur', 'cursor.png', 100, 1, 1.19, 'Votre curseur mais en mieux afin de cliquer toujours plus efficacement.'),
+        (2, 'buffMegaCursor', 'Curseur encore plus fort', 'cursor2.png', 10000, 10, 1.19, 'Votre curseur mais en vraiment, vraiment mieux. Y a pas à dire, ça fait toute la différence.');
+        -- (4, 'buffSolidCursor', 'Curseur en béton armé', 'solidcursor.png', 100000, 100, 1.19, 'Votre curseur est remplacé par une version en béton armé. On a pas vraiment compris comment ça marchait ni pourquoi il était plus productif que les autres mais vous n''allez pas vous en plaindre, hein ?');
 
 
 
@@ -57,14 +59,19 @@ create table buffsBPS
     type             varchar(3)  not null,
     price            int         not null,
     multiplier       float       not null,
+    multiplier_percent varchar(3)  null,
     price_multiplier float       not null,
     `modifies`       varchar(50) null,
     modifies_name    varchar(50) null,
     description      text        not null
 );
 
-insert into buffsBPS (id, name, display_name, img, type, price, multiplier, price_multiplier, `modifies`, modifies_name, description)
-values  (1, 'buffFertilizer', 'Sac d''engrais Monsanto', 'fertilizer.png', 'BPS', 2000, 1.3, 1.15, 'Tree', 'bananier', 'Du bon engrais Monsanto chargé de pesticides pour rendre vos bananiers plus grands, plus forts, plus productifs et plus intelligents. Le parfait outil si les risques de cancer des intestins vous importent peu.'),
-        (2, 'buffCPU', 'Robotiser les gorilles', 'cpu.png', 'BPS', 33333, 1.1, 1.15, 'Gorilla', 'gorille', 'Les gorilles c''est bien, mais les robots-gorilles c''est mieux. Les progrès remarquables en matière de bioingéniérie et de robotisation vous permettent de rendre vos gorilles encore plus efficaces.'),
-        (3, 'buffBulldozer', 'Déforestation massive', 'bulldozer.png', 'BPS', 85000, 1.1, 1.15, 'Plantation', 'bananeraie', 'Arracher des arbres centenaires et les remplacer par des bananiers. Sur des kilomètres carrés. Vous voulez des bananes ou sauver la planète ? Alors.'),
-        (4, 'buffMegaphone', 'Réveiller les paresseux', 'megaphone.png', 'BPS', 1000000, 1.15, 1.15, 'Sloth', 'paresseux', 'Ils sont productifs, certes, mais il ne faut quand même pas exagérer. Un bon cri dans ce mégaphone dernier cri (!!) saura mettre au travail cette masse salariale trop peu efficace.');
+insert into buffsBPS (id, name, display_name, img, type, price, multiplier, multiplier_percent, price_multiplier, `modifies`, modifies_name, description)
+values  (1, 'buffFertilizer', 'Sac d''engrais Monsanto', 'fertilizer.png', 'BPS', 2000, 1.3, '30%', 1.15, 'Tree', 'bananier', 'Du bon engrais Monsanto chargé de pesticides pour rendre vos bananiers plus grands, plus forts, plus productifs et plus intelligents. Le parfait outil si le risque élevé de cancer des intestins vous importe peu.'),
+        (2, 'buffMotorcycle', 'Uberiser les macaques', 'motorcycle.png', 'BPS', 10000, 1.2, '20%', 1.15, 'Macaque', 'macaque', 'En plus de leur travail habituel, on fournit des scooters aux macaques qui peuvent ainsi livrer des bananes avec un statut d''auto-entrepreneur assez favorable d''un point de vue financier. Pour vous.'),
+        (3, 'buffCPU', 'Robotiser les gorilles', 'cpu.png', 'BPS', 33333, 1.1, '10%', 1.15, 'Gorilla', 'gorille', 'Les gorilles c''est bien, mais les robots-gorilles c''est mieux. Les progrès remarquables en matière de bioingéniérie et de robotisation vous permettent de rendre vos gorilles encore plus efficaces.'),
+        (4, 'buffBulldozer', 'Déforestation massive', 'bulldozer.png', 'BPS', 85000, 1.1, '10%', 1.15, 'Plantation', 'bananeraie', 'Arracher des arbres centenaires et les remplacer par des bananiers. Sur des kilomètres carrés. Vous voulez des bananes ou sauver la planète ? Alors.'),
+        (5, 'buffGag', 'Baillonner les toucans', 'gag.png', 'BPS', 1000000, 1.15, '15%', 1.16, 'Toucan', 'toucan', 'Ces toucans sont muets mais ça ne les empêche pas de perdre du temps à la pause café. Avec ces baillons, on s''assure que le problème est résolu.'),
+        (6, 'buffMegaphone', 'Réveiller les paresseux', 'megaphone.png', 'BPS', 1500000, 1.15, '15%', 1.15, 'Sloth', 'paresseux', 'Ils sont productifs, certes, mais il ne faut quand même pas exagérer. Un bon cri dans ce mégaphone dernier cri (!!) saura remettre au travail cette masse salariale trop peu efficace.'),
+        (7, 'buffLaser', 'Pointeur laser', 'laser.png', 'BPS', 5000000, 1.15, '15%', 1.16, 'Rifle', 'fusil', 'Gagnez en précision avec le pointer laser. Aucune banane ne saura vous échapper Essayez d''éviter de tirer sur les locaux qui défendent leurs terres, c''est pas dingue d''un point de vue marketing.'),
+        (8, 'buffIceberg', 'Faire fondre la banquise', 'melting.png', 'BPS', 10000000, 1.15, '15%', 1.17, 'Boat', 'bateau', 'Rapprocher votre production de la côte, ou rapprocher la côte de votre production ? En faisant fondre ce qu''il reste de banquise, le niveau des océans augmente et vous fait économiser de précieux kilomètres (et ainsi améliore votre productivité).');

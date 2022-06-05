@@ -23,6 +23,10 @@
   color: var(--white);
 }
 
+html {
+  height: 100vh;
+}
+
 body {
   background: url("../images/tropical.jpg");
   background-size: cover;
@@ -64,14 +68,13 @@ body {
 
 .mainPageContainer {
   transform: scale(90%);
-  min-height: 105.3vh;
 }
 
 /* GRID */
 .mainGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 48vh 45vh;
+  grid-template-rows: 48vh 42vh;
   grid-gap: 2vw;
   margin-left: -40px;
   margin-right: -40px;
@@ -142,14 +145,6 @@ body {
   height: 28px;
 }
 
-/*
-#enoughClickers {
-  position: absolute;
-  width: 160px;
-  top: 150px;
-  left: 200px;
-} */
-
 /* TIERS */
 .mainButtonsContainer {
   justify-content: left;
@@ -166,7 +161,7 @@ body {
   width: 100%;
 }
 
-.buttonsContainer {
+.buttonsContainer, .buffsContainer {
   display: flex;
   column-gap: 30px;
   flex-direction: column;
@@ -177,7 +172,6 @@ body {
   column-gap: 10px;
   align-items: center;
   vertical-align: middle;
-  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -292,6 +286,10 @@ body {
   background-color: var(--yellow-dark-transparent);
 }
 
+/* .lastBuff {
+  order: 99;
+} */
+
 /* INFO PANEL */
 .greenTitle,
 .yellowTitle {
@@ -380,10 +378,7 @@ body {
 
 /* FOOTER */
 footer {
-  background-color: var(--green-dark);
-  height: 100px;
-  display: flex;
-  justify-content: center;
+  display: none;
 }
 
 .footerText {
@@ -421,6 +416,10 @@ footer {
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 1200px) {
+  html {
+    height: auto;
+  }
+
   .mainGrid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 500px 450px;
@@ -523,6 +522,14 @@ footer {
 }
 
 @media screen and (max-width: 576px) {
+  footer {
+    display: block;
+    background-color: var(--green-dark);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+  }
+
   .mainGrid {
     grid-template-rows: auto auto auto auto;
   }
