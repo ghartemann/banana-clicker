@@ -16,20 +16,21 @@
 						<div class="additionalButtons">
 							<button id="{{clicker.name}}Button10" class="buy10Button greyed" onclick="buyTier10('{{clicker.name}}'); animateCSS('#{{clicker.name}}Button10', 'pulse');">
 								<p>x 10</p>
-								<p class="displayPrice10">
-									<img src="assets/images/banane.png" width="15px" height="15px" alt="Une toute petite banane."/>
+								<div class="displayPrice10">
+									<img src="assets/images/banane.png" width="15" height="15" alt="Une toute petite banane."/>
+									<p class="invisibleDot">.</p>
 									<span id="{{clicker.name}}Price10"></span>
-								</p>
+								</div>
 							</button>
 
 							<div class="infoMobile" onclick="displayMobileTooltip('{{clicker.name}}');">
-								<img src="assets/images/info.png" width="60px" alt="Un bouton d'information.">
+								<img src="assets/images/info.png" width="60" alt="Un bouton d'information.">
 							</div>
 						</div>
 
 						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier('{{clicker.name}}'); animateCSS('#{{clicker.name}}Button', 'pulse');">
 							<div class="buttonPic">
-								<img src="assets/images/{{clicker.img}}" width="50px" alt="Une image de {{clicker.display_name}}."/>
+								<img src="assets/images/{{clicker.img}}" width="50" alt="Une image de {{clicker.display_name}}."/>
 							</div>
 							<div class="buttonText">
 								<p class="textTitle">Acheter
@@ -39,7 +40,7 @@
 								<p class="buttonSubtext">+<span id="{{clicker.name}}Multiplier">{{clicker.multiplier}}</span>
 									bps</p>
 								<div class="buttonSubtext">
-									<img src="assets/images/banane.png" width="20px" alt="Une toute petite banane."/>
+									<img src="assets/images/banane.png" width="20" alt="Une toute petite banane."/>
 									<strong>
 										<span id="{{clicker.name}}Price">
 											{{clicker.price}}

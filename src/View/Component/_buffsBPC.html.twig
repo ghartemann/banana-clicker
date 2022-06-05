@@ -1,6 +1,6 @@
 {% for buffBPC in buffsBPC %}
 	<div id="{{buffBPC.name}}Div" class="unavailable">
-		<div class="buttonGroup tooltip">
+		<div class="buttonGroup buffButtonGroup tooltip">
 			<button id="{{buffBPC.name}}Button" class="buffButton greyedBuff" onclick="buyBuff('BPC', '{{buffBPC.name}}', 'none'); animateCSS('#{{buffBPC.name}}Button', 'pulse');">
 				<div class="buttonPic">
 					<img src="assets/images/{{buffBPC.img}}" width="50px" alt="Une image de {{buffBPC.name}}.">

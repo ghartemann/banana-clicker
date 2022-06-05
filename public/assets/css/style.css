@@ -159,13 +159,18 @@ body {
   text-align: center;
 }
 
+.invisibleDot {
+  color: #00000000;
+}
+
 .buffsContainer,
 .buttonsContainer,
 .statsContainer {
   width: 100%;
 }
 
-.buttonsContainer, .buffsContainer {
+.buttonsContainer,
+.buffsContainer {
   display: flex;
   column-gap: 30px;
   flex-direction: column;
@@ -177,6 +182,10 @@ body {
   align-items: center;
   vertical-align: middle;
   margin-bottom: 20px;
+}
+
+.buffButtonGroup {
+  column-gap: initial;
 }
 
 .infoMobile {
@@ -334,6 +343,10 @@ body {
   margin-left: 10px;
 }
 
+.buffsContainer h1 {
+  text-align: right;
+}
+
 /* CHANGELOG PANEL */
 #changelogText p {
   margin-bottom: 10px;
@@ -411,6 +424,11 @@ footer {
   height: 100%;
   overflow-y: scroll;
   scrollbar-width: none;
+}
+
+.buffs {
+  display: flex;
+  justify-content: right;
 }
 
 .buffs::-webkit-scrollbar,

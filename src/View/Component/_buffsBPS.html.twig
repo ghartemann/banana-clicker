@@ -1,6 +1,6 @@
 {% for buffBPS in buffsBPS %}
 	<div id="{{buffBPS.name}}Div" class="unavailable">
-		<div class="buttonGroup tooltip">
+		<div class="buttonGroup buffButtonGroup tooltip">
 			<button id="{{buffBPS.name}}Button" class="buffButton greyedBuff" onclick="buyBuff('BPS', '{{buffBPS.name}}', 'tier{{buffBPS.modifies}}'); animateCSS('#{{buffBPS.name}}Button', 'pulse');">
 				<div class="buttonPic">
 					<img src="assets/images/{{buffBPS.img}}" width="50px" alt="Une image de {{buffBPS.name}}."/>
