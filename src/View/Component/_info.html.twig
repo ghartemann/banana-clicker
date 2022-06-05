@@ -1,36 +1,186 @@
 <div id="mySideInfo" class="sideinfo">
 	<a id="closeBtnInfo" href="#" class="close">×</a>
 
-	<div class="welcomeText">
-		<h2>
-			Bienvenue sur<br/><span class="yellowTitle">Banana Clicker</span>
-		</h2>
+	<div id="infoText" class="unavailable">
+		<div class="welcomeText">
+			<h2>
+				Bienvenue sur<br/><span class="yellowTitle">Banana Clicker</span>
+			</h2>
+			<p>
+				Hommage à
+				<a class="cookieClickerLink" href="https://orteil.dashnet.org/cookieclicker/" target="_blank">Cookie Clicker</a>
+				et tentative de création d'un premier jeu vidéo, le développement de cette expérience somme toute assez simpliste m'a beaucoup amusé. J'espère que son utilisation saura susciter chez vous des émotions au moins similaires sinon plus intenses encore.
+			</p>
+		</div>
+		<div class="tuto">
+			<h2>But du jeu :</h2>
+			<p>
+				Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, il n'y a pas de fin et les prix sont incrémentaux.
+			</p>
+		</div>
+		<div class="warning">
+			<h2>Sauvegarde :</h2>
+			<p>Le jeu dispose d'une fonctonnalité de sauvegarde automatique. Où ? Pour combien de temps ? Ce sont les mystères du
+				<i>local storage</i>...</p>
+			<p>Il est possible de la réinitialiser dans le menu de droite (il faut parfois le faire une deuxième fois pour que ça fonctionne, c'est comme ça).</p>
+		</div>
+		<div class="lexique">
+			<h2>Lexique :</h2>
+			<p>bps = bananes par seconde</p>
+			<p>bpc = bananes par clic</p>
+		</div>
+	</div>
+
+	<div id="changelogText" class="unavailable">
+		<h2>Changelog</h2>
 		<p>
-			Hommage à
-			<a class="cookieClickerLink" href="https://orteil.dashnet.org/cookieclicker/" target="_blank">Cookie Clicker</a>
-			et tentative de création d'un premier jeu vidéo, le développement de cette expérience somme toute assez simpliste m'a beaucoup amusé. J'espère que son utilisation saura susciter chez vous des émotions au moins similaires sinon plus intenses encore.
+			<strong>v0.9.0</strong>
 		</p>
-	</div>
-	<div class="tuto">
-		<h2>But du jeu :</h2>
+		<ul>
+			<li>Modification de l'affichage du changelog et de la roadmap</li>
+			<li>Les clickers sont maintenant masqués par défaut (chaque premier achat d'un tier débloque le suivant)</li>
+		</ul>
 		<p>
-			Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, il n'y a pas de fin et les prix sont incrémentaux.
+			<strong>v0.8.9</strong>
 		</p>
+		<ul>
+			<li>Correction de nombreux bugs d'affichage</li>
+			<li>Ajout de trois nouveaux buffs (engrais, bulldozer et mégaphone)</li>
+			<li>Impossibilité d'acquérir plus de 10 buffs (pour des questions d'équilibrage)</li>
+		</ul>
+		<p>
+			<strong>v0.8.7</strong>
+		</p>
+		<ul>
+			<li>Retour du panel d'infos, maintenant plus joli (accessible via le ? en haut à gauche)</li>
+		</ul>
+		<p>
+			<strong>v0.8.5</strong>
+		</p>
+		<ul>
+			<li>Ajout de la bananeraie, du bateau, de l'avion, du toucan, du paresseux et du fusil</li>
+			<li>Correction de bugs mineurs</li>
+		</ul>
+		<p>
+			<strong>v0.8.2</strong>
+		</p>
+		<ul>
+			<li>Correction de nombreux bugs</li>
+		</ul>
+		<p>
+			<strong>v0.8.0</strong>
+		</p>
+		<ul>
+			<li>Ajout de la fonction SAUVEGARDE AUTO</li>
+			<li>Énorme refactorisation du code (ça vous fait une belle jambe)</li>
+			<li>Fixes au CSS</li>
+		</ul>
+		<p>
+			<strong>v0.7.7</strong>
+		</p>
+		<ul>
+			<li>Possibilité d'acheter les clickers par lots de 10</li>
+			<li>Nombreux fixes au CSS</li>
+			<li>Tooltips sur les buffs</li>
+		</ul>
+		<p>
+			<strong>v0.7.0</strong>
+		</p>
+		<ul>
+			<li>Ambiance sonore !</li>
+			<li>Ajout de stats</li>
+			<li>Fixes</li>
+		</ul>
+		<p>
+			<strong>v0.6.0</strong>
+		</p>
+		<ul>
+			<li>Gros changements d'organisation visuelle</li>
+			<li>Des tooltips informent maintenant de l'action des clickers (ceux des buffs suivront)</li>
+		</ul>
+		<p>
+			<strong>v0.5.3</strong>
+		</p>
+		<ul>
+			<li>Animation des curseurs quand ils cliquent</li>
+			<li>Encore plus responsive</li>
+		</ul>
+		<p>
+			<strong>v0.5.0</strong>
+		</p>
+		<ul>
+			<li>Responsive™</li>
+			<li>Ajout d'animations sur les boutons</li>
+			<li>Nombreux fixes de CSS</li>
+		</ul>
+		<p>
+			<strong>v0.4.6</strong>
+		</p>
+		<ul>
+			<li>Ajout du macaque</li>
+		</ul>
+		<p>
+			<strong>v0.4.5</strong>
+		</p>
+		<ul>
+			<li>Beaucoup, beaucoup d'améliorations du CSS, maintenant un peu plus responsive</li>
+		</ul>
+		<p>
+			<strong>v0.4.0</strong>
+		</p>
+		<ul>
+			<li>Ajout de curseurs visuels à l'achat d'un clicker (assez fier du résultat)</li>
+		</ul>
+		<p>
+			<strong>v0.3.1</strong>
+		</p>
+		<ul>
+			<li>Ajout du méga curseur (1000 clics)</li>
+			<li>Refactorisation et nombreux fixes</li>
+		</ul>
+		<p>
+			<strong>v0.3.0</strong>
+		</p>
+		<ul>
+			<li>Migration vers PHP (simple MVC)</li>
+			<li>Améliorations visuelles en masse</li>
+		</ul>
+		<p>
+			<strong>v0.2.0</strong>
+		</p>
+		<ul>
+			<li>Ajout des buffs</li>
+			<li>Ajout du calcul de bpc</li>
+		</ul>
+		<p>
+			<strong>v0.1.5</strong>
+		</p>
+		<ul>
+			<li>Ajout des gorilles</li>
+			<li>Ajout des bananiers</li>
+		</ul>
+		<p>
+			<strong>v0.1.1</strong>
+		</p>
+		<ul>
+			<li>Calcul du bps pleinement fonctionnel</li>
+		</ul>
 	</div>
-	<div class="warning">
-		<h2>Sauvegarde :</h2>
-		<p>Le jeu dispose d'une fonctonnalité de sauvegarde automatique. Où ? Pour combien de temps ? Ce sont les mystères du
-			<i>local storage</i>...</p>
-		<p>Il est possible de la réinitialiser dans le menu de droite (il faut parfois le faire une deuxième fois pour que ça fonctionne, c'est comme ça).</p>
-	</div>
-	<div class="lexique">
-		<h2>Lexique :</h2>
-		<p>bps = bananes par seconde</p>
-		<p>bpc = bananes par clic</p>
+
+	<div id="roadmapText" class="unavailable">
+		<h2>Roadmap</h2>
+		<ul>
+			<li>WIP : Profil utilisateur et sauvegarde des données en BDD</li>
+			<li>WIP : Ajout de nombreux autres clickers et buffs</li>
+			<li>Migration sous Symfony</li>
+			<li>Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)</li>
+			<li>Export et import de sauvegardes</li>
+			<li>Devenir millionnaire grâce à la publicité</li>
+		</ul>
 	</div>
 
 </div>
 
-<a href="#" id="openBtnInfo">
+<a href="#" id="openBtnInfo" onclick="openPanel('info');">
 	<img class="btnInfo" src="assets/images/question-mark.png">
 </a>

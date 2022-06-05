@@ -73,3 +73,9 @@ function dismissAllTooltips(event) {
 
 customElements.define("wow-tooltip", Tooltip);
 document.addEventListener("touchstart", (e) => dismissAllTooltips(e));
+
+function displayMobileTooltip(tierName) {
+  let mobileTooltip = document.getElementById("mobileTooltip" + tierName);
+  let mobileTooltipList = mobileTooltip.classList;
+  mobileTooltipList.toggle("unavailable");
+}

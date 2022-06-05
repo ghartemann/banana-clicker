@@ -71,7 +71,7 @@ body {
 .mainGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 48vh 41vh;
+  grid-template-rows: 48vh 45vh;
   grid-gap: 2vw;
   margin-left: -40px;
   margin-right: -40px;
@@ -155,10 +155,15 @@ body {
   justify-content: left;
 }
 
+.downArrow {
+  font-size: 25pt;
+  text-align: center;
+}
+
 .buffsContainer,
 .buttonsContainer,
 .statsContainer {
-  width: 95%;
+  width: 100%;
 }
 
 .buttonsContainer {
@@ -176,6 +181,17 @@ body {
   margin-bottom: 20px;
 }
 
+.infoMobile {
+  display: none;
+}
+
+.additionalButtons {
+  order: 2;
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+
 .buyButton,
 .buffButton,
 .buy10Button {
@@ -184,10 +200,10 @@ body {
   padding: 15px 15px 15px 20px;
   border: none;
   border-radius: 15px;
-  min-width: 400px;
+  min-width: 375px;
   box-shadow: var(--box-shadow);
   cursor: pointer;
-  column-gap: 10px;
+  column-gap: 20px;
   margin-left: 10px;
   margin-top: 10px;
   --animate-duration: 0.1s;
@@ -199,7 +215,6 @@ body {
 
 .buy10Button {
   min-width: initial;
-  order: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -277,7 +292,7 @@ body {
   background-color: var(--yellow-dark-transparent);
 }
 
-/* LEFT DIV */
+/* INFO PANEL */
 .greenTitle,
 .yellowTitle {
   font-size: 45pt;
@@ -315,6 +330,16 @@ body {
 .buttonsContainer h1 {
   margin-bottom: 20px;
   margin-left: 10px;
+}
+
+/* CHANGELOG PANEL */
+#changelogText p {
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+#changelogText li {
+  margin-left: 20px;
 }
 
 /* STATS */
@@ -424,16 +449,12 @@ footer {
   .infoContainer {
     display: none;
   }
-
-  .buyButton {
-    width: 400px;
-  }
 }
 
 @media screen and (max-width: 992px) {
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 970px) {
   .mainPageContainer {
     min-height: 100vh;
     transform: initial;
@@ -472,9 +493,12 @@ footer {
   }
 
   .buttonGroup {
-    flex-direction: column;
     row-gap: 20px;
     align-items: center;
+  }
+
+  .infoMobile {
+    display: block;
   }
 
   .greenMainTitle {
@@ -482,7 +506,7 @@ footer {
   }
 
   .buyButton {
-    width: 400px;
+    width: 60%;
   }
 
   .buffsContainer {
@@ -490,10 +514,7 @@ footer {
   }
 
   .stats {
-    display: block;
-    text-align: left;
-    align-self: center;
-    font-size: 12pt;
+    display: none;
   }
 
   .videoButton {
@@ -502,6 +523,10 @@ footer {
 }
 
 @media screen and (max-width: 576px) {
+  .mainGrid {
+    grid-template-rows: auto auto auto auto;
+  }
+
   .clickerContainer {
     width: 300px;
     height: 300px;
@@ -514,17 +539,39 @@ footer {
     height: 154px;
   }
 
+  .additionalButtons {
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .buyButton,
   .buffButton {
     padding: 15px 15px 15px 20px;
     font-size: 17pt;
     border-radius: 15px;
-    min-width: 250px;
+    min-width: 300px;
+    width: 80%;
     max-width: 90%;
     column-gap: 20px;
   }
 
+  .buy10Button {
+    min-width: 115px;
+    width: 100%;
+    height: 100%;
+  }
+
   .footerText {
     font-size: 14pt;
+  }
+
+  .buffs,
+  .tiers {
+    height: initial;
+    overflow-y: initial;
+  }
+
+  .downArrow {
+    display: none;
   }
 }

@@ -11,14 +11,22 @@
 
 			<div id="buyableTiers" class="unavailable">
 				{% for clicker in clickers %}
-					<div class="buttonGroup tooltip">
-						<button id="{{clicker.name}}Button10" class="buy10Button greyed" onclick="buyTier10('{{clicker.name}}'); animateCSS('#{{clicker.name}}Button10', 'pulse');">
-							<p>x 10</p>
-							<p class="displayPrice10">
-								<img src="assets/images/banane.png" width="15px" height="15px"/>
-								<span id="{{clicker.name}}Price10"></span>
-							</p>
-						</button>
+					<div id="{{clicker.name}}ButtonGroup" class="buttonGroup tooltip unavailable">
+
+						<div class="additionalButtons">
+							<button id="{{clicker.name}}Button10" class="buy10Button greyed" onclick="buyTier10('{{clicker.name}}'); animateCSS('#{{clicker.name}}Button10', 'pulse');">
+								<p>x 10</p>
+								<p class="displayPrice10">
+									<img src="assets/images/banane.png" width="15px" height="15px"/>
+									<span id="{{clicker.name}}Price10"></span>
+								</p>
+							</button>
+
+							<div class="infoMobile" onclick="displayMobileTooltip('{{clicker.name}}');">
+								<img src="assets/images/info.png" width="60px">
+							</div>
+						</div>
+
 						<button id="{{clicker.name}}Button" class="buyButton greyed" onclick="buyTier('{{clicker.name}}'); animateCSS('#{{clicker.name}}Button', 'pulse');">
 							<div class="buttonPic">
 								<img src="assets/images/{{clicker.img}}" width="50px"/>
@@ -45,6 +53,39 @@
 							</div>
 						</button>
 
+						<div id="mobileTooltip{{clicker.name}}" class="mobileTooltip unavailable">
+							<p>
+								<strong>{{clicker.description}}</strong>
+							</p>
+							<br>
+							<p>
+								Chaque
+								{{clicker.display_name}}
+								produit
+								<b id="{{clicker.name}}MultiplierD">{{clicker.multiplier}}</b>
+								{% if clicker.multiplier > 1 %}
+									bananes par seconde.
+								{% endif %}
+								{% if clicker.multiplier == 1 %}
+									banane par seconde.
+								{% endif %}
+							</p>
+							<br>
+							<p>
+								Acquis :
+								<strong>
+									<span id="{{clicker.name}}OwnedD">0</span>
+								</strong>
+							</p>
+							<p>
+								Production :
+								<strong>
+									<span id="{{clicker.name}}ProdD">0</span>
+								</strong>
+								bps
+							</p>
+						</div>
+
 						<wow-tooltip class="tooltip">
 							<div class="tooltip-dropdown" data-tooltip-dropdown>
 								<div role="tooltip" id="tooltip-demo-content" class="tooltip-dropdown__content">
@@ -53,42 +94,49 @@
 									</p>
 									<p id="enoughClickers" class="unavailable">Plus de place pour les afficher mais promis, ils y sont&nbsp;!!</p>
 									<br>
-									<p>Chaque
+									<p>
+										Chaque
 										{{clicker.display_name}}
 										produit
 										<b id="{{clicker.name}}MultiplierB">{{clicker.multiplier}}</b>
 										{% if clicker.multiplier > 1 %}
-											bananes par seconde.</p>
-									{% endif %}
-									{% if clicker.multiplier == 1 %}
-										banane par seconde.</p>
-								{% endif %}
-								<br>
-								<p>Acquis :
-									<strong>
-										<span id="{{clicker.name}}OwnedB">0</span>
-									</strong>
-								</p>
-								<p>Production :
-									<strong>
-										<span id="{{clicker.name}}ProdB">0</span>
-									</strong>
-									bps</p>
+											bananes par seconde.
+										{% endif %}
+										{% if clicker.multiplier == 1 %}
+											banane par seconde.
+										{% endif %}
+									</p>
+									<br>
+									<p>
+										Acquis :
+										<strong>
+											<span id="{{clicker.name}}OwnedB">0</span>
+										</strong>
+									</p>
+									<p>
+										Production :
+										<strong>
+											<span id="{{clicker.name}}ProdB">0</span>
+										</strong>
+										bps
+									</p>
+								</div>
 							</div>
+						</wow-tooltip>
+
+						<div class="stats">
+							<p>Acquis :
+								<span id="{{clicker.name}}Owned">0</span>
+							</p>
+							<p>Production :
+								<span id="{{clicker.name}}Prod">0</span>
+								bps</p>
 						</div>
-					</wow-tooltip>
 
-					<div class="stats">
-						<p>Acquis :
-							<span id="{{clicker.name}}Owned">0</span>
-						</p>
-						<p>Production :
-							<span id="{{clicker.name}}Prod">0</span>
-							bps</p>
 					</div>
-
-				</div>
-			{% endfor %}
+				{% endfor %}
+			</div>
 		</div>
+		<div class="downArrow">▾</div>
 	</div>
-</div></div>
+</div>
