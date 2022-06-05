@@ -292,7 +292,7 @@ body {
   background-color: var(--yellow-dark-transparent);
 }
 
-/* LEFT DIV */
+/* INFO PANEL */
 .greenTitle,
 .yellowTitle {
   font-size: 45pt;
@@ -330,6 +330,16 @@ body {
 .buttonsContainer h1 {
   margin-bottom: 20px;
   margin-left: 10px;
+}
+
+/* CHANGELOG PANEL */
+#changelogText p {
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+#changelogText li {
+  margin-left: 20px;
 }
 
 /* STATS */

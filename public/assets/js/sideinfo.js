@@ -1,18 +1,35 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////// BUTTON AND SIDE INFO
-var sideinfo = document.getElementById("mySideInfo");
-var openBtnInfo = document.getElementById("openBtnInfo");
-var closeBtnInfo = document.getElementById("closeBtnInfo");
+let sideinfo = document.getElementById("mySideInfo");
+let closeBtnInfo = document.getElementById("closeBtnInfo");
 
-openBtnInfo.onclick = openInfo;
-closeBtnInfo.onclick = closeInfo;
+closeBtnInfo.onclick = closePanel;
 
-/* Set the width of the side navigation to 250px */
-function openInfo() {
-  sideinfo.classList.toggle("active");
+// display text and open panel
+function openPanel(type) {
+  if (sideinfo.classList.contains("active")) {
+    closePanel();
+    let text = document.getElementById(type + "Text");
+    text.classList.remove("unavailable");
+    setTimeout(sideinfo.classList.add("active"), 2000);
+  } else {
+    let text = document.getElementById(type + "Text");
+    text.classList.remove("unavailable");
+    sideinfo.classList.add("active");
+  }
+
+  // display text
 }
 
-/* Set the width of the side navigation to 0 */
-function closeInfo() {
-  sideinfo.classList.toggle("active");
+// close panel and hide all text
+function closePanel() {
+  sideinfo.classList.remove("active");
+
+  // hide all text
+  let infoText = document.getElementById("infoText");
+  let changelogText = document.getElementById("changelogText");
+  let roadmapText = document.getElementById("roadmapText");
+  infoText.classList.add("unavailable");
+  changelogText.classList.add("unavailable");
+  roadmapText.classList.add("unavailable");
 }

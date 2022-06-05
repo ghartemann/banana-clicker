@@ -16,10 +16,13 @@ Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, 
 * Migration sous Symfony
 * Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)
 * Export et import de sauvegardes
-* Rendre le changelog et la roadmap plus jolies
 * Devenir millionnaire grâce à la publicité
 
 ## Changelog
+> **v0.9.0**
+>   * Modification de l'affichage du changelog et de la roadmap
+>   * Les clickers sont maintenant masqués par défaut (chaque premier achat d'un tier débloque le suivant)
+>
 > **v0.8.9**
 >   * Correction de nombreux bugs d'affichage
 >   * Ajout de trois nouveaux buffs (engrais, bulldozer et mégaphone)
@@ -34,7 +37,6 @@ Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, 
 >
 > **v0.8.2**
 >   * Correction de nombreux bugs
->   * Known bug: l'achat par lot de 10 ne fonctionne pas parfaitement bien
 >
 > **v0.8.0**
 >   * Ajout de la fonction SAUVEGARDE AUTO

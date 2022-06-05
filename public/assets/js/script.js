@@ -534,11 +534,6 @@ function unavailableUntilBought() {
       "tier" + tiersArray[x + 1]
     );
   }
-
-  unavailableUntilBoughtDetail("tierTree", "tierMacaque");
-  unavailableUntilBoughtDetail("tierMacaque", "tierGorilla");
-  unavailableUntilBoughtDetail("tierGorilla", "tierPlantation");
-  unavailableUntilBoughtDetail("tierPlantation", "tierToucan");
 }
 
 function unavailableUntilBoughtDetail(owned, notOwned) {
