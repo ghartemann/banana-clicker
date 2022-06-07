@@ -348,7 +348,8 @@ body {
 }
 
 /* CHANGELOG PANEL */
-#changelogText h2, #roadmapText h2 {
+#changelogText h2,
+#roadmapText h2 {
   margin-bottom: 15px;
   margin-top: 30px;
 }
@@ -373,6 +374,10 @@ body {
 
 .statsClicksNumber {
   margin-bottom: 10px;
+}
+
+.mainStatsContainer {
+  z-index: -20;
 }
 
 /* SOUNDS */
@@ -417,7 +422,7 @@ footer {
 .greyed {
   background-color: var(--green-dark-transparent);
   color: var(--white-transparent);
-  cursor: initial;
+  cursor: not-allowed;
 }
 
 .stats {
@@ -478,6 +483,19 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
+  .buttonsContainer h1,
+  .buffsContainer h1 {
+    text-align: center;
+  }
+
+  .buttonGroup {
+    justify-content: center;
+  }
+
+  .buffs {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 970px) {

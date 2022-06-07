@@ -19,7 +19,7 @@
 
 .tooltip-dropdown {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 60px;
   right: -200px;
   z-index: 1000;
@@ -45,11 +45,12 @@
   box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 10px 1px;
 }
 
+.infoMobile {
+  cursor: pointer;
+}
+
 .mobileTooltip {
-  display: none;
-  position: absolute;
-  top: -100px;
-  left: 20%;
+  position: fixed;
 }
 
 .tooltip--open .tooltip-dropdown,
@@ -68,7 +69,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .tooltip--open,
   .tooltip-dropdown,
   .tooltip-dropdown__content {

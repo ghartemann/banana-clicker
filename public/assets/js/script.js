@@ -6,7 +6,7 @@ console.log(
   "Oui, il est possible de tricher assez facilement. Super, bonne ambiance vraiment."
 );
 
-document.getElementById("version").innerHTML = "v0.9.2";
+document.getElementById("version").innerHTML = "v0.9.4";
 
 function unreleased() {
   alert("Le jeu sauvegarde maintenant tout seul, à chaque seconde.");
