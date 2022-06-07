@@ -19,6 +19,11 @@ Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, 
 * Devenir millionnaire grâce à la publicité
 
 ## Changelog
+> **v0.9.4**
+>   * Toujours plus responsive
+>   * Améliorations visuelles
+>   * Mise à jour des descriptions pour encore plus de __f u n__
+>
 > **v0.9.3**
 >   * Nombreuses améliorations cosmétiques
 >   * Ajout de liens vers LinkedIn et mon beau site

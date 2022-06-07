@@ -348,7 +348,8 @@ body {
 }
 
 /* CHANGELOG PANEL */
-#changelogText h2, #roadmapText h2 {
+#changelogText h2,
+#roadmapText h2 {
   margin-bottom: 15px;
   margin-top: 30px;
 }
@@ -482,15 +483,14 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
-.buttonsContainer h1, .buffsContainer h1 {
-  text-align: center;
-}
+  .buttonsContainer h1,
+  .buffsContainer h1 {
+    text-align: center;
+  }
 
   .buttonGroup {
-  justify-content: center;
-}
-
-
+    justify-content: center;
+  }
 
   .buffs {
     display: flex;
