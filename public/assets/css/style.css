@@ -375,6 +375,10 @@ body {
   margin-bottom: 10px;
 }
 
+.mainStatsContainer {
+  z-index: -20;
+}
+
 /* SOUNDS */
 .hiddenFrame {
   height: 1px;
@@ -417,7 +421,7 @@ footer {
 .greyed {
   background-color: var(--green-dark-transparent);
   color: var(--white-transparent);
-  cursor: initial;
+  cursor: not-allowed;
 }
 
 .stats {
@@ -478,6 +482,20 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
+.buttonsContainer h1, .buffsContainer h1 {
+  text-align: center;
+}
+
+  .buttonGroup {
+  justify-content: center;
+}
+
+
+
+  .buffs {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 970px) {
