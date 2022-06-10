@@ -1,6 +1,6 @@
 # Bienvenue sur Banana Clicker
 
-<img width="1680" alt="Capture d’écran 2022-05-28 à 21 46 55" src="https://user-images.githubusercontent.com/36921636/170840745-fa4f118b-d18f-41a6-8e2c-e20f8c57a11d.png">
+<img width="1680" alt="Capture d’écran 2022-06-10 à 07 55 31" src="https://user-images.githubusercontent.com/36921636/172999990-74db34ed-0a8f-4fb1-9f59-dedb0ec5ac47.png">
 
 Hommage à Cookie Clicker et tentative de création d'un premier jeu vidéo, le développement de cette expérience somme toute assez simpliste m'a beaucoup amusé. J'espère que son utilisation saura susciter chez vous des émotions au moins similaires sinon plus intenses encore.
 
