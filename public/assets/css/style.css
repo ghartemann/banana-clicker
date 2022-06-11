@@ -81,6 +81,7 @@ body {
   right: 0;
   height: 100px;
   width: 100px;
+  z-index: 2;
 }
 
 .beta {
@@ -197,6 +198,7 @@ body {
   display: flex;
   column-gap: 30px;
   flex-direction: column;
+  width: 98%;
 }
 
 .buttonGroup {
@@ -469,6 +471,128 @@ footer {
   display: none;
 }
 
+/* BANNERS */
+.banner1 {
+  width: 100vw;
+  height: 100px;
+  background: url("/assets/images/banners/lamas.png");
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.banner1 h1 {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 50pt;
+  animation: blinkingText 2s infinite;
+}
+
+@keyframes blinkingText {
+  0% {
+    color: yellow;
+  }
+  25% {
+    color: rgb(0, 255, 8);
+  }
+  50% {
+    color: #00e5ff;
+  }
+  75% {
+    color: #ea00ff;
+  }
+  100% {
+    color: rgb(255, 153, 0);
+  }
+}
+
+.banner2 {
+  width: 100vw;
+  height: 80px;
+  background: url("/assets/images/banners/vaches.png");
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: flex;
+}
+
+.banner2 h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 50pt;
+  color: rgb(255, 0, 212);
+}
+
+.banner2left {
+  width: 45vw;
+  margin-left: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner2right {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner2right p {
+  color: rgb(255, 0, 30);
+  font-size: 20pt;
+  background-color: #00e5ff44;
+}
+
+.banner3 {
+  background: url("/assets/images/banners/window.png");
+  background-size: cover;
+  position: absolute;
+  bottom: 20vh;
+  left: 35%;
+  height:240px;
+  width: 384px;
+  z-index: 1;
+  display: flex;
+}
+
+.banner3 h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30pt;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  color: rgb(0, 0, 0);
+}
+
+@media screen and (max-width: 1310px) {
+  .banner1 h1, .banner2 h1 {
+    font-size: 40pt;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .banner1 h1, .banner2 h1 {
+    font-size: 30pt;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .banner2right p {
+    font-size: 15pt;
+  }
+
+  .banner1 h1, .banner2 h1 {
+    font-size: 20pt;
+  }
+}
+
+@media screen and (max-width: 430px) {
+
+}
+
 /* MEDIA QUERIES */
 @media screen and (max-width: 1200px) {
   html {
@@ -649,4 +773,8 @@ footer {
   .downArrow {
     display: none;
   }
+}
+
+.unavailable {
+  display: none;
 }

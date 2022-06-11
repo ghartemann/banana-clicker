@@ -54,6 +54,7 @@ const buffsBPSArray = [
   "Megaphone",
   "Laser",
   "Iceberg",
+  "Ad",
 ];
 
 // arrays containing buffs unlocking modalities :
@@ -67,6 +68,7 @@ const buffsBPSArrayModality = [
   ["Megaphone", "Sloth"],
   ["Laser", "Rifle"],
   ["Iceberg", "Boat"],
+  ["Ad", "Clicker"],
 ];
 
 // [buff, nbClicksNeeded]
@@ -716,6 +718,7 @@ function buyBuff(buffType, buffName, buffedTierName) {
 
     // finally checking prices
     runAllChecks();
+    showBanners();
   } else {
     alert("Pas assez de bananes !");
   }
@@ -773,4 +776,34 @@ function animateClickerToggle(clicker) {
   let cursorList = cursor.classList;
   cursorList.toggle("smallCursor");
   cursorList.toggle("normalCursor");
+}
+
+//
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// AD BANNERS
+
+function showBanners() {
+  let buffAdOwned = document.getElementById("buffAdOwned").innerHTML;
+  let banner1 = document.getElementById("banner1");
+  let banner2 = document.getElementById("banner2");
+  let banner3 = document.getElementById("banner3");
+
+  if (buffAdOwned == 1) {
+    banner1.classList.remove("unavailable");
+  }
+
+  if (buffAdOwned == 2) {
+    banner2.classList.remove("unavailable");
+  }
+
+  if (buffAdOwned == 3) {
+    banner3.classList.remove("unavailable");
+  }
+
+  if (buffAdOwned > 3) {
+    banner1.classList.add("unavailable");
+    banner2.classList.add("unavailable");
+    banner3.classList.add("unavailable");
+  }
 }
