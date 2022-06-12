@@ -34,9 +34,10 @@ const tiersArray = [
   "Tree",
   "Macaque",
   "Gorilla",
-  "Plantation",
+  "Ad",
   "Toucan",
   "Sloth",
+  "Plantation",
   "Rifle",
   "Boat",
   "Plane",
@@ -54,7 +55,7 @@ const buffsBPSArray = [
   "Megaphone",
   "Laser",
   "Iceberg",
-  "Ad",
+  "Adblock",
 ];
 
 // arrays containing buffs unlocking modalities :
@@ -69,6 +70,7 @@ const buffsBPSArrayModality = [
   ["Laser", "Rifle"],
   ["Iceberg", "Boat"],
   ["Ad", "Clicker"],
+  ["Adblock", "Ad"],
 ];
 
 // [buff, nbClicksNeeded]
@@ -472,18 +474,35 @@ function buffPriceCheck(buffName) {
   let buffNameButtonList = buffNameButton.classList;
   let buffOwned = document.getElementById(buffName + "Owned").innerHTML;
 
-  // greying out buttons
-  if (buffPrice < bananas && buffOwned < 10) {
-    buffNameButton.disabled = false;
-    buffNameButtonList.remove("greyedBuff");
-  } else {
-    buffNameButton.disabled = true;
-    buffNameButtonList.add("greyedBuff");
+  // greying out buttons (except adblock)
+  if (buffNameButton != document.getElementById("buffAdblockButton")) {
+    if (buffPrice < bananas && buffOwned < 10) {
+      buffNameButton.disabled = false;
+      buffNameButtonList.remove("greyedBuff");
+    } else {
+      buffNameButton.disabled = true;
+      buffNameButtonList.add("greyedBuff");
+    }
+
+    if (buffOwned >= 10) {
+      document.getElementById(buffName + "OwnedC").innerHTML = "MAX";
+      // document.getElementById(buffName + "Button").classList.add("lastBuff");
+    }
   }
 
-  if (buffOwned >= 10) {
-    document.getElementById(buffName + "OwnedC").innerHTML = "MAX";
-    // document.getElementById(buffName + "Button").classList.add("lastBuff");
+  // very specific case (adblock)
+  if (buffNameButton == document.getElementById("buffAdblockButton")) {
+    if (buffPrice < bananas && buffOwned < 1) {
+      buffNameButton.disabled = false;
+      buffNameButtonList.remove("greyedBuff");
+    } else {
+      buffNameButton.disabled = true;
+      buffNameButtonList.add("greyedBuff");
+    }
+
+    if (document.getElementById("buffAdblockOwned").innerHTML >= 1) {
+      document.getElementById("buffAdblockOwnedC").innerHTML = "MAX";
+    }
   }
 }
 
@@ -617,6 +636,8 @@ function buyTier(tierName) {
     showClicker();
     runAllChecks();
     unavailableUntilBought();
+    showBanners();
+    hideBanners();
   } else {
     alert("Pas assez de bananes !");
   }
@@ -717,8 +738,8 @@ function buyBuff(buffType, buffName, buffedTierName) {
     }
 
     // finally checking prices
+    hideBanners();
     runAllChecks();
-    showBanners();
   } else {
     alert("Pas assez de bananes !");
   }
@@ -784,26 +805,39 @@ function animateClickerToggle(clicker) {
 // AD BANNERS
 
 function showBanners() {
-  let buffAdOwned = document.getElementById("buffAdOwned").innerHTML;
+  let tierAdOwned = document.getElementById("tierAdOwned").innerHTML;
+
   let banner1 = document.getElementById("banner1");
   let banner2 = document.getElementById("banner2");
   let banner3 = document.getElementById("banner3");
 
-  if (buffAdOwned == 1) {
+  if (tierAdOwned >= 1) {
     banner1.classList.remove("unavailable");
   }
 
-  if (buffAdOwned == 2) {
+  if (tierAdOwned >= 2) {
     banner2.classList.remove("unavailable");
   }
 
-  if (buffAdOwned == 3) {
+  if (tierAdOwned >= 3) {
     banner3.classList.remove("unavailable");
   }
+}
 
-  if (buffAdOwned > 3) {
+function hideBanners() {
+  let buffAdblockOwned = document.getElementById("buffAdblockOwned").innerHTML;
+  let tierAdButton = document.getElementById("tierAdButton");
+
+  if (buffAdblockOwned > 0) {
     banner1.classList.add("unavailable");
     banner2.classList.add("unavailable");
     banner3.classList.add("unavailable");
+    document.getElementById("tierAdPrice").innerHTML = 0;
+    // next two lines don't work for now
+    tierAdButton.disabled = true;
+    tierAdButton.classList.add("greyed");
   }
 }
+
+window.onload = showBanners();
+window.onload = hideBanners();
