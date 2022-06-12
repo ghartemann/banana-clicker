@@ -21,7 +21,7 @@
   display: none;
   position: fixed;
   top: 60px;
-  right: -200px;
+  right: -15vw;
   z-index: 1000;
   padding-top: 0px;
 }
@@ -30,7 +30,7 @@
   display: none;
   position: absolute;
   top: 62px;
-  left: -220px;
+  left: -7vw;
   z-index: 1000;
   padding-top: 0px;
 }
