@@ -69,7 +69,6 @@ const buffsBPSArrayModality = [
   ["Megaphone", "Sloth"],
   ["Laser", "Rifle"],
   ["Iceberg", "Boat"],
-  ["Ad", "Clicker"],
   ["Adblock", "Ad"],
 ];
 
