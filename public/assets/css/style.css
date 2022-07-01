@@ -76,7 +76,7 @@ body {
 
 .betacontainer {
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   height: 100px;
@@ -90,9 +90,9 @@ body {
   width: 200px;
   height: 35px;
   display: flex;
-  position: relative;
-  right: 30px;
+  position: absolute;
   top: 50px;
+  left: -30px;
   justify-content: center;
   align-items: center;
   cursor: pointer;

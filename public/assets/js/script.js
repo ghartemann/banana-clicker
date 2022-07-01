@@ -840,3 +840,8 @@ function hideBanners() {
 
 window.onload = showBanners();
 window.onload = hideBanners();
+
+// ALERT
+window.onload = alert(
+  "Si un truc vous semble cassé, c'est peut-être à cause d'une mise à jour. Il faudra malheureusement réinitialiser votre partie (dans le menu de droite)."
+);
