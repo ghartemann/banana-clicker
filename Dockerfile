@@ -38,8 +38,6 @@ WORKDIR /var/www
 COPY . /var/www/
 COPY --from=vendor /app/vendor/ /var/www/vendor
 
-RUN mkdir -p /var/www/public/uploads/
-
 EXPOSE 80
 
 COPY docker-entry.sh /etc/entrypoint.sh

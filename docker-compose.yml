@@ -9,7 +9,7 @@ services:
     image: mysql:5.7
     container_name: bclicker-database
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: $MYSQL_PASSWORD
       MYSQL_DATABASE: bclicker
     volumes:
       - db:/var/lib/mysql
