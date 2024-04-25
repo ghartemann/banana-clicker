@@ -43,6 +43,6 @@ RUN mkdir -p /var/www/public/uploads/
 EXPOSE 80
 
 COPY docker-entry.sh /etc/entrypoint.sh
-RUN chmod +x /usr/bin/entrypoint.sh
+RUN chmod +x /etc/entrypoint.sh
 
 ENTRYPOINT ["/etc/entrypoint.sh"]
