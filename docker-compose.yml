@@ -2,7 +2,6 @@ services:
   app:
     build: .
     container_name: bclicker-app
-    command: nginx -g 'daemon off;'
     depends_on:
       - database
 

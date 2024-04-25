@@ -19,12 +19,11 @@ RUN composer install \
 
 # end Stage 1 #
 
-
 FROM php:8.0-fpm-alpine as phpserver
 
 # add cli tools
 RUN apk update \
-    && apk upgrade \    
+    && apk upgrade \
     && apk add nginx
 
 # silently install 'docker-php-ext-install' extensions
@@ -51,4 +50,4 @@ RUN adduser nginx www-data \
 EXPOSE 80
 
 COPY docker-entry.sh /etc/entrypoint.sh
-ENTRYPOINT ["sh", "/etc/entrypoint.sh"]
+ENTRYPOINT ["/etc/entrypoint.sh"]
