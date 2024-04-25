@@ -1,0 +1,25 @@
+services:
+  app:
+    build: .
+    container_name: bclicker-app
+    command: nginx -g 'daemon off;'
+
+  database:
+    image: mysql:5.7
+    container_name: bclicker-database
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: bclicker
+      MYSQL_USER: bclicker
+    volumes:
+      - db:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  db:
+    driver: local
+
+networks:
+  default:
+    name: nginx_default
+    driver: bridge
