@@ -40,14 +40,9 @@ COPY --from=vendor /app/vendor/ /var/www/vendor
 
 RUN mkdir -p /var/www/public/uploads/
 
-# RUN chown -R www-data:www-data /var/www/
-
-RUN adduser nginx www-data \
-    && chgrp -R www-data /var/www/public/uploads/ \
-    && chmod -R 775 /var/www/public/uploads/
-
-
 EXPOSE 80
 
 COPY docker-entry.sh /etc/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
+
 ENTRYPOINT ["/etc/entrypoint.sh"]
