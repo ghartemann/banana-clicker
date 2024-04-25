@@ -2,5 +2,5 @@
 
 define('APP_DB_USER', 'root');
 define('APP_DB_PASSWORD', 'password');
-define('APP_DB_HOST', 'bclicker-database');
+define('APP_DB_HOST', '172.18.0.5');
 define('APP_DB_NAME', 'bclicker');
