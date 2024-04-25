@@ -11,9 +11,7 @@ services:
     container_name: bclicker-database
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_PASSWORD: password
       MYSQL_DATABASE: bclicker
-      MYSQL_USER: bclicker
     volumes:
       - db:/var/lib/mysql
       - ./database.sql:/docker-entrypoint-initdb.d/init.sql
