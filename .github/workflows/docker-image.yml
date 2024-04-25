@@ -14,7 +14,7 @@ jobs:
     - name: Inject variables
       env:
         MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
-        run: chmod u+x scripts/deploy.sh && ./scripts/deploy.sh
+      run: chmod u+x scripts/deploy.sh && ./scripts/deploy.sh
     - name: Build the Docker image
       run: sudo docker compose build --build-arg ENV=prod
     - name: Create and start container
