@@ -3,6 +3,8 @@ services:
     build: .
     container_name: bclicker-app
     command: nginx -g 'daemon off;'
+    depends_on:
+      - database
 
   database:
     image: mysql:5.7
