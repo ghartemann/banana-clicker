@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sed 's/$MYSQL_PASSWORD/'"$MYSQL_PASSWORD"'/' -i config/db.php
-sed 's/$MYSQL_PASSWORD/'"$MYSQL_PASSWORD"'/' -i docker-compose.yml
+sed 's/$SQL_PASSWORD/'"$MYSQL_PASSWORD"'/' -i config/db.php
+sed 's/$SQL_PASSWORD/'"$MYSQL_PASSWORD"'/' -i docker-compose.yml
