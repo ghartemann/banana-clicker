@@ -10,7 +10,7 @@ services:
     container_name: bclicker-database
     environment:
       MYSQL_ROOT_PASSWORD: $SQL_PASSWORD
-      MYSQL_USER: root
+      MYSQL_USER: bc
       MYSQL_PASSWORD: $SQL_PASSWORD
       MYSQL_DATABASE: bclicker
     volumes:

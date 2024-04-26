@@ -1,7 +1,7 @@
 #
 # Stage 1 - Prep App's PHP Dependencies
 #
-FROM composer:latest as vendor
+FROM composer:latest AS vendor
 
 WORKDIR /app
 
@@ -19,7 +19,7 @@ RUN composer install \
 
 # end Stage 1 #
 
-FROM php:8.0-fpm-alpine as phpserver
+FROM php:8.0-fpm-alpine AS phpserver
 
 # add cli tools
 RUN apk update \
