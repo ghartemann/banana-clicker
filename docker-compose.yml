@@ -9,9 +9,9 @@ services:
     image: mysql:8
     command: --default-authentication-plugin=mysql_native_password
     restart: always
-    container_name: bclicker-database
+    container_name: bcdbc
     environment:
-      MYSQL_DATABASE: bclicker
+      MYSQL_DATABASE: bcdb
       MYSQL_USER: bc
       MYSQL_PASSWORD: $SQL_PASSWORD
       MYSQL_ROOT_PASSWORD: $SQL_PASSWORD
