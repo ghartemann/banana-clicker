@@ -8,8 +8,8 @@ services:
       - database
 
   database:
-    image: mysql:5.7
-    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    image: mysql:8
+    command: ['mysqld', '--default-authentication-plugin=mysql_native_password', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
     restart: always
     container_name: bcdbc
     environment:

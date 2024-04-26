@@ -15,7 +15,7 @@ create table clickers
 
 insert into clickers (id, name, article, display_name, img, price, multiplier, price_multiplier, description)
 values  (1, 'tierClicker', 'un', 'autoclicker', 'hand.png', 40, 1, 1.15, 'Un curseur qui clique tout seul. En plus on le voit faire. C''est pas formidable, ça ?'),
-        (2, 'tierTree', 'un', 'bananier', 'leaf.png', 200, 2, 1.15, 'Un bananier assez banal mais avec un sacré rendemant. Après voilà c''est un arbre, il n''y a pas non plus mille choses à dire dessus.'),
+        (2, 'tierTree', 'un', 'bananier', 'leaf.png', 200, 2, 1.15, 'Un bananier assez banal mais avec un sacré rendement. Après voilà c''est un arbre, il n''y a pas non plus mille choses à dire dessus.'),
         (3, 'tierMacaque', 'un', 'macaque', 'macaque.png', 2200, 10, 1.15, 'Un macaque qui ramasse des bananes. Le mieux c''est qu''on le paie une misère et qu''il semble aimer ça.'),
         (4, 'tierGorilla', 'un', 'gorille', 'gorilla.png', 11000, 40, 1.15, 'Un gorille qui fait à peu près la même chose que le macaque, mais de façon remarquablement plus efficace et pour une paie remarquablement peu supérieure à celle de son compère.'),
         (5, 'tierAd', 'une', 'publicité', 'adverts.png', 39999, 99, 1.15, 'Aaaah, la publicité. Celle par qui et pour qui l''Homme moderne s''est construit. Écoutez ici ça nous fait kiffer, si c''est aussi votre cas n''hésitez pas disposer quelques bannières par-ci par-là. Ça ne rapporte pas grand chose mais ça apporte un peu de vie.'),
@@ -78,4 +78,3 @@ values  (1, 'buffFertilizer', 'Sac d''engrais Monsanto', 'fertilizer.png', 'BPS'
         (7, 'buffMegaphone', 'Réveiller les paresseux', 'megaphone.png', 'BPS', 1500000, 1.15, '15%', 1.15, 'Sloth', 'paresseux', 'Ils sont productifs, certes, mais il ne faut quand même pas exagérer. Hurler vos ordres dans ce mégaphone dernier cri (!!) ne manquera pas de remettre au travail cette masse salariale trop peu efficace.'),
         (8, 'buffLaser', 'Pointeur laser', 'laser.png', 'BPS', 5000000, 1.15, '15%', 1.16, 'Rifle', 'fusil', 'Gagnez en précision avec le pointer laser. Aucune banane ne saura vous échapper. Essayez toutefois d''éviter de tirer sur les locaux qui défendent leurs terres, c''est pas dingue d''un point de vue marketing.'),
         (9, 'buffIceberg', 'Faire fondre la banquise', 'melting.png', 'BPS', 10000000, 1.15, '15%', 1.17, 'Boat', 'bateau', 'Rapprocher votre production de la côte, ou rapprocher la côte de votre production ? En faisant fondre ce qu''il reste de banquise, le niveau des océans augmente et vous permet de charger vos bateaux directement à votre usine.');
-        
