@@ -1,3 +1,5 @@
+version: '3.7'
+
 services:
   app:
     build: .
@@ -11,10 +13,10 @@ services:
     restart: always
     container_name: bcdbc
     environment:
-      MYSQL_DATABASE: bcdb
-      MYSQL_USER: bc
-      MYSQL_PASSWORD: $SQL_PASSWORD
-      MYSQL_ROOT_PASSWORD: $SQL_PASSWORD
+      - MYSQL_DATABASE=bcdb
+      - MYSQL_USER=bc
+      - MYSQL_PASSWORD=$SQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD=$SQL_PASSWORD
     volumes:
       - db:/var/lib/mysql
       - ./database.sql:/docker-entrypoint-initdb.d/init.sql
