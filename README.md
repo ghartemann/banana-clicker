@@ -10,14 +10,6 @@ https://bananaclicker.ghartemann.fr
 ## But du jeu
 Le but est de collecter le plus grand nombre de bananes possible. Bien entendu, il n'y a pas de fin et les prix sont incrémentaux.
 
-## Roadmap
-* WIP : Profil utilisateur et sauvegarde des données en BDD
-* WIP : Ajout de nombreux autres clickers et buffs
-* Migration sous Symfony
-* Ajout d'une fonctionnalités achievements (inutiles mais ça fait toujours plaisir)
-* Export et import de sauvegardes
-* Devenir millionnaire grâce à la publicité
-
 ## Changelog
 > **v0.9.5**
 >   * Encore plus responsive
